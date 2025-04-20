@@ -1,0 +1,75 @@
+Obiettivo: popolare il database con **inserzioni di prova veritiere e complete** e abilitare nei filtri di ricerca la selezione “Italia” vs “Spagna” con l’elenco di tutte le città di ciascun Paese.
+
+📂 File/Cartelle da creare/modificare:
+- Seeder: `src/seeds/listingsSeeder.js`
+- API di seeding: `src/api/seed.js` (GET `/api/seed/listings`)
+- Tabella `cities` già popolata con tutte le città italiane e spagnole
+- Componenti di filtro: `src/components/CountryCityFilter.jsx`
+
+📋 Azioni:
+
+1. **Seeder per Listings**  
+   - In `listingsSeeder.js`, importa la lista completa di città da `cities` (filtro `country = 'IT'` e `country = 'ES'`).  
+   - Per ogni città: genera esattamente 4 annunci:
+     1. **1 Stanza Singola**  
+     2. **2 Bilocali**  
+     3. **1 Stanza Doppia**  
+   - Per ciascun annuncio includi:
+     ```js
+     {
+       id: uuid(),
+       owner_name: faker.name.findName(),
+       contact_email: faker.internet.email(),
+       type: 'Stanza Singola' | 'Bilocale' | 'Stanza Doppia',
+       city: city.name,
+       country: city.country,
+       address: `${faker.address.streetAddress()}, ${city.name}`,
+       price: randomBetween(300, 1200),      // in € 
+       bedrooms: type === 'Bilocale' ? 2 : 1,
+       bathrooms: faker.datatype.number({ min:1, max:2 }),
+       square_meters: faker.datatype.number({ min:15, max:50 }),
+       available_date: faker.date.soon(30),
+       description: faker.lorem.paragraph(),
+       images: [
+         faker.image.city(),
+         faker.image.city(),
+         faker.image.city(),
+         faker.image.city()
+       ],
+       created_at: new Date(),
+       updated_at: new Date()
+     }
+     ```
+   - Inserisci tutti i record nella tabella `announcements`.
+
+2. **API di Seed**  
+   - In `src/api/seed.js`, crea route `GET /api/seed/listings` che esegue il seeder e risponde con il numero di annunci creati.  
+   - Proteggi questa route per ambiente development only.
+
+3. **Filtro Paese → Città**  
+   - Modifica `CountryCityFilter.jsx`:
+     ```jsx
+     <Select value={country} onChange={onCountryChange}>
+       <option value="IT">Italia</option>
+       <option value="ES">Spagna</option>
+     </Select>
+     <Select value={city} onChange={onCityChange}>
+       {cities.filter(c => c.country === country).map(c => (
+         <option key={c.id} value={c.name}>{c.name}</option>
+       ))}
+     </Select>
+     ```
+   - Al caricamento, fetcha tutte le città (`GET /api/cities`) e salva in state.
+
+4. **Test**  
+   - In development, chiama `GET /api/seed/listings` una volta.  
+   - Verifica in DB che per ogni città di Italia/Spagna ci siano 4 annunci rispettando i tipi.  
+   - Apri il filtro di ricerca, seleziona “Italia”: la dropdown “Città” deve popolarsi con tutte le città italiane; stesso comportamento per “Spagna”.  
+   - Esegui una ricerca per una città di prova (es. “Roma” o “Madrid”) e verifica che appaiano le 4 inserzioni di test.
+
+📌 Obiettivo Finale:  
+– **Database** popolato con **4 annunci** per ogni città IT/ES, completi di tutte le informazioni e foto placeholder.  
+– **Filtro di ricerca** Paese→Città funzionante con elenco dinamico di tutte le città.  
+– Sistema pronto per presentare demo listing reali su front-end.```
+
+---

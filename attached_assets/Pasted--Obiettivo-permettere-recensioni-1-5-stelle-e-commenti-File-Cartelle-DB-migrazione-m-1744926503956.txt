@@ -1,0 +1,136 @@
+🔧 Obiettivo: permettere recensioni 1–5 stelle e commenti.
+
+📂 File/Cartelle:
+- DB migrazione: `migrations/1612345890_create_reviews_table.sql`
+- Backend: `src/api/reviews.js`
+- Frontend: `src/components/ReviewForm.jsx`, `src/components/ReviewList.jsx`
+- RLS: `policies/reviews_policy.sql`
+
+📋 Azioni:
+1. **DB**
+   ```sql
+   CREATE TABLE reviews (
+     id SERIAL PRIMARY KEY,
+     user_id UUID REFERENCES users(id),
+     announcement_id UUID REFERENCES announcements(id),
+     rating SMALLINT CHECK (rating BETWEEN 1 AND 5),
+     comment TEXT,
+     created_at TIMESTAMP DEFAULT NOW()
+   );
+Policies (reviews_policy.sql)
+
+sql
+Copia
+-- Solo utenti autenticati possono inserire
+CREATE POLICY "can_insert_review" ON reviews
+  FOR INSERT TO authenticated
+  USING (auth.uid() = user_id);
+API (reviews.js)
+
+js
+Copia
+// POST /api/reviews
+export async function postReview(req, res) {
+  const { user_id, announcement_id, rating, comment } = req.body;
+  // check if user viewed/affittato l'annuncio...
+  const newReview = await db.insert('reviews', {...});
+  res.json(newReview);
+}
+// GET /api/reviews/:announcementId
+Frontend
+
+ReviewForm.jsx: modulo con <select> 1–5 e <textarea>
+
+ReviewList.jsx: fetcha GET /api/reviews/{announcementId} e calcola media
+
+Mostra stelle colorate usando icone SVG
+
+Test: utente che ha contattato l’inserzionista può lasciare una sola recensione; media aggiornata.
+
+yaml
+Copia
+
+---
+
+### Prompt 4 – Referral Program
+```plaintext
+🔧 Obiettivo: generare codici referral e crediti per nuovi utenti.
+
+📂 File/Cartelle:
+- DB migrazione: `migrations/1612345930_create_referrals_table.sql`
+- Backend: `src/api/referrals.js`
+- Frontend: `src/components/ReferralDashboard.jsx`, `src/components/Signup.jsx`
+
+📋 Azioni:
+1. **DB**
+   ```sql
+   CREATE TABLE referrals (
+     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+     inviter_id UUID REFERENCES users(id),
+     invite_code TEXT UNIQUE,
+     invitee_email TEXT,
+     created_at TIMESTAMP DEFAULT NOW(),
+     used BOOLEAN DEFAULT FALSE
+   );
+API (referrals.js)
+
+js
+Copia
+// POST /api/referrals/generate
+export async function generateReferral(req, res) {
+  const inviter_id = req.auth.uid();
+  const code = nanoid(8).toUpperCase();
+  const newRef = await db.insert('referrals', { inviter_id, invite_code: code });
+  res.json(newRef);
+}
+// POST /api/users/signup with code
+Frontend
+
+In ReferralDashboard.jsx, mostra GET /api/referrals/{userId}
+
+In Signup.jsx, aggiungi campo “Codice invito” e se valido, assegna credito (es. +1 inserzione gratuita)
+
+Test: inviter crea codice, invitee lo usa, entrambi ricevono credito nel profilo.
+
+yaml
+Copia
+
+---
+
+### Prompt 5 – Moderazione & Segnalazioni
+```plaintext
+🔧 Obiettivo: segnalare annunci e gestire in admin.
+
+📂 File/Cartelle:
+- DB migrazione: `migrations/1612345990_create_reports_table.sql`
+- Backend: `src/api/reports.js`
+- Frontend: `src/components/ReportButton.jsx`, `src/components/AdminReports.jsx`
+- RLS: `policies/reports_policy.sql`
+
+📋 Azioni:
+1. **DB**
+   ```sql
+   CREATE TABLE reports (
+     id SERIAL PRIMARY KEY,
+     announcement_id UUID REFERENCES announcements(id),
+     reporter_id UUID REFERENCES users(id),
+     reason TEXT,
+     created_at TIMESTAMP DEFAULT NOW(),
+     status TEXT DEFAULT 'open'
+   );
+API (reports.js)
+
+js
+Copia
+// POST /api/reports
+export async function postReport(req, res) { ... }
+// GET /api/admin/reports
+export async function getReports(req, res) { ... }
+// PATCH /api/admin/reports/:id -> { status: 'resolved' }
+Frontend
+
+ReportButton.jsx: dropdown reason + POST
+
+AdminReports.jsx: tabella con ID, annuncio, motivo, bottone “Rimuovi annuncio” o “Ignora”
+
+Test: reporter crea report, admin lo vede e può chiudere o rimuovere l’annuncio.

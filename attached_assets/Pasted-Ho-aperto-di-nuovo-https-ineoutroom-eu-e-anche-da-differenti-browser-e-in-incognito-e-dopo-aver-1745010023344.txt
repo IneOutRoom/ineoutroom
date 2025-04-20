@@ -1,0 +1,71 @@
+Ho aperto di nuovo https://ineoutroom.eu/ e, anche da differenti browser e in incognito (e dopo aver rimosso il cookieConsent in Local Storage), non compare né il div di test rosso né il banner statico. Questo significa che:
+
+Il codice in _app.js non viene montato (o viene montato in un nodo che non è aggiunto al DOM visibile).
+
+Non si tratta di un problema di localStorage, perché il test statico ignora ogni controllo di consenso.
+
+Possibili cause
+Root del rendering React
+Se state usando un wrapper che limita il rendering a certi container (es. <div id="root"> con overflow o z‑index), il banner potrebbe essere aggiunto in un punto non visibile.
+
+Stile globale che nasconde fixed
+Un CSS globale (es. * { position: relative; overflow: hidden; }) potrebbe bloccare elementi position: fixed.
+
+Problemi di build/SSR
+Il componente potrebbe non essere incluso nella build di produzione, oppure il dynamic import fallisce silenziosamente.
+
+Prossimi passi consigliati
+Usa un React Portal
+Sposta il banner fuori dall’albero principale, ad esempio:
+
+jsx
+Copia
+Modifica
+import { createPortal } from 'react-dom';
+function CookieBannerPortal(props) {
+  return createPortal(<CookieBanner {...props} />, document.body);
+}
+Poi in _app.js usa <CookieBannerPortal /> anziché montarlo inline.
+
+Controllo overflow e z‑index
+Aggiungi in CSS globale:
+
+css
+Copia
+Modifica
+body, html, #__next {
+  overflow: visible !important;
+}
+E al banner:
+
+css
+Copia
+Modifica
+#cookie-banner, #cookie-banner-fallback {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important;
+}
+Verifica build
+
+Esegui localmente un npm run build && npm start e guarda il bundle in .next o build per confermare la presenza di CookieBanner.js.
+
+Se non c’è, ricontrolla il percorso d’import.
+
+Prompt chirurgico per Replit
+Incolla questo a Replit:
+
+plaintext
+Copia
+Modifica
+🔧 Fix montaggio banner cookie:
+1. Usa React Portal per montare il banner direttamente su document.body.
+2. In CSS globale (styles/globals.css), aggiungi:
+   body, html, #__next { overflow: visible !important; }
+3. Imposta nel banner: 
+   #cookie-banner, #cookie-banner-fallback { position: fixed !important; bottom: 0; left: 0; right:0; z-index:99999; }
+4. Rimuovi dynamic import e importa direttamente con:
+   import CookieBanner from '../components/CookieBanner';
+5. Rebuild e restart.

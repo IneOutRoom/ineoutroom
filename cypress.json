@@ -1,0 +1,20 @@
+{
+  "baseUrl": "http://localhost:5000",
+  "viewportWidth": 1280,
+  "viewportHeight": 720,
+  "defaultCommandTimeout": 10000,
+  "requestTimeout": 10000,
+  "responseTimeout": 30000,
+  "video": false,
+  "screenshotOnRunFailure": true,
+  "screenshotsFolder": "cypress/screenshots",
+  "videosFolder": "cypress/videos",
+  "env": {
+    "apiUrl": "http://localhost:5000/api"
+  },
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  },
+  "experimentalStudio": true
+}

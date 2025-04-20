@@ -1,0 +1,1224 @@
+2025-04-17 23:41:27:4127 error: Risposta di errore: GET /api/user 401
+2025-04-17 23:41:27:4127 error: Risposta di errore: GET /api/user 401
+2025-04-17 23:45:03:453 info: Server avviato sulla porta 5000
+2025-04-17 23:45:25:4525 error: Risposta di errore: GET /api/user 401
+2025-04-17 23:45:25:4525 error: Risposta di errore: GET /api/user 401
+2025-04-17 23:45:36:4536 info: Server avviato sulla porta 5000
+2025-04-17 23:45:40:4540 error: Risposta di errore: GET /api/user 401
+2025-04-17 23:45:40:4540 error: Risposta di errore: GET /api/user 401
+2025-04-17 23:49:59:4959 info: Server avviato sulla porta 5000
+2025-04-17 23:50:03:503 error: Risposta di errore: GET /api/user 401
+2025-04-17 23:50:03:503 error: Risposta di errore: GET /api/user 401
+2025-04-17 23:55:23:5523 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-17 23:55:23:5523 info: Server avviato sulla porta 5000
+2025-04-17 23:55:27:5527 error: Risposta di errore: GET /api/user 401
+2025-04-17 23:55:27:5527 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:02:44:244 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 00:02:44:244 info: Server avviato sulla porta 5000
+2025-04-18 00:04:39:439 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 00:04:39:439 info: Server avviato sulla porta 5000
+2025-04-18 00:04:44:444 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:04:44:444 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:09:54:954 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 00:09:54:954 info: Server avviato sulla porta 5000
+2025-04-18 00:09:58:958 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:09:58:958 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:15:25:1525 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 00:15:25:1525 info: Server avviato sulla porta 5000
+2025-04-18 00:15:29:1529 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:15:29:1529 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:20:41:2041 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 00:20:41:2041 info: Server avviato sulla porta 5000
+2025-04-18 00:20:45:2045 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:20:45:2045 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:21:07:217 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:21:07:217 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:21:16:2116 error: Risposta di errore: GET /api/user 401
+2025-04-18 00:21:16:2116 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:04:53:453 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:04:54:454 info: Server avviato sulla porta 5000
+2025-04-18 08:05:09:59 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:05:09:59 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:08:08:88 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:08:08:88 info: Server avviato sulla porta 5000
+2025-04-18 08:08:16:816 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:08:16:816 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:08:18:818 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:08:18:818 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:15:51:1551 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:15:51:1551 info: Server avviato sulla porta 5000
+2025-04-18 08:15:55:1555 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:15:55:1555 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:16:01:161 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:16:01:161 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:16:10:1610 error: Risposta di errore JSON: GET /listings 500
+2025-04-18 08:16:10:1610 error: Risposta di errore: GET /listings 500
+2025-04-18 08:16:10:1610 error: Risposta di errore: GET /listings 500
+2025-04-18 08:17:16:1716 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:17:16:1716 info: Server avviato sulla porta 5000
+2025-04-18 08:17:20:1720 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:17:20:1720 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:17:22:1722 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:17:22:1722 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:18:52:1852 error: Risposta di errore JSON: GET /listings 500
+2025-04-18 08:18:52:1852 error: Risposta di errore: GET /listings 500
+2025-04-18 08:18:52:1852 error: Risposta di errore: GET /listings 500
+2025-04-18 08:19:32:1932 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:19:32:1932 info: Server avviato sulla porta 5000
+2025-04-18 08:19:36:1936 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:19:36:1936 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:19:39:1939 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:19:39:1939 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:19:49:1949 error: Risposta di errore JSON: GET /listings 500
+2025-04-18 08:19:49:1949 error: Risposta di errore: GET /listings 500
+2025-04-18 08:19:49:1949 error: Risposta di errore: GET /listings 500
+2025-04-18 08:20:51:2051 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:20:51:2051 info: Server avviato sulla porta 5000
+2025-04-18 08:20:55:2055 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:20:55:2055 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:22:58:2258 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:22:58:2258 info: Server avviato sulla porta 5000
+2025-04-18 08:23:04:234 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:23:04:234 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:23:24:2324 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:23:24:2324 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:23:29:2329 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:23:29:2329 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:27:27:2727 error: Risposta di errore JSON: GET /api/properties/1/similar 500
+2025-04-18 08:27:27:2727 error: Risposta di errore: GET /api/properties/1/similar 500
+2025-04-18 08:27:27:2727 error: Risposta di errore: GET /api/properties/1/similar 500
+2025-04-18 08:28:05:285 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:28:05:285 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:29:44:2944 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:29:44:2944 info: Server avviato sulla porta 5000
+2025-04-18 08:34:24:3424 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:34:24:3424 info: Server avviato sulla porta 5000
+2025-04-18 08:34:27:3427 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:34:27:3427 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:35:33:3533 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:35:33:3533 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:35:46:3546 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:35:46:3546 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:37:01:371 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:37:01:371 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:37:17:3717 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:37:17:3717 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:37:53:3753 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:37:53:3753 info: Server avviato sulla porta 5000
+2025-04-18 08:37:56:3756 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:37:56:3756 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:40:03:403 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:40:03:403 info: Server avviato sulla porta 5000
+2025-04-18 08:40:07:407 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:40:07:407 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:42:21:4221 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:42:21:4221 info: Server avviato sulla porta 5000
+2025-04-18 08:42:25:4225 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:42:25:4225 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:45:05:455 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:45:05:455 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:45:11:4511 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:45:11:4511 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:45:53:4553 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:45:53:4553 info: Server avviato sulla porta 5000
+2025-04-18 08:45:59:4559 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:48:08:488 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:48:08:488 info: Server avviato sulla porta 5000
+2025-04-18 08:48:23:4823 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:48:29:4829 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:51:12:5112 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:51:13:5113 info: Server avviato sulla porta 5000
+2025-04-18 08:51:22:5122 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:56:00:560 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:56:00:560 info: Server avviato sulla porta 5000
+2025-04-18 08:56:08:568 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:59:48:5948 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 08:59:48:5948 info: Server avviato sulla porta 5000
+2025-04-18 08:59:55:5955 error: Risposta di errore: GET /api/user 401
+2025-04-18 08:59:58:5958 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:01:50:150 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:04:50:450 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:15:37:1537 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 09:15:37:1537 info: Server avviato sulla porta 5000
+2025-04-18 09:17:43:1743 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 09:17:43:1743 info: Server avviato sulla porta 5000
+2025-04-18 09:17:51:1751 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:19:24:1924 error: Errore applicazione: column "name" does not exist
+2025-04-18 09:19:24:1924 error: Stack: error: column "name" does not exist
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getUser (/home/runner/workspace/server/database-storage.ts:40:20)
+    at async <anonymous> (/home/runner/workspace/server/auth.ts:85:20)
+2025-04-18 09:19:24:1924 error: Errore HTTP 500: POST /api/logout: {"path":"/api/logout","method":"POST","timestamp":"2025-04-18T09:19:24.842Z","status":500,"error":"error","requestId":"req-1744967961894-45","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","ip":"10.82.5.198"}
+2025-04-18 09:19:24:1924 error: Risposta di errore JSON: POST /api/logout 500
+2025-04-18 09:19:24:1924 error: Risposta di errore: POST /api/logout 500
+2025-04-18 09:19:31:1931 error: Errore applicazione: column "name" does not exist
+2025-04-18 09:19:31:1931 error: Stack: error: column "name" does not exist
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getUser (/home/runner/workspace/server/database-storage.ts:40:20)
+    at async <anonymous> (/home/runner/workspace/server/auth.ts:85:20)
+2025-04-18 09:19:31:1931 error: Errore HTTP 500: GET /: {"path":"/","method":"GET","timestamp":"2025-04-18T09:19:31.857Z","status":500,"error":"error","requestId":"req-1744967971740-700","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","ip":"10.82.5.198"}
+2025-04-18 09:19:31:1931 error: Risposta di errore JSON: GET / 500
+2025-04-18 09:19:31:1931 error: Risposta di errore: GET / 500
+2025-04-18 09:19:38:1938 error: Errore applicazione: column "name" does not exist
+2025-04-18 09:19:38:1938 error: Stack: error: column "name" does not exist
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getUser (/home/runner/workspace/server/database-storage.ts:40:20)
+    at async <anonymous> (/home/runner/workspace/server/auth.ts:85:20)
+2025-04-18 09:19:38:1938 error: Errore HTTP 500: GET /: {"path":"/","method":"GET","timestamp":"2025-04-18T09:19:38.928Z","status":500,"error":"error","requestId":"req-1744967978800-748","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","ip":"10.82.5.198"}
+2025-04-18 09:19:38:1938 error: Risposta di errore JSON: GET / 500
+2025-04-18 09:19:38:1938 error: Risposta di errore: GET / 500
+2025-04-18 09:19:46:1946 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 09:19:46:1946 info: Server avviato sulla porta 5000
+2025-04-18 09:19:53:1953 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:20:44:2044 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 09:20:44:2044 info: Server avviato sulla porta 5000
+2025-04-18 09:22:45:2245 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 09:22:45:2245 info: Server avviato sulla porta 5000
+2025-04-18 09:22:52:2252 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:23:35:2335 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:23:35:2335 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:23:52:2352 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:23:57:2357 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:24:18:2418 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:35:16:3516 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 09:35:17:3517 info: Server avviato sulla porta 5000
+2025-04-18 09:36:44:3644 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 09:36:44:3644 info: Server avviato sulla porta 5000
+2025-04-18 09:36:56:3656 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 09:36:57:3657 info: Server avviato sulla porta 5000
+2025-04-18 09:37:05:375 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:37:41:3741 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:41:40:4140 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 09:41:40:4140 info: Server avviato sulla porta 5000
+2025-04-18 09:41:48:4148 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:44:09:449 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:44:17:4417 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:45:31:4531 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:45:36:4536 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:54:50:5450 error: Risposta di errore: GET /api/user 401
+2025-04-18 09:55:05:555 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:10:57:1057 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 10:10:57:1057 info: Server avviato sulla porta 5000
+2025-04-18 10:11:09:119 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:11:57:1157 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:12:17:1217 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:12:25:1225 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 10:12:25:1225 info: Server avviato sulla porta 5000
+2025-04-18 10:13:00:130 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:13:00:130 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:13:06:136 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 10:13:06:136 info: Server avviato sulla porta 5000
+2025-04-18 10:13:12:1312 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:13:32:1332 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:13:37:1337 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:16:40:1640 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:17:02:172 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:17:05:175 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:17:43:1743 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:17:48:1748 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:20:25:2025 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:24:11:2411 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 10:24:11:2411 info: Server avviato sulla porta 5000
+2025-04-18 10:24:20:2420 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:25:47:2547 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:26:25:2625 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:27:12:2712 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 10:27:12:2712 info: Server avviato sulla porta 5000
+2025-04-18 10:27:19:2719 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:27:34:2734 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:29:33:2933 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:29:34:2934 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:30:10:3010 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:31:22:3122 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:31:22:3122 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:34:54:3454 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:35:19:3519 error: Risposta di errore JSON: GET /api/properties/1/similar 500
+2025-04-18 10:35:19:3519 error: Risposta di errore: GET /api/properties/1/similar 500
+2025-04-18 10:35:34:3534 error: Risposta di errore JSON: GET /api/properties/1/similar 500
+2025-04-18 10:35:34:3534 error: Risposta di errore: GET /api/properties/1/similar 500
+2025-04-18 10:38:35:3835 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:44:37:4437 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 10:44:37:4437 info: Server avviato sulla porta 5000
+2025-04-18 10:44:45:4445 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:47:21:4721 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 10:47:21:4721 info: Server avviato sulla porta 5000
+2025-04-18 10:47:35:4735 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:48:02:482 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:55:36:5536 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 10:55:36:5536 info: Server avviato sulla porta 5000
+2025-04-18 10:55:44:5544 error: Risposta di errore: GET /api/user 401
+2025-04-18 10:58:32:5832 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 10:58:32:5832 info: Server avviato sulla porta 5000
+2025-04-18 10:58:49:5849 error: Risposta di errore: GET /api/user 401
+2025-04-18 11:02:27:227 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 11:02:28:228 info: Server avviato sulla porta 5000
+2025-04-18 11:02:44:244 error: Risposta di errore: GET /api/user 401
+2025-04-18 11:05:32:532 error: Risposta di errore: GET /api/user 401
+2025-04-18 11:10:52:1052 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 11:10:52:1052 info: Server avviato sulla porta 5000
+2025-04-18 11:10:59:1059 error: Risposta di errore: GET /api/user 401
+2025-04-18 11:13:36:1336 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 11:13:36:1336 info: Server avviato sulla porta 5000
+2025-04-18 11:13:45:1345 error: Risposta di errore: GET /api/user 401
+2025-04-18 11:14:37:1437 error: Risposta di errore: GET /api/user 401
+2025-04-18 11:15:16:1516 error: Risposta di errore: GET /api/user 401
+2025-04-18 11:53:13:5313 error: Risposta di errore: GET /api/user 401
+2025-04-18 11:59:03:593 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 11:59:03:593 info: Server avviato sulla porta 5000
+2025-04-18 11:59:17:5917 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:00:49:049 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 12:00:49:049 info: Server avviato sulla porta 5000
+2025-04-18 12:01:05:15 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:03:15:315 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 12:03:15:315 info: Server avviato sulla porta 5000
+2025-04-18 12:03:30:330 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:07:45:745 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 12:07:45:745 info: Server avviato sulla porta 5000
+2025-04-18 12:07:52:752 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:09:54:954 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:13:46:1346 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 12:13:46:1346 info: Server avviato sulla porta 5000
+2025-04-18 12:13:52:1352 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:16:25:1625 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 12:16:25:1625 info: Server avviato sulla porta 5000
+2025-04-18 12:16:32:1632 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:17:20:1720 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:17:20:1720 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:18:02:182 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:18:09:189 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:18:09:189 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:20:28:2028 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:20:34:2034 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:20:34:2034 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:21:58:2158 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:22:05:225 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:22:05:225 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:26:23:2623 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:26:30:2630 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:26:30:2630 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:27:10:2710 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:27:10:2710 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:31:12:3112 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 12:31:12:3112 info: Server avviato sulla porta 5000
+2025-04-18 12:31:19:3119 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:32:57:3257 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:33:05:335 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:33:05:335 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:52:53:5253 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:52:53:5253 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:53:47:5347 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:53:55:5355 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:53:55:5355 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:54:14:5414 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:54:14:5414 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:57:08:578 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:57:17:5717 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:57:17:5717 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 12:58:57:5857 error: Risposta di errore: GET /api/user 401
+2025-04-18 12:59:04:594 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 12:59:04:594 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 13:03:58:358 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:04:03:43 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 13:04:03:43 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 13:06:56:656 error: Risposta di errore JSON: POST /api/properties/search 400
+2025-04-18 13:06:56:656 error: Risposta di errore: POST /api/properties/search 400
+2025-04-18 13:08:03:83 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 13:08:03:83 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 13:08:04:84 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 13:08:04:84 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 13:08:49:849 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:08:56:856 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 13:08:56:856 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 13:09:07:97 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 13:09:07:97 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 13:13:47:1347 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:13:48:1348 info: Server avviato sulla porta 5000
+2025-04-18 13:13:57:1357 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:15:58:1558 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:16:05:165 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 13:16:05:165 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 13:16:42:1642 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:16:42:1642 info: Server avviato sulla porta 5000
+2025-04-18 13:18:20:1820 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:18:26:1826 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 13:18:26:1826 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 13:19:55:1955 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:20:00:200 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 13:20:00:200 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 13:24:22:2422 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:24:28:2428 error: Risposta di errore JSON: GET /api/recommendations?limit=10 500
+2025-04-18 13:24:28:2428 error: Risposta di errore: GET /api/recommendations?limit=10 500
+2025-04-18 13:29:05:295 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:29:05:295 info: Server avviato sulla porta 5000
+2025-04-18 13:29:13:2913 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:31:16:3116 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:31:17:3117 info: Server avviato sulla porta 5000
+2025-04-18 13:31:53:3153 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:31:53:3153 info: Server avviato sulla porta 5000
+2025-04-18 13:31:59:3159 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:31:59:3159 info: Server avviato sulla porta 5000
+2025-04-18 13:32:10:3210 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:32:31:3231 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:37:51:3751 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:41:26:4126 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:41:26:4126 info: Server avviato sulla porta 5000
+2025-04-18 13:41:36:4136 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:43:34:4334 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:43:34:4334 info: Server avviato sulla porta 5000
+2025-04-18 13:43:44:4344 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:45:47:4547 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:45:47:4547 info: Server avviato sulla porta 5000
+2025-04-18 13:46:03:463 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:48:38:4838 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:48:38:4838 info: Server avviato sulla porta 5000
+2025-04-18 13:48:53:4853 error: Risposta di errore: GET /api/user 401
+2025-04-18 13:52:02:522 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 13:52:02:522 info: Server avviato sulla porta 5000
+2025-04-18 13:52:16:5216 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:00:04:04 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:00:04:04 info: Server avviato sulla porta 5000
+2025-04-18 14:00:11:011 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:03:08:38 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:03:08:38 info: Server avviato sulla porta 5000
+2025-04-18 14:03:18:318 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:06:25:625 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:06:25:625 info: Server avviato sulla porta 5000
+2025-04-18 14:06:39:639 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:10:49:1049 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:10:49:1049 info: Server avviato sulla porta 5000
+2025-04-18 14:11:08:118 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:11:08:118 info: Server avviato sulla porta 5000
+2025-04-18 14:11:18:1118 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:12:57:1257 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:12:57:1257 info: Server avviato sulla porta 5000
+2025-04-18 14:13:05:135 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:14:54:1454 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:14:54:1454 info: Server avviato sulla porta 5000
+2025-04-18 14:15:04:154 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:21:51:2151 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:21:51:2151 info: Server avviato sulla porta 5000
+2025-04-18 14:22:05:225 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:24:29:2429 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:24:29:2429 info: Server avviato sulla porta 5000
+2025-04-18 14:24:44:2444 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:26:09:269 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:26:09:269 info: Server avviato sulla porta 5000
+2025-04-18 14:26:17:2617 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:30:28:3028 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:30:28:3028 info: Server avviato sulla porta 5000
+2025-04-18 14:30:37:3037 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:31:30:3130 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:33:17:3317 error: Risposta di errore JSON: POST /api/auth/google 400
+2025-04-18 14:33:17:3317 error: Risposta di errore: POST /api/auth/google 400
+2025-04-18 14:33:34:3334 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:33:41:3341 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:33:41:3341 info: Server avviato sulla porta 5000
+2025-04-18 14:33:48:3348 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:33:53:3353 error: Risposta di errore JSON: POST /api/auth/google 400
+2025-04-18 14:33:53:3353 error: Risposta di errore: POST /api/auth/google 400
+2025-04-18 14:34:02:342 error: Errore applicazione: column "email_verified" does not exist
+2025-04-18 14:34:02:342 error: Stack: error: column "email_verified" does not exist
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getUser (/home/runner/workspace/server/database-storage.ts:40:20)
+    at async <anonymous> (/home/runner/workspace/server/auth.ts:87:20)
+2025-04-18 14:34:02:342 error: Errore HTTP 500: POST /api/logout: {"path":"/api/logout","method":"POST","timestamp":"2025-04-18T14:34:02.765Z","status":500,"error":"error","requestId":"req-1744986842644-99","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","ip":"10.82.6.180"}
+2025-04-18 14:34:02:342 error: Risposta di errore JSON: POST /api/logout 500
+2025-04-18 14:34:02:342 error: Risposta di errore: POST /api/logout 500
+2025-04-18 14:34:07:347 error: Errore applicazione: column "email_verified" does not exist
+2025-04-18 14:34:07:347 error: Stack: error: column "email_verified" does not exist
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getUser (/home/runner/workspace/server/database-storage.ts:40:20)
+    at async <anonymous> (/home/runner/workspace/server/auth.ts:87:20)
+2025-04-18 14:34:07:347 error: Errore HTTP 500: GET /: {"path":"/","method":"GET","timestamp":"2025-04-18T14:34:07.563Z","status":500,"error":"error","requestId":"req-1744986847440-14","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","ip":"10.82.7.137"}
+2025-04-18 14:34:07:347 error: Risposta di errore JSON: GET / 500
+2025-04-18 14:34:07:347 error: Risposta di errore: GET / 500
+2025-04-18 14:34:08:348 error: Errore applicazione: column "email_verified" does not exist
+2025-04-18 14:34:08:348 error: Stack: error: column "email_verified" does not exist
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getUser (/home/runner/workspace/server/database-storage.ts:40:20)
+    at async <anonymous> (/home/runner/workspace/server/auth.ts:87:20)
+2025-04-18 14:34:08:348 error: Errore HTTP 500: GET /favicon.ico: {"path":"/favicon.ico","method":"GET","timestamp":"2025-04-18T14:34:08.242Z","status":500,"error":"error","requestId":"req-1744986848122-582","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","ip":"10.82.7.137"}
+2025-04-18 14:34:08:348 error: Risposta di errore JSON: GET /favicon.ico 500
+2025-04-18 14:34:08:348 error: Risposta di errore: GET /favicon.ico 500
+2025-04-18 14:34:17:3417 error: Errore applicazione: column "email_verified" does not exist
+2025-04-18 14:34:17:3417 error: Stack: error: column "email_verified" does not exist
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getUser (/home/runner/workspace/server/database-storage.ts:40:20)
+    at async <anonymous> (/home/runner/workspace/server/auth.ts:87:20)
+2025-04-18 14:34:17:3417 error: Errore HTTP 500: GET /: {"path":"/","method":"GET","timestamp":"2025-04-18T14:34:17.419Z","status":500,"error":"error","requestId":"req-1744986857301-965","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36","ip":"10.82.6.180"}
+2025-04-18 14:34:17:3417 error: Risposta di errore JSON: GET / 500
+2025-04-18 14:34:17:3417 error: Risposta di errore: GET / 500
+2025-04-18 14:34:31:3431 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:34:44:3444 error: Risposta di errore JSON: POST /api/auth/google 400
+2025-04-18 14:34:44:3444 error: Risposta di errore: POST /api/auth/google 400
+2025-04-18 14:35:25:3525 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:35:26:3526 info: Server avviato sulla porta 5000
+2025-04-18 14:36:34:3634 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:36:35:3635 info: Server avviato sulla porta 5000
+2025-04-18 14:36:40:3640 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:37:42:3742 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:37:42:3742 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:38:29:3829 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:38:58:3858 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:44:20:4420 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:44:20:4420 info: Server avviato sulla porta 5000
+2025-04-18 14:44:29:4429 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:44:29:4429 info: Server avviato sulla porta 5000
+2025-04-18 14:44:37:4437 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:45:05:455 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:45:41:4541 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:48:03:483 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:48:03:483 info: Server avviato sulla porta 5000
+2025-04-18 14:48:18:4818 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:48:41:4841 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:48:42:4842 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:53:46:5346 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:53:46:5346 info: Server avviato sulla porta 5000
+2025-04-18 14:53:53:5353 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:56:08:568 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:56:08:568 error: Risposta di errore: GET /api/user 401
+2025-04-18 14:58:29:5829 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 14:58:29:5829 info: Server avviato sulla porta 5000
+2025-04-18 14:58:39:5839 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:00:33:033 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:00:37:037 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 15:00:37:037 info: Server avviato sulla porta 5000
+2025-04-18 15:00:44:044 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:04:11:411 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 15:04:11:411 info: Server avviato sulla porta 5000
+2025-04-18 15:04:25:425 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:08:23:823 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 15:08:23:823 info: Server avviato sulla porta 5000
+2025-04-18 15:08:30:830 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:09:20:920 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:11:50:1150 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:12:04:124 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:13:52:1352 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:13:52:1352 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:15:42:1542 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:25:33:2533 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 15:25:33:2533 info: Server avviato sulla porta 5000
+2025-04-18 15:25:41:2541 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:26:59:2659 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 15:26:59:2659 info: Server avviato sulla porta 5000
+2025-04-18 15:27:06:276 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:29:25:2925 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:30:15:3015 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:30:15:3015 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:30:27:3027 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:34:18:3418 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:36:02:362 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:39:08:398 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:42:53:4253 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:42:53:4253 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:45:15:4515 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:53:50:5350 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 15:53:51:5351 info: Server avviato sulla porta 5000
+2025-04-18 15:53:57:5357 error: Risposta di errore JSON: POST /generate-description 400
+2025-04-18 15:53:57:5357 error: Risposta di errore: POST /generate-description 400
+2025-04-18 15:53:58:5358 error: Risposta di errore: GET /api/user 401
+2025-04-18 15:54:14:5414 error: Risposta di errore JSON: POST /generate-description 400
+2025-04-18 15:54:14:5414 error: Risposta di errore: POST /generate-description 400
+2025-04-18 15:54:16:5416 error: Risposta di errore JSON: POST /generate-description 400
+2025-04-18 15:54:16:5416 error: Risposta di errore: POST /generate-description 400
+2025-04-18 16:02:00:20 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 16:02:00:20 info: Server avviato sulla porta 5000
+2025-04-18 16:02:07:27 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:04:55:455 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:04:55:455 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:10:19:1019 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 16:10:19:1019 info: Server avviato sulla porta 5000
+2025-04-18 16:10:26:1026 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:13:40:1340 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 16:13:40:1340 info: Server avviato sulla porta 5000
+2025-04-18 16:13:55:1355 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:16:02:162 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:21:14:2114 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 16:21:14:2114 info: Server avviato sulla porta 5000
+2025-04-18 16:21:23:2123 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:24:26:2426 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 16:24:26:2426 info: Server avviato sulla porta 5000
+2025-04-18 16:24:35:2435 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:30:11:3011 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 16:30:11:3011 info: Server avviato sulla porta 5000
+2025-04-18 16:30:20:3020 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:30:44:3044 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:36:33:3633 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 16:36:33:3633 info: Server avviato sulla porta 5000
+2025-04-18 16:36:40:3640 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:37:16:3716 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:40:57:4057 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:45:12:4512 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 16:45:12:4512 info: Server avviato sulla porta 5000
+2025-04-18 16:45:27:4527 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:47:29:4729 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:48:41:4841 error: Risposta di errore JSON: GET / 400
+2025-04-18 16:48:41:4841 error: Risposta di errore: GET / 400
+2025-04-18 16:48:43:4843 error: Risposta di errore JSON: GET /api/favorites 500
+2025-04-18 16:48:43:4843 error: Risposta di errore: GET /api/favorites 500
+2025-04-18 16:54:20:5420 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 16:54:20:5420 info: Server avviato sulla porta 5000
+2025-04-18 16:54:30:5430 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:54:47:5447 error: Risposta di errore: GET /api/user 401
+2025-04-18 16:56:59:5659 error: Risposta di errore: GET /api/user 401
+2025-04-18 17:02:37:237 error: Risposta di errore: GET /api/user 401
+2025-04-18 17:14:22:1422 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 17:14:22:1422 info: Server avviato sulla porta 5000
+2025-04-18 17:14:31:1431 error: Risposta di errore: GET /api/user 401
+2025-04-18 18:11:24:1124 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 18:11:25:1125 info: Server avviato sulla porta 5000
+2025-04-18 18:12:59:1259 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 18:12:59:1259 info: Server avviato sulla porta 5000
+2025-04-18 18:14:14:1414 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 18:14:14:1414 info: Server avviato sulla porta 5000
+2025-04-18 18:14:21:1421 error: Risposta di errore: GET /api/user 401
+2025-04-18 18:14:56:1456 error: Risposta di errore: GET /api/user 401
+2025-04-18 18:14:57:1457 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:29:18:2918 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 19:29:18:2918 info: Server avviato sulla porta 5000
+2025-04-18 19:29:32:2932 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:31:44:3144 error: Errore applicazione: terminating connection due to administrator command
+2025-04-18 19:31:44:3144 error: Stack: error: terminating connection due to administrator command
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PGStore._asyncQuery (/home/runner/workspace/node_modules/connect-pg-simple/index.js:322:21)
+2025-04-18 19:31:44:3144 error: Errore HTTP 500: GET /src/pages/assistant-page.tsx: {"path":"/src/pages/assistant-page.tsx","method":"GET","timestamp":"2025-04-18T19:31:44.806Z","status":500,"error":"error","requestId":"req-1745004704803-512","userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/118.0.5993.88 Safari/537.36","ip":"10.82.3.233"}
+2025-04-18 19:31:44:3144 error: Risposta di errore JSON: GET /src/pages/assistant-page.tsx 500
+2025-04-18 19:31:44:3144 error: Risposta di errore: GET /src/pages/assistant-page.tsx 500
+2025-04-18 19:31:44:3144 error: Risposta di errore: GET /src/pages/assistant-page.tsx 500
+2025-04-18 19:31:44:3144 error: Errore applicazione: terminating connection due to administrator command
+2025-04-18 19:31:44:3144 error: Stack: error: terminating connection due to administrator command
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PGStore._asyncQuery (/home/runner/workspace/node_modules/connect-pg-simple/index.js:322:21)
+2025-04-18 19:31:44:3144 error: Errore HTTP 500: GET /src/pages/admin-monitoring.tsx: {"path":"/src/pages/admin-monitoring.tsx","method":"GET","timestamp":"2025-04-18T19:31:44.809Z","status":500,"error":"error","requestId":"req-1745004704685-792","userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/118.0.5993.88 Safari/537.36","ip":"10.82.1.228"}
+2025-04-18 19:31:44:3144 error: Risposta di errore JSON: GET /src/pages/admin-monitoring.tsx 500
+2025-04-18 19:31:44:3144 error: Risposta di errore: GET /src/pages/admin-monitoring.tsx 500
+2025-04-18 19:31:44:3144 error: Risposta di errore: GET /src/pages/admin-monitoring.tsx 500
+2025-04-18 19:31:53:3153 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:32:00:320 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 19:32:01:321 info: Server avviato sulla porta 5000
+2025-04-18 19:32:08:328 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 19:32:08:328 info: Server avviato sulla porta 5000
+2025-04-18 19:32:15:3215 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:32:38:3238 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:32:55:3255 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:37:01:371 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:45:55:4555 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 19:45:55:4555 info: Server avviato sulla porta 5000
+2025-04-18 19:46:05:465 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:48:13:4813 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:50:04:504 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 19:50:04:504 info: Server avviato sulla porta 5000
+2025-04-18 19:50:41:5041 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:57:05:575 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 19:57:05:575 info: Server avviato sulla porta 5000
+2025-04-18 19:57:14:5714 error: Risposta di errore: GET /api/user 401
+2025-04-18 19:59:14:5914 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 19:59:14:5914 info: Server avviato sulla porta 5000
+2025-04-18 20:03:25:325 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 20:03:25:325 info: Server avviato sulla porta 5000
+2025-04-18 20:03:32:332 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:04:27:427 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 20:04:27:427 info: Server avviato sulla porta 5000
+2025-04-18 20:04:43:443 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 20:04:44:444 info: Server avviato sulla porta 5000
+2025-04-18 20:04:51:451 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:05:31:531 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:09:03:93 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:12:59:1259 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:17:12:1712 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:23:42:2342 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 20:23:42:2342 info: Server avviato sulla porta 5000
+2025-04-18 20:23:51:2351 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:25:06:256 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:29:23:2923 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:32:46:3246 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:32:46:3246 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:32:48:3248 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:32:48:3248 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:33:07:337 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:34:55:3455 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 20:34:55:3455 info: Server avviato sulla porta 5000
+2025-04-18 20:35:13:3513 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:35:17:3517 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:43:29:4329 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 20:43:29:4329 info: Server avviato sulla porta 5000
+2025-04-18 20:43:46:4346 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:43:52:4352 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:55:09:559 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 20:55:09:559 info: Server avviato sulla porta 5000
+2025-04-18 20:55:25:5525 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:55:30:5530 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:57:08:578 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 20:57:08:578 info: Server avviato sulla porta 5000
+2025-04-18 20:57:43:5743 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 20:57:43:5743 info: Server avviato sulla porta 5000
+2025-04-18 20:58:32:5832 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 20:58:32:5832 info: Server avviato sulla porta 5000
+2025-04-18 20:58:42:5842 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:59:01:591 error: Risposta di errore: GET /api/user 401
+2025-04-18 20:59:14:5914 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:02:07:27 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 21:02:07:27 info: Server avviato sulla porta 5000
+2025-04-18 21:03:10:310 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 21:03:10:310 info: Server avviato sulla porta 5000
+2025-04-18 21:03:20:320 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:03:39:339 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:03:46:346 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:07:22:722 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 21:07:22:722 info: Server avviato sulla porta 5000
+2025-04-18 21:07:55:755 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:08:01:81 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:11:35:1135 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 21:11:35:1135 info: Server avviato sulla porta 5000
+2025-04-18 21:11:54:1154 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:11:59:1159 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:15:17:1517 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 21:15:18:1518 info: Server avviato sulla porta 5000
+2025-04-18 21:15:34:1534 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:15:40:1540 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:21:47:2147 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 21:21:47:2147 info: Server avviato sulla porta 5000
+2025-04-18 21:22:08:228 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:22:39:2239 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:22:57:2257 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:25:20:2520 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:25:27:2527 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:32:30:3230 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:33:33:3333 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 21:33:34:3334 info: Server avviato sulla porta 5000
+2025-04-18 21:33:49:3349 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:34:40:3440 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:34:58:3458 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:56:42:5642 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 21:56:42:5642 info: Server avviato sulla porta 5000
+2025-04-18 21:56:51:5651 error: Risposta di errore: GET /api/user 401
+2025-04-18 21:58:51:5851 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 21:58:51:5851 info: Server avviato sulla porta 5000
+2025-04-18 21:59:07:597 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:01:05:15 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:01:10:110 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:07:31:731 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 22:07:31:731 info: Server avviato sulla porta 5000
+2025-04-18 22:07:41:741 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:07:50:750 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:08:19:819 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:08:25:825 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:09:10:910 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 22:09:10:910 info: Server avviato sulla porta 5000
+2025-04-18 22:10:39:1039 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 22:10:39:1039 info: Server avviato sulla porta 5000
+2025-04-18 22:10:54:1054 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:14:06:146 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:14:10:1410 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:14:33:1433 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 22:14:33:1433 info: Server avviato sulla porta 5000
+2025-04-18 22:14:40:1440 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:15:09:159 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:15:15:1515 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:15:51:1551 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:22:08:228 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 22:22:08:228 info: Server avviato sulla porta 5000
+2025-04-18 22:22:15:2215 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:24:37:2437 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:24:40:2440 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:34:16:3416 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 22:34:17:3417 info: Server avviato sulla porta 5000
+2025-04-18 22:34:27:3427 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:34:36:3436 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:36:03:363 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:36:08:368 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:36:36:3636 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 22:36:36:3636 info: Server avviato sulla porta 5000
+2025-04-18 22:36:43:3643 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:37:42:3742 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:37:49:3749 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:42:31:4231 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:42:37:4237 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:45:07:457 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:45:11:4511 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:47:13:4713 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:47:13:4713 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:47:54:4754 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:47:59:4759 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:48:33:4833 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:51:59:5159 error: Risposta di errore: GET /api/user 401
+2025-04-18 22:52:06:526 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:02:08:28 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:02:08:28 info: Server avviato sulla porta 5000
+2025-04-18 23:02:22:222 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:03:32:332 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:03:32:332 info: Server avviato sulla porta 5000
+2025-04-18 23:03:40:340 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:06:56:656 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:06:56:656 info: Server avviato sulla porta 5000
+2025-04-18 23:07:41:741 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:07:41:741 info: Server avviato sulla porta 5000
+2025-04-18 23:08:21:821 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:09:19:919 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:09:19:919 info: Server avviato sulla porta 5000
+2025-04-18 23:09:27:927 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:09:52:952 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:09:52:952 info: Server avviato sulla porta 5000
+2025-04-18 23:10:24:1024 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:10:24:1024 info: Server avviato sulla porta 5000
+2025-04-18 23:10:42:1042 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:11:13:1113 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:19:38:1938 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:19:39:1939 info: Server avviato sulla porta 5000
+2025-04-18 23:19:58:1958 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:22:57:2257 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:22:57:2257 info: Server avviato sulla porta 5000
+2025-04-18 23:23:15:2315 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:23:56:2356 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:23:56:2356 info: Server avviato sulla porta 5000
+2025-04-18 23:25:36:2536 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:25:36:2536 info: Server avviato sulla porta 5000
+2025-04-18 23:25:48:2548 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:25:48:2548 info: Server avviato sulla porta 5000
+2025-04-18 23:26:39:2639 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:26:46:2646 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:28:01:281 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:32:08:328 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:32:08:328 info: Server avviato sulla porta 5000
+2025-04-18 23:32:23:3223 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:35:35:3535 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-18 23:35:35:3535 info: Server avviato sulla porta 5000
+2025-04-18 23:35:51:3551 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:37:26:3726 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:37:36:3736 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:38:21:3821 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:40:42:4042 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:40:48:4048 error: Risposta di errore: GET /api/user 401
+2025-04-18 23:41:11:4111 error: Risposta di errore: GET /api/user 401
+2025-04-19 10:24:50:2450 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 10:24:50:2450 info: Server avviato sulla porta 5000
+2025-04-19 10:25:20:2520 error: Risposta di errore: GET /api/user 401
+2025-04-19 10:33:18:3318 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 10:33:18:3318 info: Server avviato sulla porta 5000
+2025-04-19 10:33:33:3333 error: Risposta di errore: GET /api/user 401
+2025-04-19 10:35:21:3521 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 10:35:21:3521 info: Server avviato sulla porta 5000
+2025-04-19 10:35:30:3530 error: Risposta di errore: GET /api/user 401
+2025-04-19 10:35:33:3533 error: Risposta di errore: GET /api/user 401
+2025-04-19 10:37:44:3744 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 10:37:44:3744 info: Server avviato sulla porta 5000
+2025-04-19 10:37:54:3754 error: Risposta di errore: GET /api/user 401
+2025-04-19 10:38:00:380 error: Risposta di errore: GET /api/user 401
+2025-04-19 10:39:17:3917 error: Errore applicazione: terminating connection due to administrator command
+2025-04-19 10:39:17:3917 error: Stack: error: terminating connection due to administrator command
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PGStore._asyncQuery (/home/runner/workspace/node_modules/connect-pg-simple/index.js:322:21)
+2025-04-19 10:39:17:3917 error: Errore HTTP 500: GET /src/pages/ai-content-generator.tsx: {"path":"/src/pages/ai-content-generator.tsx","method":"GET","timestamp":"2025-04-19T10:39:17.156Z","status":500,"error":"error","requestId":"req-1745059157119-514","userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/118.0.5993.88 Safari/537.36","ip":"10.82.1.228"}
+2025-04-19 10:39:17:3917 error: Risposta di errore JSON: GET /src/pages/ai-content-generator.tsx 500
+2025-04-19 10:39:17:3917 error: Risposta di errore: GET /src/pages/ai-content-generator.tsx 500
+2025-04-19 10:39:17:3917 error: Risposta di errore: GET /src/pages/ai-content-generator.tsx 500
+2025-04-19 10:39:33:3933 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 10:39:33:3933 info: Server avviato sulla porta 5000
+2025-04-19 10:39:51:3951 error: Risposta di errore: GET /api/user 401
+2025-04-19 10:39:56:3956 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:16:13:1613 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:16:13:1613 info: Server avviato sulla porta 5000
+2025-04-19 11:16:21:1621 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:18:21:1821 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:18:21:1821 info: Server avviato sulla porta 5000
+2025-04-19 11:18:29:1829 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:19:51:1951 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:19:51:1951 info: Server avviato sulla porta 5000
+2025-04-19 11:19:59:1959 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:24:38:2438 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:24:38:2438 info: Server avviato sulla porta 5000
+2025-04-19 11:24:53:2453 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:27:48:2748 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:27:48:2748 info: Server avviato sulla porta 5000
+2025-04-19 11:27:56:2756 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:31:31:3131 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:31:31:3131 info: Server avviato sulla porta 5000
+2025-04-19 11:31:40:3140 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:33:43:3343 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:34:19:3419 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:34:19:3419 info: Server avviato sulla porta 5000
+2025-04-19 11:36:47:3647 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:36:54:3654 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:39:38:3938 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:39:39:3939 info: Server avviato sulla porta 5000
+2025-04-19 11:39:54:3954 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:45:40:4540 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:45:40:4540 info: Server avviato sulla porta 5000
+2025-04-19 11:45:49:4549 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:48:00:480 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:48:00:480 info: Server avviato sulla porta 5000
+2025-04-19 11:48:15:4815 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:51:01:511 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:51:01:511 info: Server avviato sulla porta 5000
+2025-04-19 11:51:11:5111 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:53:58:5358 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:53:58:5358 info: Server avviato sulla porta 5000
+2025-04-19 11:54:13:5413 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:55:46:5546 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 11:55:46:5546 info: Server avviato sulla porta 5000
+2025-04-19 11:55:56:5556 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:58:25:5825 error: Risposta di errore: GET /api/user 401
+2025-04-19 11:58:31:5831 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:03:20:320 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 12:03:20:320 info: Server avviato sulla porta 5000
+2025-04-19 12:03:30:330 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:03:48:348 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:03:56:356 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:06:39:639 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 12:06:40:640 info: Server avviato sulla porta 5000
+2025-04-19 12:06:55:655 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:11:41:1141 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 12:11:41:1141 info: Server avviato sulla porta 5000
+2025-04-19 12:11:49:1149 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:13:53:1353 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:14:00:140 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:18:15:1815 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:18:21:1821 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:22:07:227 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 12:22:07:227 info: Server avviato sulla porta 5000
+2025-04-19 12:22:18:2218 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:22:41:2241 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:22:48:2248 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:23:39:2339 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:25:49:2549 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:25:55:2555 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:32:20:3220 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:32:27:3227 error: Risposta di errore: GET /api/user 401
+2025-04-19 12:53:48:5348 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 12:53:49:5349 info: Server avviato sulla porta 5000
+2025-04-19 12:55:41:5541 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 12:55:41:5541 info: Server avviato sulla porta 5000
+2025-04-19 12:56:03:563 error: Risposta di errore: GET /api/user 401
+2025-04-19 13:01:26:126 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 13:01:26:126 info: Server avviato sulla porta 5000
+2025-04-19 13:01:36:136 error: Risposta di errore: GET /api/user 401
+2025-04-19 13:01:46:146 error: Risposta di errore: GET /api/user 401
+2025-04-19 13:04:17:417 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 13:04:17:417 info: Server avviato sulla porta 5000
+2025-04-19 13:04:32:432 error: Risposta di errore: GET /api/user 401
+2025-04-19 13:08:19:819 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 13:08:19:819 info: Server avviato sulla porta 5000
+2025-04-19 13:08:35:835 error: Risposta di errore: GET /api/user 401
+2025-04-19 13:12:10:1210 error: Risposta di errore: GET /api/user 401
+2025-04-19 13:12:14:1214 error: Risposta di errore: GET /api/user 401
+2025-04-19 13:13:20:1320 error: Risposta di errore: GET /api/user 401
+2025-04-19 13:16:58:1658 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 13:16:59:1659 info: Server avviato sulla porta 5000
+2025-04-19 13:18:50:1850 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 13:18:50:1850 info: Server avviato sulla porta 5000
+2025-04-19 13:19:17:1917 error: Risposta di errore: GET /api/user 401
+2025-04-19 13:19:23:1923 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:13:04:134 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:13:05:135 info: Server avviato sulla porta 5000
+2025-04-19 23:13:21:1321 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:14:47:1447 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:14:47:1447 info: Server avviato sulla porta 5000
+2025-04-19 23:14:57:1457 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:15:07:157 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:17:52:1752 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:17:52:1752 info: Server avviato sulla porta 5000
+2025-04-19 23:18:02:182 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:18:05:185 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:20:13:2013 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:20:13:2013 info: Server avviato sulla porta 5000
+2025-04-19 23:20:27:2027 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:20:28:2028 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:22:41:2241 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:22:41:2241 info: Server avviato sulla porta 5000
+2025-04-19 23:22:51:2251 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:22:55:2255 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:25:05:255 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:25:05:255 info: Server avviato sulla porta 5000
+2025-04-19 23:25:15:2515 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:25:19:2519 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:26:16:2616 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:26:16:2616 info: Server avviato sulla porta 5000
+2025-04-19 23:26:24:2624 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:26:27:2627 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:27:12:2712 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:27:19:2719 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:27:53:2753 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:33:11:3311 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:33:11:3311 info: Server avviato sulla porta 5000
+2025-04-19 23:33:20:3320 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:33:24:3324 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:34:09:349 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:34:26:3426 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:34:26:3426 info: Server avviato sulla porta 5000
+2025-04-19 23:34:35:3435 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:34:39:3439 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:37:43:3743 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:37:48:3748 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:40:25:4025 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:40:25:4025 info: Server avviato sulla porta 5000
+2025-04-19 23:40:35:4035 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:40:40:4040 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:43:34:4334 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:43:34:4334 info: Server avviato sulla porta 5000
+2025-04-19 23:44:10:4410 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:44:10:4410 info: Server avviato sulla porta 5000
+2025-04-19 23:44:25:4425 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:45:30:4530 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:45:30:4530 info: Server avviato sulla porta 5000
+2025-04-19 23:45:38:4538 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:45:42:4542 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:46:05:465 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:46:12:4612 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:48:31:4831 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:48:32:4832 info: Server avviato sulla porta 5000
+2025-04-19 23:48:46:4846 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:48:46:4846 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:48:53:4853 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:51:19:5119 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:51:19:5119 info: Server avviato sulla porta 5000
+2025-04-19 23:51:29:5129 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:51:34:5134 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:52:10:5210 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:52:10:5210 info: Server avviato sulla porta 5000
+2025-04-19 23:52:24:5224 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:52:26:5226 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:52:33:5233 error: Risposta di errore: GET /api/user 401
+2025-04-19 23:55:01:551 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-19 23:55:01:551 info: Server avviato sulla porta 5000
+2025-04-20 00:01:25:125 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 00:01:25:125 info: Server avviato sulla porta 5000
+2025-04-20 00:05:39:539 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 00:05:40:540 info: Server avviato sulla porta 5000
+2025-04-20 00:07:41:741 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 00:07:42:742 info: Server avviato sulla porta 5000
+2025-04-20 00:11:11:1111 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 00:11:11:1111 info: Server avviato sulla porta 5000
+2025-04-20 00:13:28:1328 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 00:13:28:1328 info: Server avviato sulla porta 5000
+2025-04-20 00:16:10:1610 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 00:16:10:1610 info: Server avviato sulla porta 5000
+2025-04-20 13:10:07:107 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:10:07:107 info: Server avviato sulla porta 5000
+2025-04-20 13:13:43:1343 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:13:43:1343 info: Server avviato sulla porta 5000
+2025-04-20 13:17:01:171 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:17:01:171 info: Server avviato sulla porta 5000
+2025-04-20 13:20:30:2030 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:20:30:2030 info: Server avviato sulla porta 5000
+2025-04-20 13:20:59:2059 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:20:59:2059 info: Server avviato sulla porta 5000
+2025-04-20 13:22:33:2233 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:22:34:2234 info: Server avviato sulla porta 5000
+2025-04-20 13:22:47:2247 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:22:47:2247 info: Server avviato sulla porta 5000
+2025-04-20 13:24:12:2412 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:24:12:2412 info: Server avviato sulla porta 5000
+2025-04-20 13:26:37:2637 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:26:37:2637 info: Server avviato sulla porta 5000
+2025-04-20 13:29:35:2935 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:29:35:2935 info: Server avviato sulla porta 5000
+2025-04-20 13:33:19:3319 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:33:19:3319 info: Server avviato sulla porta 5000
+2025-04-20 13:39:38:3938 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:39:38:3938 info: Server avviato sulla porta 5000
+2025-04-20 13:42:17:4217 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:42:17:4217 info: Server avviato sulla porta 5000
+2025-04-20 13:44:36:4436 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:44:36:4436 info: Server avviato sulla porta 5000
+2025-04-20 13:44:44:4444 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:44:44:4444 info: Server avviato sulla porta 5000
+2025-04-20 13:47:03:473 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:47:03:473 info: Server avviato sulla porta 5000
+2025-04-20 13:48:26:4826 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:48:26:4826 info: Server avviato sulla porta 5000
+2025-04-20 13:50:46:5046 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 13:50:46:5046 info: Server avviato sulla porta 5000
+2025-04-20 14:00:44:044 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 14:00:44:044 info: Server avviato sulla porta 5000
+2025-04-20 14:05:58:558 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 14:05:58:558 info: Server avviato sulla porta 5000
+2025-04-20 14:08:54:854 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 14:08:55:855 info: Server avviato sulla porta 5000
+2025-04-20 14:27:05:275 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 14:27:05:275 info: Server avviato sulla porta 5000
+2025-04-20 15:01:35:135 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:01:35:135 info: Server avviato sulla porta 5000
+2025-04-20 15:03:40:340 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:03:41:341 info: Server avviato sulla porta 5000
+2025-04-20 15:06:28:628 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:06:28:628 info: Server avviato sulla porta 5000
+2025-04-20 15:06:45:645 error: Errore applicazione: Sentry.configureScope is not a function
+2025-04-20 15:06:45:645 error: Stack: TypeError: Sentry.configureScope is not a function
+    at <anonymous> (/home/runner/workspace/server/middleware/sentryMiddleware.ts:34:14)
+    at Layer.handle [as handle_request] (/home/runner/workspace/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/runner/workspace/node_modules/express/lib/router/index.js:328:13)
+    at /home/runner/workspace/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/runner/workspace/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/runner/workspace/node_modules/express/lib/router/index.js:280:10)
+    at <anonymous> (/home/runner/workspace/server/index.ts:70:3)
+    at Layer.handle [as handle_request] (/home/runner/workspace/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/runner/workspace/node_modules/express/lib/router/index.js:328:13)
+    at /home/runner/workspace/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/runner/workspace/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/runner/workspace/node_modules/express/lib/router/index.js:280:10)
+    at httpLogger (/home/runner/workspace/server/middleware/httpLogger.ts:101:3)
+    at Layer.handle [as handle_request] (/home/runner/workspace/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/runner/workspace/node_modules/express/lib/router/index.js:328:13)
+    at /home/runner/workspace/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/runner/workspace/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/runner/workspace/node_modules/express/lib/router/index.js:280:10)
+    at urlencodedParser (/home/runner/workspace/node_modules/body-parser/lib/types/urlencoded.js:94:7)
+    at Layer.handle [as handle_request] (/home/runner/workspace/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/runner/workspace/node_modules/express/lib/router/index.js:328:13)
+    at /home/runner/workspace/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/runner/workspace/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/runner/workspace/node_modules/express/lib/router/index.js:280:10)
+    at jsonParser (/home/runner/workspace/node_modules/body-parser/lib/types/json.js:113:7)
+    at <anonymous> (/home/runner/workspace/server/index.ts:23:18)
+    at Layer.handle [as handle_request] (/home/runner/workspace/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/runner/workspace/node_modules/express/lib/router/index.js:328:13)
+    at /home/runner/workspace/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/runner/workspace/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/runner/workspace/node_modules/express/lib/router/index.js:280:10)
+    at expressInit (/home/runner/workspace/node_modules/express/lib/middleware/init.js:40:5)
+    at Layer.handle [as handle_request] (/home/runner/workspace/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/runner/workspace/node_modules/express/lib/router/index.js:328:13)
+    at /home/runner/workspace/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/runner/workspace/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/runner/workspace/node_modules/express/lib/router/index.js:280:10)
+    at query (/home/runner/workspace/node_modules/express/lib/middleware/query.js:45:5)
+    at Layer.handle [as handle_request] (/home/runner/workspace/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/runner/workspace/node_modules/express/lib/router/index.js:328:13)
+    at /home/runner/workspace/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/runner/workspace/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/runner/workspace/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/runner/workspace/node_modules/express/lib/router/index.js:175:3)
+    at Function.handle (/home/runner/workspace/node_modules/express/lib/application.js:181:10)
+    at Server.app (/home/runner/workspace/node_modules/express/lib/express.js:39:9)
+    at Server.emit (node:events:518:28)
+    at parserOnIncoming (node:_http_server:1141:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:118:17)
+2025-04-20 15:06:45:645 error: Errore HTTP 500: GET /api/countries: {"path":"/api/countries","method":"GET","timestamp":"2025-04-20T15:06:45.240Z","status":500,"error":"TypeError","requestId":"req-1745161605223-836","userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/118.0.5993.88 Safari/537.36","ip":"10.82.3.16"}
+2025-04-20 15:06:45:645 error: Risposta di errore JSON: GET /api/countries 500
+2025-04-20 15:06:45:645 error: Risposta di errore: GET /api/countries 500
+2025-04-20 15:06:45:645 error: Risposta di errore: GET /api/countries 500
+2025-04-20 15:10:03:103 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:10:03:103 info: Server avviato sulla porta 5000
+2025-04-20 15:13:15:1315 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:13:15:1315 info: Server avviato sulla porta 5000
+2025-04-20 15:16:51:1651 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:16:51:1651 info: Server avviato sulla porta 5000
+2025-04-20 15:21:29:2129 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:21:30:2130 info: Server avviato sulla porta 5000
+2025-04-20 15:22:13:2213 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:22:13:2213 info: Server avviato sulla porta 5000
+2025-04-20 15:28:58:2858 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:28:58:2858 info: Server avviato sulla porta 5000
+2025-04-20 15:34:19:3419 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:34:19:3419 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:34:19:3419 info: Server avviato sulla porta 5000
+2025-04-20 15:36:33:3633 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:36:33:3633 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:36:33:3633 info: Server avviato sulla porta 5000
+2025-04-20 15:40:02:402 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:40:02:402 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:40:02:402 info: Server avviato sulla porta 5000
+2025-04-20 15:42:35:4235 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:42:35:4235 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:42:35:4235 info: Server avviato sulla porta 5000
+2025-04-20 15:42:40:4240 info: Test latenza completato con delay=100ms
+2025-04-20 15:42:44:4244 error: Risposta di errore JSON: GET /test-error 500
+2025-04-20 15:42:44:4244 error: Risposta di errore: GET /test-error 500
+2025-04-20 15:42:55:4255 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:42:55:4255 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:42:56:4256 info: Server avviato sulla porta 5000
+2025-04-20 15:46:23:4623 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:46:23:4623 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:46:23:4623 info: Server avviato sulla porta 5000
+2025-04-20 15:48:49:4849 info: Test latenza completato con delay=100ms
+2025-04-20 15:48:58:4858 error: Risposta di errore JSON: GET /test-error 500
+2025-04-20 15:48:58:4858 error: Risposta di errore: GET /test-error 500
+2025-04-20 15:49:08:498 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:49:08:498 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:49:08:498 info: Server avviato sulla porta 5000
+2025-04-20 15:52:42:5242 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:52:42:5242 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:52:42:5242 info: Server avviato sulla porta 5000
+2025-04-20 15:52:51:5251 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:52:51:5251 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:52:51:5251 info: Server avviato sulla porta 5000
+2025-04-20 15:54:08:548 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:54:08:548 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:54:08:548 info: Server avviato sulla porta 5000
+2025-04-20 15:54:16:5416 info: Test latenza completato con delay=100ms
+2025-04-20 15:54:20:5420 error: Risposta di errore JSON: GET /test-error 500
+2025-04-20 15:54:20:5420 error: Risposta di errore: GET /test-error 500
+2025-04-20 15:55:34:5534 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 15:55:34:5534 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 15:55:34:5534 info: Server avviato sulla porta 5000
+2025-04-20 16:00:20:020 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:00:20:020 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:00:20:020 info: Server avviato sulla porta 5000
+2025-04-20 16:01:04:14 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:01:04:14 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:01:04:14 info: Server avviato sulla porta 5000
+2025-04-20 16:01:50:150 info: Test latenza completato con delay=100ms
+2025-04-20 16:01:57:157 error: Risposta di errore JSON: GET /test-error 500
+2025-04-20 16:01:57:157 error: Risposta di errore: GET /test-error 500
+2025-04-20 16:04:18:418 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:04:18:418 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:04:19:419 info: Server avviato sulla porta 5000
+2025-04-20 16:05:41:541 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:05:41:541 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:05:41:541 info: Server avviato sulla porta 5000
+2025-04-20 16:05:42:542 error: Errore applicazione: terminating connection due to administrator command
+2025-04-20 16:05:42:542 error: Stack: error: terminating connection due to administrator command
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PGStore._asyncQuery (/home/runner/workspace/node_modules/connect-pg-simple/index.js:322:21)
+2025-04-20 16:05:42:542 error: Errore HTTP 500: GET /@vite/client: {"path":"/@vite/client","method":"GET","timestamp":"2025-04-20T16:05:42.652Z","status":500,"error":"error","requestId":"req-1745165142239-637","userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/118.0.5993.88 Safari/537.36","ip":"10.82.7.137"}
+2025-04-20 16:05:42:542 error: Risposta di errore JSON: GET /@vite/client 500
+2025-04-20 16:05:42:542 error: Risposta di errore: GET /@vite/client 500
+2025-04-20 16:05:42:542 error: Risposta di errore: GET /@vite/client 500
+2025-04-20 16:09:33:933 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:09:33:933 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:09:33:933 info: Server avviato sulla porta 5000
+2025-04-20 16:13:16:1316 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:13:16:1316 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:13:16:1316 info: Server avviato sulla porta 5000
+2025-04-20 16:15:07:157 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:15:07:157 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:15:07:157 info: Server avviato sulla porta 5000
+2025-04-20 16:15:36:1536 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:15:36:1536 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:15:36:1536 info: Server avviato sulla porta 5000
+2025-04-20 16:15:50:1550 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:15:50:1550 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:15:50:1550 info: Server avviato sulla porta 5000
+2025-04-20 16:16:55:1655 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:16:55:1655 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:16:55:1655 info: Server avviato sulla porta 5000
+2025-04-20 16:21:28:2128 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:21:28:2128 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:21:28:2128 info: Server avviato sulla porta 5000
+2025-04-20 16:24:49:2449 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:24:49:2449 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:24:49:2449 info: Server avviato sulla porta 5000
+2025-04-20 16:26:17:2617 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:26:17:2617 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:26:17:2617 info: Server avviato sulla porta 5000
+2025-04-20 16:28:15:2815 info: Sentry inizializzato per il monitoraggio degli errori
+2025-04-20 16:28:15:2815 info: Rotte di amministrazione registrate, incluso il modulo di monitoraggio
+2025-04-20 16:28:15:2815 info: Server avviato sulla porta 5000

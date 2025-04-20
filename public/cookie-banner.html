@@ -1,0 +1,27 @@
+<!-- Cookie Banner HTML -->
+<div id="cookie-banner-container" style="position: fixed; bottom: 0; left: 0; right: 0; background-color: rgba(0, 0, 0, 0.1); backdrop-filter: blur(4px); padding: 16px; z-index: 9999;">
+  <div style="max-width: 1000px; margin: 0 auto; background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 16px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+      <div>
+        <h3 style="margin: 0; font-size: 18px; font-weight: bold; color: #6a0dad;">Preferenze Cookie</h3>
+        <p style="margin: 4px 0 0 0; font-size: 14px; color: #666;">Utilizziamo i cookie per migliorare la tua esperienza sul nostro sito</p>
+      </div>
+      <button onclick="rejectCookies()" style="background: transparent; border: none; font-size: 16px; cursor: pointer; padding: 4px 8px; border-radius: 50%;">✕</button>
+    </div>
+    <div style="margin-bottom: 16px;">
+      <p style="font-size: 14px; line-height: 1.5; margin: 0;">
+        Questo sito utilizza i cookie per migliorare la tua esperienza, personalizzare contenuti e annunci,
+        fornire funzionalità di social media e analizzare il nostro traffico. Puoi scegliere se accettare tutti i cookie,
+        solo quelli necessari o personalizzare le tue preferenze. Per maggiori informazioni, consulta la nostra
+        <a href="/cookie-policy" style="color: #6a0dad; text-decoration: none; font-weight: 500;">Informativa sulla Privacy</a>.
+      </p>
+    </div>
+    <div style="display: flex; justify-content: space-between; border-top: 1px solid #eee; padding-top: 16px;">
+      <div style="display: flex; gap: 8px;">
+        <button onclick="window.location.href='/cookie-policy'" style="padding: 8px 16px; border: 1px solid #ddd; border-radius: 4px; background-color: white; font-size: 14px; cursor: pointer;">Personalizza</button>
+        <button onclick="rejectCookies()" style="padding: 8px 16px; border: 1px solid #ddd; border-radius: 4px; background-color: white; font-size: 14px; cursor: pointer;">Rifiuta tutti</button>
+      </div>
+      <button onclick="acceptCookies()" style="padding: 8px 16px; border: none; border-radius: 4px; background-color: #6a0dad; color: white; font-size: 14px; cursor: pointer;">Accetta tutti</button>
+    </div>
+  </div>
+</div>

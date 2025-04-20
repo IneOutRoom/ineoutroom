@@ -1,0 +1,136 @@
+Implementazione sistema di valutazione a "casette colorate"
+Obiettivo: Aggiungere un sistema di rating in stile Airbnb, utilizzando icone a forma di casetta di vari colori per rappresentare il punteggio. Gli utenti possono lasciare una valutazione (da 1 a 5 casette) per ogni annuncio, e visualizzare la media delle valutazioni. Prima, installa la libreria di icone per usare facilmente un'icona a forma di casa:
+bash
+Copia
+Modifica
+npm install react-icons   # Esegui nel terminale Replit
+File: components/RatingWidget.jsx – Componente per visualizzare e inserire rating
+jsx
+Copia
+Modifica
+// File: components/RatingWidget.jsx
+import { useEffect, useRef, useState } from 'react';
+import { auth, db } from '../firebase';
+import { collection, query, where, onSnapshot, addDoc, updateDoc, doc } from 'firebase/firestore';
+import { FaHome } from 'react-icons/fa';
+
+const colors = ["#e74c3c", "#e67e22", "#f1c40f", "#2ecc71", "#27ae60"]; 
+// Array di colori per 1,2,3,4,5 casette (rosso, arancio, giallo, verde chiaro, verde scuro)
+
+const RatingWidget = ({ listingId }) => {
+  const user = auth.currentUser;
+  const [avgRating, setAvgRating] = useState(0);
+  const [ratingsCount, setRatingsCount] = useState(0);
+  const [myRating, setMyRating] = useState(0);
+  const markersRef = useRef([]);  // non utilizzato qui, leftover di altro codice (puoi rimuoverlo se non serve)
+
+  useEffect(() => {
+    if (!listingId) return;
+    // Query Firestore per le valutazioni di questo annuncio
+    const q = query(collection(db, "ratings"), where("listingId", "==", listingId));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      let total = 0;
+      const ratings = [];
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        ratings.push({ id: doc.id, ...data });
+        total += data.rating;
+      });
+      const count = ratings.length;
+      const avg = count > 0 ? total / count : 0;
+      setAvgRating(avg);
+      setRatingsCount(count);
+      if (user) {
+        // Controlla se l'utente corrente ha già valutato
+        const myRatingEntry = ratings.find(r => r.userId === user.uid);
+        setMyRating(myRatingEntry ? myRatingEntry.rating : 0);
+      }
+    });
+    return () => unsubscribe();
+  }, [listingId, user]);
+
+  const handleRate = async (value) => {
+    if (!user) {
+      alert("Accedi per lasciare una valutazione");
+      return;
+    }
+    try {
+      // Controlla se l'utente ha già una valutazione per questo annuncio
+      // (Opzionale: potresti evitare duplicati cercando il documento esistente)
+      await addDoc(collection(db, "ratings"), {
+        listingId: listingId,
+        userId: user.uid,
+        rating: value
+      });
+      setMyRating(value);  // aggiorna subito la tua valutazione locale
+    } catch (err) {
+      console.error("Errore nell'invio della valutazione:", err);
+      alert("Errore nel salvare la valutazione. Riprova.");
+    }
+  };
+
+  // Determina quante "casette" colorare in base alla valutazione media o dell'utente
+  const displayRating = myRating || Math.round(avgRating);
+  const displayColor = displayRating > 0 ? colors[displayRating - 1] : "#bdc3c7"; // grigio chiaro se 0
+
+  return (
+    <div className="rating-widget">
+      <div className="houses">
+        {[1, 2, 3, 4, 5].map(num => (
+          <FaHome 
+            key={num} 
+            onClick={() => handleRate(num)} 
+            color={num <= displayRating ? displayColor : "#bdc3c7"} 
+            size={24} 
+            style={{ cursor: user ? 'pointer' : 'default', marginRight: '4px' }}
+            title={user ? `Dai ${num} su 5` : "Effettua login per valutare"}
+          />
+        ))}
+      </div>
+      <div className="rating-info">
+        {ratingsCount > 0 ? (
+          <span>{avgRating.toFixed(1)} / 5 ({ratingsCount} valutazioni)</span>
+        ) : (
+          <span>Nessuna valutazione</span>
+        )}
+        {myRating > 0 && <span> &middot; La tua: {myRating}/5</span>}
+      </div>
+    </div>
+  );
+};
+
+export default RatingWidget;
+File: pages/annunci/[id].jsx (pagina dettaglio annuncio) – Integrazione del widget di valutazione
+jsx
+Copia
+Modifica
+// File: pages/annunci/[id].jsx
+import RatingWidget from '../../components/RatingWidget';
+
+// ... all'interno del componente della pagina di dettaglio annuncio ...
+return (
+  <div className="listing-detail">
+    {/* ... altri elementi: titolo, immagini, descrizione ... */}
+    <div className="listing-rating">
+      <h3>Valutazione dell'alloggio</h3>
+      <RatingWidget listingId={listingId} />
+    </div>
+    {/* ... ad esempio sotto la descrizione inseriamo la valutazione ... */}
+    {/* ... resto della pagina ... */}
+  </div>
+);
+Commenti:
+Struttura dati: Abbiamo creato una collezione Firestore ratings dove ogni documento contiene listingId (riferimento all’annuncio valutato), userId (uid dell’utente che ha valutato) e rating (numero intero 1-5). Questo schema consente di avere più valutazioni per annuncio (una per utente). Nel codice, quando il componente RatingWidget monta, eseguiamo una query con where("listingId", "==", listingId) per ascoltare in tempo reale tutte le valutazioni di quello specifico annuncio. Calcoliamo poi la media avgRating e il numero di valutazioni ratingsCount. Se l’utente corrente è loggato, controlliamo se ha già dato una valutazione (myRating); in caso affermativo, la memorizziamo per evidenziarla.
+Visualizzazione: Usiamo 5 icone di casetta (<FaHome> da react-icons) come “stelle”. Tutte le casette fino al punteggio corrente vengono colorate. I colori sono assegnati in base al punteggio: abbiamo definito un array di colori dove l’indice 0 corrisponde a 1 stella (rosso per valutazione bassa) fino al verde scuro per 5 stelle. La variabile displayRating determina quante casette riempire:
+Se l’utente loggato non ha ancora votato, usiamo la media arrotondata delle valutazioni (Math.round(avgRating)) per dare un’idea visiva della valutazione generale.
+Se l’utente ha già votato, diamo precedenza alla sua valutazione (myRating) nelle casette (così può vedere la propria scelta evidenziata). Mostriamo comunque la media numerica accanto.
+Se non ci sono valutazioni (ratingsCount == 0), tutte le casette restano grigie e si mostra "Nessuna valutazione".
+Interazione: Se l’utente è loggato, può cliccare su una casetta per inviare una valutazione. La funzione handleRate(num) aggiunge un documento ratings con il punteggio selezionato. Per semplicità, non impediamo doppie valutazioni: se l’utente clicca più volte, creerà duplicati. In un contesto reale, dovresti impedire che uno stesso utente inserisca più di una valutazione per annuncio. Potresti:
+filtrare nel query se già presente (ma Firestore non supporta facilmente un unique per combinazione di campi),
+oppure modificare la chiave del documento per usare ad esempio id = \${listingId}_${userId}`così ogni utente ha al più un doc per annuncio (e usaresetDocinvece diaddDoc` per upsert),
+oppure controllare client-side e fare updateDoc se myRating esiste già.
+Qui, per brevità, abbiamo segnalato con un commento dove potresti migliorare (cercare doc esistente e fare update invece di add). Per ora, se un utente ri-clicca, creerà più documenti e quindi la media terrà conto come se fossero valutazioni multiple. Da gestire nelle ottimizzazioni future se necessario.
+UI/UX: Le icone hanno cursor: pointer solo se l’utente può cliccare (altrimenti mostriamo un alert invitando al login). Abbiamo inserito un attributo title sull’icona per far comparire un tooltip con "Dai X su 5" quando hoveri le casette, e se non loggato, il tooltip suggerisce di fare login. Puoi abbellire il tutto con del CSS: ad esempio, .houses:hover .FaHome per evidenziare al passaggio del mouse, etc.
+Integrazione: Nel codice di dettaglio annuncio, importiamo RatingWidget e lo inseriamo nel JSX (ad esempio sotto il titolo o sotto la descrizione). Passiamo listingId come prop, presumendo che la pagina dettaglio conosca l’ID (es. tramite router query o getServerSideProps). Se il componente di dettaglio riceve già l’annuncio come prop, puoi passare direttamente <RatingWidget listingId={annuncio.id} />. Abbiamo anche incluso un <h3> per la sezione valutazione.
+Sicurezza: (Si rimanda al Prompt 11 per regole) Dovrai assicurarti che nelle regole Firestore gli utenti possano creare documenti in ratings solo se autenticati. Eventualmente, potresti impedire via security rules che uno stesso utente scriva due rating per lo stesso annuncio, ma ciò richiede regole avanzate (non facile senza Cloud Functions). Una semplice regola potrebbe essere: ogni utente può creare rating e modificare/eliminare solo quelli il cui userId corrisponde al suo (vedi Prompt 11).
+Con questo sistema, gli utenti possono valutare gli alloggi e vedere una rappresentazione visiva con casette colorate che ricorda le stelle ma in tema “casa”. Le casette colorate danno anche un’idea qualitativa: un annuncio con 5 casette verdi sarà ottimo, con 1 casetta rossa scarso.

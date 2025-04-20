@@ -1,0 +1,30 @@
+Implementa le API di Google Maps e Street View in modo reale e performante sul sito ineoutroom.eu, sostituendo le demo attuali.
+
+1. Collegati alle API reali di Google Maps utilizzando la mia chiave API, già attiva e funzionante su Google Cloud.
+2. Sostituisci le versioni statiche o demo di Google Maps nella pagina di ricerca e nelle schede annuncio con una mappa reale interattiva, centrata dinamicamente:
+   - In base all’indirizzo dell’annuncio pubblicato (via, città, CAP, nazione)
+   - Includi anche un marker visibile sulla mappa nella posizione esatta
+   - Aggiungi zoom e controlli drag/move
+3. Integra anche Street View nella scheda annuncio:
+   - Mostra Street View solo se disponibile per quell'indirizzo
+   - Posizionalo accanto alla mappa o come tab alternativa (“Vista Stradale”)
+   - Se l’indirizzo non supporta Street View, mostra un messaggio come: “Vista Stradale non disponibile per questa posizione”
+4. Ottimizza il caricamento:
+   - Usa `react-google-maps/api` o `@react-google-maps/api` (se in React) per performance migliori
+   - Lazy loading: carica Google Maps solo quando l’utente entra nella pagina dove serve
+   - Evita di ricaricare la mappa ogni volta che l’utente naviga nella stessa scheda
+
+5. Responsività:
+   - La mappa e lo street view devono adattarsi perfettamente su desktop, tablet e mobile
+   - Altezza minima mappa: 300px, con larghezza 100% contenitore
+
+6. Verifica che Google Maps e Street View siano correttamente autorizzati nel file `public/index.html` o `_document.js`:
+   - Carica lo script ufficiale con `async` e la tua chiave API
+   - Esempio: 
+     <script async src="https://maps.googleapis.com/maps/api/js?key=LA_TUA_API_KEY&libraries=places"></script>
+
+7. In caso di errore nel caricamento della mappa (es. indirizzo malformato o chiave non valida), mostra un messaggio di fallback all’utente e logga in console.
+
+8. Infine, aggiungi un file `.env.local` (o equivalente) per salvare la chiave API in sicurezza come variabile d’ambiente, se non è già stato fatto.
+
+Fammi sapere quando tutto è attivo e funzionante.

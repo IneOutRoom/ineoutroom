@@ -1,0 +1,9 @@
+/* Stili per il banner Usercentrics */
+.usercentrics-root {
+  z-index: 10000 !important;
+}
+
+/* Assicurati che l'interfaccia Usercentrics sia ben visibile */
+.uc-container, .uc-overlay, .uc-banner-content {
+  z-index: 10001 !important;
+}

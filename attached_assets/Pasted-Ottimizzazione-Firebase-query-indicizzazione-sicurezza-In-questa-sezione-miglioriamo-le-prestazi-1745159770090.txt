@@ -1,0 +1,79 @@
+Ottimizzazione Firebase (query, indicizzazione, sicurezza)
+In questa sezione miglioriamo le prestazioni e la sicurezza delle operazioni Firebase: definiremo indici per le query più frequenti e impostaremo regole di sicurezza Firestore adeguate. Inoltre, suggeriremo come evitare letture eccessive ottimizzando le query. Indicizzazione delle query Firestore:
+Identifica le query che il frontend esegue spesso e assicurati che Firestore abbia gli indici necessari. Ad esempio, se gli utenti filtrano annunci per città e per prezzo, una query tipo "tutti gli annunci dove city == X ordinati per price" richiede un indice composito su city e price. Oppure, se filtri per paese e città, serve un indice su country+city. Crea il file di configurazione degli indici Firestore:
+json
+Copia
+Modifica
+// File: firestore.indexes.json
+{
+  "indexes": [
+    {
+      "collectionGroup": "listings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "city", "order": "ASCENDING" },
+        { "fieldPath": "price", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "listings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "country", "order": "ASCENDING" },
+        { "fieldPath": "city", "order": "ASCENDING" }
+      ]
+    }
+    // Puoi aggiungere altri indici compositi necessari per ulteriori filtri/ordinamenti
+  ],
+  "fieldOverrides": []
+}
+Commento: Il primo indice permette query che filtrano o ordinano per città e prezzo. Il secondo per paese e città (utile se in futuro limitassi per nazione). Una volta definito questo file, esegui il deploy con Firebase CLI (firebase deploy --only firestore:indexes) oppure crea manualmente questi indici tramite la console Firebase (sezione Firestore Indexes). Firestore ti indica nelle sue error logs se una query necessita di un indice: tieni d'occhio la console durante i test con filtri. Regole di sicurezza Firestore:
+Definiamo regole che:
+Consentono la lettura pubblica dei dati necessari (annunci e valutazioni in lettura probabilmente pubblici).
+Limitano la scrittura: solo utenti autenticati possono creare nuovi annunci e valutazioni.
+Ulteriore restrizione: un utente può modificare/eliminare solo i propri annunci e la propria valutazione.
+Crea/aggiorna il file delle regole Firestore:
+swift
+Copia
+Modifica
+// File: firestore.rules
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Regole per la collection "listings" (annunci)
+    match /listings/{listingId} {
+      allow read: if true;  // tutti possono leggere gli annunci
+      allow create: if request.auth != null;  // solo utenti loggati possono creare
+      allow update, delete: if request.auth != null && request.auth.uid == resource.data.ownerId;
+      // Solo il proprietario (field ownerId) può modificare o cancellare il proprio annuncio
+    }
+    // Regole per la collection "users" (profili utente)
+    match /users/{userId} {
+      allow read: if request.auth != null;  // (opzionale) permetti lettura dei profili solo a utenti loggati
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update, delete: if request.auth != null && request.auth.uid == userId;
+      // Ogni utente può creare il proprio profilo e modificarlo, nessun altro
+    }
+    // Regole per la collection "ratings" (valutazioni)
+    match /ratings/{ratingId} {
+      allow read: if true;  // tutti possono leggere le valutazioni (per calcolare medie pubblicamente)
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null && request.auth.uid == resource.data.userId;
+      // Utente loggato può inserire una valutazione con il proprio userId e solo lo stesso utente può eventualmente modificarla/eliminarla
+    }
+  }
+}
+Commenti sulle regole:
+Annunci (listings): chiunque può leggere (visualizzare annunci senza login). La creazione richiede login (request.auth != null). Si presuppone che nel documento annuncio tu salvi un campo ownerId con uid dell'utente creatore; la regola update/delete verifica che l’utente autenticato sia quello (resource.data.ownerId) per permettere modifiche solo al proprietario. Questo impedisce che qualcuno modifichi o cancelli annunci altrui.
+Profili utente (users): qui consentiamo lettura solo se loggati; puoi anche mettere if true se non c'è nulla di sensibile o se vuoi mostrare profili/nomi a tutti (per esempio l’host dell’annuncio). Abbiamo richiesto che request.auth.uid == userId per creare (in genere il profilo viene creato dall'utente stesso) e lo stesso per update/delete. Così ogni utente gestisce solo il proprio profilo.
+Valutazioni (ratings): lettura pubblica (serve a mostrare medie e dettagli a tutti). Creazione permessa solo se loggato e inoltre la regola controlla che il campo userId nel nuovo rating corrisponda a chi sta autenticato (request.resource.data.userId == request.auth.uid). Questo garantisce che uno non possa spoofare un rating a nome di un altro. Per update/delete, solo l'autore (il cui userId coincide col proprio uid) può farlo. Quindi nessuno può alterare le valutazioni altrui. (Questa regola non impedisce di creare due valutazioni per lo stesso listing dallo stesso utente, dovresti gestirlo applicativamente, ma almeno le associa correttamente.)
+Ottimizzazione delle query:
+Riduci i dati trasferiti: se una collezione ha documenti molto grandi ma alla lista servono pochi campi, valuta l'uso di .select() (Firestore) per prendere solo alcuni campi. Oppure struttura i dati in sotto-collezioni. Ad esempio, per la lista annunci potresti non voler scaricare descrizioni lunghe o liste di caratteristiche, ma solo titolo, prezzo, posizione, ecc. Attualmente Firestore non ha .select nel SDK JS (solo REST), quindi questa ottimizzazione è limitata. Ma puoi strutturare i dati in modo da avere un documento "light" per anteprime e uno dettagliato per la pagina annuncio (questa però è una complessità aggiuntiva e spesso non necessaria inizialmente).
+Usa query mirate invece di filtri su client: nel Prompt 9 abbiamo filtrato gli annunci per prezzo e area sul client. Per dataset piccoli va bene, ma se gli annunci diventano tanti, stai scaricando tutto per poi filtrare. Puoi ottimizzare eseguendo query lato Firestore:
+Ad esempio, se l’utente sceglie una città dal filtro, potresti fare query(collection(db, "listings"), where("city", "==", selectedCity), orderBy("price", "asc")). Questo restituisce solo i documenti di quella città già ordinati per prezzo (velocizzato dall’indice city+price definito sopra).
+Se implementi un filtro per range di prezzo direttamente nella query Firestore, potresti usare where("price", "<=", maxPrice) ecc., anche se Firestore su una singola query permette al massimo una condizione di range (<= or >=) oltre ad eventuali equality. Quindi non potresti mettere due range (es: prezzo e lat nei bounds) nella stessa query, perché Firestore non supporta due disuguaglianze su campi diversi.
+Per il filtro geografico, Firestore come detto non offre query dirette su lat/lng all'interno di un rettangolo. Esistono workaround con geohash e librerie (geofirestore) che però sono avanzati. Se il dataset cresce e la geolocalizzazione è fondamentale, potresti valutare integrare un servizio di search (es. Algolia) che consente ricerche geospaziali più efficienti e poi recuperare gli ID di Firestore. Ma questo esula dallo scope attuale. Per ora, sappi che l'approccio attuale (filtrare client con bounds) va bene se il numero di annunci è moderato. Se diventasse grande, dovresti implementare paginazione e query per area (magari dividendo per città).
+Limita i listener in tempo reale quando non servono: onSnapshot è comodo, ma mantiene una connessione e aggiorna al volo. Per sezioni dove i dati non cambiano spesso o non richiedono aggiornamenti live, potresti usare getDocs singoli. Ad esempio, la lista di annunci potrebbe anche essere caricata on-demand senza realtime (soprattutto se hai un numero enorme di annunci aggiornati raramente). Realtime ha senso per cose come chat o dati che cambiano spesso. In ottica performance/costi, valuta dove davvero serve. Comunque, Firestore è abbastanza efficiente con onSnapshot su query indicizzate.
+Batch e transazioni: se fai operazioni multiple, usa batch writes o transazioni. Ad esempio, se aggiungi un annuncio e vuoi anche incrementare un contatore globale, fallo in un batch/transaction così risparmi roundtrip e garantisci atomicità.
+Caching lato client: (collega anche Prompt 12) Puoi abilitare la persistenza offline di Firestore (già mostrato) cosicché i risultati delle query restino in cache sul dispositivo e rileggere i dati non costringa a scaricarli di nuovo se non sono cambiati. Questo migliora la reattività nelle navigazioni successive.
+In sintesi: configura gli indici per le query chiave (la console Firebase ti aiuta segnalando necessità di index), applica regole di sicurezza restrittive per proteggere i dati, e considera di migliorare le query per evitare trasferimenti superflui di dati. Con queste ottimizzazioni, l’app funzionerà in modo più efficiente e sicuro, soprattutto man mano che aumenta il numero di utenti e dati.

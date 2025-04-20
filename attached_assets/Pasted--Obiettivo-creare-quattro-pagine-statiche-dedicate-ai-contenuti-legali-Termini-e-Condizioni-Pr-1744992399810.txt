@@ -1,0 +1,83 @@
+🔧 Obiettivo: creare quattro pagine statiche dedicate ai contenuti legali – Termini e Condizioni, Privacy Policy, Cookie Policy, Informazioni Legali – complete di tutte le sezioni e riferimenti normativi, e linkarle nella sezione “Legale” del footer.
+
+📂 File/Cartelle da creare/modificare:
+- `src/pages/legal/terms.js`
+- `src/pages/legal/privacy.js`
+- `src/pages/legal/cookies.js`
+- `src/pages/legal/info.js`
+- `src/components/Footer.jsx`
+
+📋 Azioni dettagliate:
+
+1. **Termini e Condizioni** (`terms.js`)  
+   - Titolo: `<h1>Termini e Condizioni di Utilizzo</h1>`  
+   - Sezioni obbligatorie:
+     1. **Definizioni**  
+     2. **Oggetto del contratto** (descrizione servizio)  
+     3. **Registrazione e accesso**  
+     4. **Obblighi e divieti dell’utente**  
+     5. **Proprietà intellettuale**  
+     6. **Limitazione di responsabilità**  
+     7. **Forza maggiore**  
+     8. **Durata, recesso e sospensione del servizio**  
+     9. **Modifiche ai Termini**  
+     10. **Legge applicabile e Foro competente**  
+   - **Riferimenti normativi**:  
+     - Codice Civile (art. 1321 e ss.)  
+     - Reg. UE 2016/679 (GDPR) per quanto riguarda l’uso dei dati personali.
+
+2. **Privacy Policy** (`privacy.js`)  
+   - Titolo: `<h1>Informativa Privacy ex GDPR</h1>`  
+   - Sezioni obbligatorie:
+     1. **Titolare del trattamento** (ragione sociale, sede, PEC)  
+     2. **Finalità e base giuridica**  
+     3. **Tipologie di dati raccolti** (anagrafici, tecnici, di utilizzo)  
+     4. **Modalità di trattamento**  
+     5. **Periodo di conservazione**  
+     6. **Diritti dell’interessato** (art.15‑22 GDPR)  
+     7. **Destinatari e trasferimenti internazionali**  
+     8. **Dati di navigazione e cookie** (link alla Cookie Policy)  
+     9. **Contatti del Data Protection Officer (DPO)**  
+   - **Riferimenti normativi**:  
+     - Reg. UE 2016/679  
+     - D.lgs. 196/2003 come modificato dal D.lgs. 101/2018
+
+3. **Cookie Policy** (`cookies.js`)  
+   - Titolo: `<h1>Cookie Policy</h1>`  
+   - Sezioni obbligatorie:
+     1. **Cosa sono i cookie**  
+     2. **Tipologie di cookie** (tecnici, analytics, di marketing, di profilazione, di terze parti)  
+     3. **Finalità**  
+     4. **Durata di conservazione**  
+     5. **Come disabilitarli** (istruzioni browser e link a strumenti di gestione)  
+     6. **Elenco dei cookie utilizzati** (nome, provider, durata, finalità)  
+   - **Riferimenti normativi**:  
+     - Direttiva 2009/136/CE (“Cookie Law”)  
+     - Provvedimento Garante Privacy 8 maggio 2014
+
+4. **Informazioni Legali** (`info.js`)  
+   - Titolo: `<h1>Informazioni Legali</h1>`  
+   - Sezioni obbligatorie:
+     1. **Ragione sociale e forma giuridica**  
+     2. **Sede legale e operativa**  
+     3. **Partita IVA e Codice Fiscale**  
+     4. **REA e numero CCIAA**  
+     5. **PEC e contatti** (email, telefono)  
+     6. **Disclaimer**: il sito è mero aggregatore di annunci, non risponde della veridicità né della legittimità dei contenuti pubblicati dagli utenti.
+
+5. **Footer** (`Footer.jsx`)  
+   - Sotto la sezione “Legale”, aggiungere:
+     ```jsx
+     <ul>
+       <li><Link href="/legal/terms">Termini e Condizioni</Link></li>
+       <li><Link href="/legal/privacy">Privacy Policy</Link></li>
+       <li><Link href="/legal/cookies">Cookie Policy</Link></li>
+       <li><Link href="/legal/info">Informazioni Legali</Link></li>
+     </ul>
+     ```
+
+🔁 **Test**:
+- Naviga a `/legal/terms`, `/legal/privacy`, `/legal/cookies`, `/legal/info` e verifica la presenza di tutte le sezioni e riferimenti.
+- Controlla il footer in ogni pagina: i link devono essere cliccabili e puntare ai rispettivi path.
+- Verifica che il layout e lo stile siano coerenti con il resto del sito.
+

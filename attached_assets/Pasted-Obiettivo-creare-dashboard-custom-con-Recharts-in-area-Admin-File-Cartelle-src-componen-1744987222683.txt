@@ -1,0 +1,83 @@
+Obiettivo: creare dashboard custom con Recharts in area Admin.
+
+📂 File/Cartelle:
+- `src/components/AdminKPIs.jsx`
+- API: `src/api/admin/kpis.js`
+
+📋 Azioni:
+1. API `GET /api/admin/kpis` ritorna JSON con:
+   `{ signupsLast30Days, announcementsLast30Days, avgSessionTime }`
+2. `AdminKPIs.jsx` mostra:
+   - BarChart `signupsLast30Days`
+   - LineChart `announcementsLast30Days`
+   - Statistic card `avgSessionTime`
+3. Test: popola DB con dati demo, verifica grafici.
+
+Prompt 19 – Wishlist / Favoriti
+plaintext
+Copia
+🔧 Obiettivo: salvare annunci preferiti.
+
+📂 File/Cartelle:
+- Migration, API e componenti (vedi prompt C1)
+
+📋 Azioni:
+- Implementa come da prompt C1
+- Test di salvataggio/rimozione e visualizzazione in dashboard.
+
+Prompt 20 – Notifications Email / Push
+plaintext
+Copia
+🔧 Obiettivo: notifiche per nuovi annunci in zone salvate.
+
+📂 File/Cartelle:
+- `src/services/notificationService.js`
+- API: `/api/notifications`
+- Frontend hook `useNotifications.js`
+
+📋 Azioni:
+1. Crea job cron ogni 15’ che:
+   - Per ogni zone salvata verifica nuovi annunci
+   - Invia email via nodemailer o push via `web-push`
+2. Frontend chiede permessi e salva subscription.
+3. Test: salva zona e crea annuncio via seed, verifica notifica.
+
+Prompt 21 – Calendar Integration
+plaintext
+Copia
+🔧 Obiettivo: integra Google Calendar per appuntamenti visite.
+
+📂 File/Cartelle:
+- API `src/api/calendar.js`
+- Frontend `ScheduleVisit.jsx`
+
+📋 Azioni:
+1. Abilita Google Calendar API e OAuth.
+2. In `calendar.js`, usa `googleapis` per:
+   - `POST /api/calendar/create-event` con creds OAuth2.
+3. In `ScheduleVisit.jsx`, bottone “Aggiungi a Calendar”:
+   ```js
+   fetch('/api/calendar/create-event',{ method:'POST', body:{ slot, summary } });
+Test: crea evento e verifica su Google Calendar.
+
+yaml
+Copia
+
+---
+
+### Prompt 22 – Referral & Promo Codes  
+```plaintext
+🔧 Obiettivo: generare codici promozionali e applicarli al checkout.
+
+📂 File/Cartelle:
+- Migration e API (`referrals` e `promocodes`)
+- Frontend `PromoCodeInput.jsx`
+
+📋 Azioni:
+1. Table `promo_codes(id, code, discount, expires_at, usage_limit)`
+2. API `POST /api/promocodes/validate` che:
+   - Controlla `code`, scadenza, limit.
+   - Ritorna `{ valid: true, discount }`
+3. `PromoCodeInput.jsx`: campo + validate onBlur.
+4. Test: crea promo “TEST10”, applica al checkout, verifica 10% di sconto.
+

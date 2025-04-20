@@ -1,0 +1,125 @@
+Obiettivo: migrare a Next.js con SSR/SSG per SEO e performance.
+
+📂 File/Cartelle da creare:
+- `pages/index.js`, `pages/annunci/[id].js`, `pages/_app.js`
+- `next.config.js`
+
+📋 Azioni:
+1. Installa Next.js: `npm install next react react-dom`
+2. Sposta componenti da `src/pages` a `pages/`
+3. In `pages/index.js` implementa `getStaticProps()` per caricare primi annunci.
+4. In `pages/annunci/[id].js` implementa `getStaticPaths()` + `getStaticProps()` per detail page.
+5. Configura `next.config.js` con `images.domains` (es. `faker.image` host).
+6. Aggiorna script in `package.json`:
+   ```json
+   "scripts": {
+     "dev": "next dev",
+     "build": "next build",
+     "start": "next start"
+   }
+Test: esegui npm run build && npm start, verifica che primo paint e SEO meta siano presenti.
+
+yaml
+Copia
+
+---
+
+### Prompt 2 – Edge Caching (CDN)  
+```plaintext
+🔧 Obiettivo: distribuire asset e risposte API su CDN edge (Cloudflare Workers o Vercel Edge).
+
+📂 File/Cartelle:
+- Configurazione Vercel (`vercel.json`) o Cloudflare Workers script
+
+📋 Azioni:
+1. Se usi Vercel, aggiungi in `vercel.json`:
+   ```json
+   {
+     "routes": [
+       { "src": "/api/(.*)", "headers": { "cache-control": "s-maxage=60, stale-while-revalidate=300" } }
+     ]
+   }
+Se usi Cloudflare, crea worker.js che:
+
+Cattura richieste a /api/* e risponde con fetch(request) + header Cache-Control.
+
+Deploy su Vercel o Cloudflare.
+
+Test: chiama /api/search due volte, verifica header x-cache: HIT su seconda richiesta.
+
+perl
+Copia
+
+---
+
+### Prompt 3 – Backup & Disaster Recovery  
+```plaintext
+🔧 Obiettivo: automatizzare backup quotidiani di PostgreSQL e storage.
+
+📂 File/Cartelle:
+- Script bash `scripts/backup.sh`
+- Crontab server
+
+📋 Azioni:
+1. Crea `scripts/backup.sh`:
+   ```bash
+   #!/bin/bash
+   PGPASSWORD=$DB_PASS pg_dump -h $DB_HOST -U $DB_USER $DB_NAME | gzip > /backups/db_$(date +%F).sql.gz
+   aws s3 cp /backups/db_$(date +%F).sql.gz s3://my-backups/
+Rendi eseguibile: chmod +x scripts/backup.sh
+
+Aggiungi crontab 0 2 * * * /app/scripts/backup.sh
+
+Verifica backup su S3 e procedure di restore:
+
+bash
+Copia
+gunzip -c db_2025-04-20.sql.gz | psql -U user -d test_db
+yaml
+Copia
+
+---
+
+### Prompt 4 – Load Testing  
+```plaintext
+🔧 Obiettivo: simulare 100–500 utenti concorrenti con k6 o Artillery.
+
+📂 File/Cartelle:
+- `load-testing/script.js`
+
+📋 Azioni:
+1. Installa k6: `brew install k6` o `npm install -g artillery`
+2. Crea `script.js` per k6:
+   ```js
+   import http from 'k6/http';
+   export let options = { vus: 100, duration: '1m' };
+   export default function() { http.get('https://tuosito.com/api/search?q=roma'); }
+Esegui: k6 run script.js
+
+Analizza report: verifica < 200ms p95 latenza e error rate <1%.
+
+php-template
+Copia
+
+---
+
+### Prompt 5 – Meta Tags Dinamici & Open Graph  
+```plaintext
+🔧 Obiettivo: generare meta tag e OG dinamici per ogni pagina.
+
+📂 File/Cartelle:
+- In Next.js: `pages/_document.js` o in `<Head>` di ogni pagina
+
+📋 Azioni:
+1. In `pages/annunci/[id].js`, dentro `<Head>`:
+   ```jsx
+   <Head>
+     <title>{announcement.title} – In&Out</title>
+     <meta name="description" content={announcement.description.slice(0,150)} />
+     <meta property="og:title" content={announcement.title} />
+     <meta property="og:description" content={announcement.description.slice(0,150)} />
+     <meta property="og:image" content={announcement.images[0]} />
+   </Head>
+Ripeti in pages/index.js con meta generici.
+
+Test: apri pagina e verifica sorgente HTML; usa Facebook Debugger per OG.

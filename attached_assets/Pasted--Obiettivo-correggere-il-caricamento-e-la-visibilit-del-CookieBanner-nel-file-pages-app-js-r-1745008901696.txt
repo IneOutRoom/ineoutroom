@@ -1,0 +1,54 @@
+🔧 Obiettivo: correggere il caricamento e la visibilità del CookieBanner nel file `pages/_app.js`, risolvendo l’errore di import e garantendo che il banner venga montato in tutte le pagine.
+
+📂 File da modificare:
+- `pages/_app.js`
+
+📋 Azioni dettagliate:
+
+1. **Correggi percorso dynamic import**  
+   - Attualmente hai:
+     ```js
+     const CookieBanner = dynamic(
+       () => import('./components/CookieBanner'),
+       { ssr: false }
+     );
+     ```
+   - Modificalo in:
+     ```js
+     const CookieBanner = dynamic(
+       () => import('../components/CookieBanner'),
+       { ssr: false }
+     );
+     ```
+   - Questo punta alla cartella `components` corretta (a lato di `pages`).
+
+2. **Import standard per fallback** *(opzionale)*  
+   - Se preferisci evitare problemi di path, sostituisci il dynamic import con un import diretto:
+     ```js
+     import CookieBanner from '../components/CookieBanner';
+     ```
+   - Rimuovi la chiamata a `dynamic` e mantieni solo l’import.
+
+3. **Verifica montaggio in JSX**  
+   - Assicurati che dentro il return di `MyApp` ci sia esattamente:
+     ```jsx
+     <Component {...pageProps} />
+     <CookieBanner />
+     ```
+   - Rimuovi eventuali wrapper o id errati: non serve `<div id="cookie-banner-container">`.
+
+4. **Rimuovi o adatta il fallback HTML**  
+   - Se mantieni il fallback che aggiunge il banner manualmente dopo 3s, verifica che non confligga con il componente React.  
+   - Puoi disabilitare temporaneamente il blocco inside `useEffect` per concentrarti solo sul componente React.
+
+5. **Pulizia console & rebuild**  
+   - Elimina tutti i log di debug `console.log` dal banner per semplificare la lettura.  
+   - In Replit, esegui un nuovo build e restart (`Rebuild`) per applicare le modifiche.
+
+6. **Test finale**  
+   - Apri DevTools → Application → Local Storage → rimuovi `cookieConsent` e `cookiePreferences`.  
+   - Ricarica la pagina in finestra normale e in incognito: il banner deve comparire entro 1 secondo.  
+   - Clicca “Accetta tutti” o “Rifiuta” e verifica che il banner scompaia e che la chiave `cookieConsent` venga impostata correttamente.  
+   - Controlla che, una volta accettato o rifiutato, il banner non ricompaia in nuove navigazioni.
+
+🎯 Obiettivo finale: il CookieBanner deve montarsi correttamente in ogni pagina del sito, senza errori di import, e gestire il consenso in conformità al GDPR.```

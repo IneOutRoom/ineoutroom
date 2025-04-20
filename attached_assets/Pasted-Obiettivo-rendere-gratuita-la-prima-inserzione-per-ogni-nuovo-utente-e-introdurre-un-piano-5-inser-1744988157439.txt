@@ -1,0 +1,92 @@
+Obiettivo: rendere gratuita la prima inserzione per ogni nuovo utente e introdurre un piano “5 inserzioni a 0,99 €” obbligatorio per la seconda e successive; mantenere inalterati tutti gli altri piani esistenti.
+
+📂 File/Cartelle da modificare:
+- **DB Migration**: `migrations/…_add_plan_5_listings.sql`
+- **Backend Service**: `src/services/subscriptionService.js`
+- **API Endpoint**: `src/api/announcements.js`
+- **Frontend Components**: `src/components/PublishButton.jsx`, `src/components/SubscriptionPrompt.jsx`, `src/components/PlansList.jsx`
+
+📋 Azioni dettagliate:
+
+1. **DB Migration**  
+   Crea file `migrations/…_add_plan_5_listings.sql` con:
+   ```sql
+   INSERT INTO plans (id, name, max_listings, price, billing_interval)
+   VALUES (
+     gen_random_uuid(),
+     '5 Inserzioni',
+     5,
+     0.99,
+     'once'
+   );
+Esegui la migration.
+
+Subscription Service
+In src/services/subscriptionService.js, implementa la funzione:
+
+js
+Copia
+export async function canPublishListing(userId) {
+  const count = await db('announcements').where({ user_id: userId }).count();
+  if (count === 0) return true;  // prima inserzione gratuita
+  const subscription = await db('subscriptions')
+    .where({ user_id: userId, status: 'active' })
+    .first();
+  return subscription && subscription.remaining_listings > 0;
+}
+Modify Create Announcement Endpoint
+In src/api/announcements.js, nella route POST /api/announcements:
+
+js
+Copia
+import { canPublishListing } from '../services/subscriptionService';
+router.post('/', async (req, res) => {
+  const userId = req.auth.uid();
+  const allowed = await canPublishListing(userId);
+  if (!allowed) {
+    return res.status(402).json({
+      error: 'FIRST_FREE_ONLY',
+      message: 'Hai già pubblicato la tua inserzione gratuita. Scegli un piano per continuare.'
+    });
+  }
+  // se è seconda o successiva e subscription valida, decrementa remaining_listings
+  if (await db('announcements').where({ user_id: userId }).count() > 0) {
+    await db('subscriptions')
+      .where({ user_id: userId, status: 'active' })
+      .decrement('remaining_listings', 1);
+  }
+  // procedi con salvataggio annuncio
+  const newAnn = await db('announcements').insert({ ...req.body, user_id: userId }).returning('*');
+  res.json(newAnn[0]);
+});
+Frontend: PublishButton & Error Handling
+In PublishButton.jsx, gestisci il 402:
+
+jsx
+Copia
+try {
+  await api.post('/api/announcements', data);
+} catch (err) {
+  if (err.response?.status === 402) {
+    openSubscriptionPrompt();  // mostriamo SubscriptionPrompt
+  }
+}
+SubscriptionPrompt Component
+In src/components/SubscriptionPrompt.jsx, mostra:
+
+Messaggio “Prima inserzione gratuita usata”
+
+Pulsante per acquistare “5 Inserzioni a 0,99 €” che rimanda al checkout del piano da DB
+
+PlansList Update
+In PlansList.jsx, aggiungi il nuovo piano “5 Inserzioni – 0,99 €” sopra gli altri, senza toccare gli altri piani.
+
+📌 Obiettivo Finale:
+
+Primo annuncio di ogni utente viene pubblicato senza pagamento.
+
+Seconda e successive richiedono il piano “5 Inserzioni a 0,99 €” (o uno degli altri piani già esistenti).
+
+L’opzione di singola inserzione a 0,99 € (one-time) viene rimossa o nascosta.
+
+Il flusso di UX/UI avvisa correttamente l’utente e lo guida al checkout del nuovo piano.

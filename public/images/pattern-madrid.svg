@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="zigzag" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 0 10 Q 5 0, 10 10 T 20 10" fill="none" stroke="white" stroke-width="1" opacity="0.3" />
+    </pattern>
+    <pattern id="grid-dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1.5" fill="white" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#zigzag)"/>
+  <rect width="100%" height="100%" fill="url(#grid-dots)"/>
+  <path d="M 0 0 L 200 200" stroke="white" stroke-width="0.5" opacity="0.2"/>
+  <path d="M 200 0 L 0 200" stroke="white" stroke-width="0.5" opacity="0.2"/>
+  <circle cx="100" cy="100" r="70" fill="none" stroke="white" stroke-width="1" opacity="0.2"/>
+</svg>

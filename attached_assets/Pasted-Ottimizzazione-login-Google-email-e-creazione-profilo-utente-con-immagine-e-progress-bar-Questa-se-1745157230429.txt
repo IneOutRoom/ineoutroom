@@ -1,0 +1,262 @@
+Ottimizzazione login (Google/email) e creazione profilo utente con immagine e progress bar
+Questa sezione migliora l’autenticazione e la gestione del profilo utente, assicurando che dopo il login venga creato un documento profilo in Firestore e fornendo all’utente la possibilità di completare le informazioni mancanti (foto, bio) con una barra di avanzamento del profilo. File: pages/login.jsx (pagina di login/registrazione) – Gestione login con Google e email
+jsx
+Copia
+Modifica
+// File: pages/login.jsx
+import { useState } from 'react';
+import { auth, db } from '../firebase';               // auth e db inizializzati in firebase.js
+import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+
+export default function LoginPage() {
+  const [isRegister, setIsRegister] = useState(false);   // toggle tra modalità registrazione e login
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");                 // usato solo in registrazione
+  const [error, setError] = useState("");
+
+  // Funzione per creare il documento profilo utente se non esiste
+  const creaProfiloUtente = async (user) => {
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+    if (!userSnap.exists()) {
+      // Crea un documento profilo con info di base
+      await setDoc(userRef, {
+        name: user.displayName || name || "",   // usa displayName (se Google) altrimenti nome inserito
+        email: user.email,
+        photoURL: user.photoURL || "",          // foto di Google se presente, altrimenti vuoto
+        bio: "",                               // bio inizialmente vuota
+        createdAt: serverTimestamp()
+      });
+    }
+  };
+
+  // Login/Registrazione con email e password
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      let userCred;
+      if (isRegister) {
+        // Registrazione nuovo utente
+        userCred = await createUserWithEmailAndPassword(auth, email, password);
+        // Aggiorna il profilo Auth con il nome (opzionale, se previsto inserimento nome)
+        if (name) {
+          await updateProfile(userCred.user, { displayName: name });
+        }
+      } else {
+        // Login utente esistente
+        userCred = await signInWithEmailAndPassword(auth, email, password);
+      }
+      const user = userCred.user;
+      console.log("Utente autenticato:", user.uid);
+      await creaProfiloUtente(user);   // Crea il documento profilo se non esiste
+      // Redirect alla home o pagina profilo, ad esempio:
+      window.location.href = "/profilo";
+    } catch (err) {
+      console.error("Errore autenticazione:", err);
+      setError(err.message || "Errore durante l'autenticazione");
+    }
+  };
+
+  // Login con Google
+  const handleGoogleLogin = async () => {
+    setError("");
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("Login Google riuscito:", user.uid);
+      await creaProfiloUtente(user);   // Crea profilo se primo login
+      window.location.href = "/profilo";
+    } catch (err) {
+      console.error("Errore login Google:", err);
+      setError("Accesso con Google non riuscito");
+    }
+  };
+
+  return (
+    <div className="login-page">
+      <h1>{isRegister ? "Registrati" : "Accedi"}</h1>
+      {error && <p className="error-msg">{error}</p>}
+      <form onSubmit={handleEmailSubmit}>
+        {isRegister && (
+          <div>
+            <label>Nome:</label>
+            <input 
+              type="text" 
+              value={name} 
+              onChange={(e) => setName(e.target.value)} 
+              required 
+            />
+          </div>
+        )}
+        <div>
+          <label>Email:</label>
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
+          />
+        </div>
+        <button type="submit">{isRegister ? "Registrati" : "Entra"}</button>
+      </form>
+      <button onClick={handleGoogleLogin} className="google-btn">
+        Accedi con Google
+      </button>
+      <p onClick={() => setIsRegister(!isRegister)} className="toggle-link">
+        {isRegister ? "Hai già un account? Accedi" : "Non hai un account? Registrati"}
+      </p>
+    </div>
+  );
+}
+File: pages/profilo.jsx (pagina profilo utente) – Visualizzazione e aggiornamento del profilo con progress bar
+jsx
+Copia
+Modifica
+// File: pages/profilo.jsx
+import { useState, useEffect } from 'react';
+import { auth, db, storage } from '../firebase';   // db e storage importati (storage inizializzato in firebase.js)
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+
+export default function ProfiloPage() {
+  const user = auth.currentUser;
+  const [profile, setProfile] = useState(null);
+  const [bio, setBio] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [saveMessage, setSaveMessage] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      // Carica i dati profilo dal Firestore
+      const loadProfile = async () => {
+        const userRef = doc(db, "users", user.uid);
+        const snap = await getDoc(userRef);
+        if (snap.exists()) {
+          const data = snap.data();
+          setProfile(data);
+          setBio(data.bio || "");
+        }
+      };
+      loadProfile();
+    }
+  }, [user]);
+
+  const handleImageUpload = async (e) => {
+    if (!user) return;
+    const file = e.target.files[0];
+    if (!file) return;
+    setUploading(true);
+    setSaveMessage("");
+    try {
+      // Carica il file sullo storage (es. cartella "profiles/<uid>.jpg")
+      const storageRef = ref(storage, `profiles/${user.uid}`);
+      await uploadBytes(storageRef, file);  // upload file
+      const downloadURL = await getDownloadURL(storageRef);
+      // Aggiorna photoURL nel documento utente
+      const userRef = doc(db, "users", user.uid);
+      await updateDoc(userRef, { photoURL: downloadURL });
+      // Aggiorna anche l'oggetto auth (facoltativo, se vuoi sincronizzare la foto nell'auth user)
+      await user.updateProfile({ photoURL: downloadURL });
+      // Aggiorna stato locale
+      setProfile(prev => prev ? { ...prev, photoURL: downloadURL } : prev);
+      setSaveMessage("Foto profilo aggiornata!");
+    } catch (err) {
+      console.error("Errore upload immagine:", err);
+      alert("Errore durante il caricamento dell'immagine.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleSaveBio = async () => {
+    if (!user) return;
+    setSaveMessage("");
+    try {
+      await updateDoc(doc(db, "users", user.uid), { bio: bio });
+      setSaveMessage("Biografia salvata!");
+      setProfile(prev => prev ? { ...prev, bio: bio } : prev);
+    } catch (err) {
+      console.error("Errore salvataggio bio:", err);
+      alert("Errore nel salvataggio della biografia.");
+    }
+  };
+
+  if (!user || !profile) {
+    return <p>Caricamento profilo...</p>;
+  }
+
+  // Calcola completamento profilo (esempio: foto e bio come criteri di completamento)
+  let completedSteps = 0;
+  if (profile.photoURL) completedSteps++;
+  if (profile.bio && profile.bio.trim() !== "") completedSteps++;
+  const totalSteps = 2;
+  const completionPercent = Math.round((completedSteps / totalSteps) * 100);
+
+  return (
+    <div className="profile-page">
+      <h1>Ciao, {profile.name || user.displayName || "Utente"}!</h1>
+      <div className="profile-info">
+        {/* Immagine profilo */}
+        <div className="profile-photo">
+          <img 
+            src={profile.photoURL || "/default-avatar.png"} 
+            alt="Foto profilo" 
+            width="150" 
+            height="150" 
+          />
+          <div>
+            <input 
+              type="file" 
+              accept="image/*" 
+              onChange={handleImageUpload} 
+              id="photoUpload"
+              style={{ display: 'none' }} 
+            />
+            <label htmlFor="photoUpload" className="upload-btn">
+              {uploading ? "Caricamento..." : "Cambia foto"}
+            </label>
+          </div>
+        </div>
+        {/* Bio */}
+        <div className="profile-bio">
+          <label>La mia biografia:</label>
+          <textarea 
+            rows="4" 
+            value={bio} 
+            onChange={(e) => setBio(e.target.value)} 
+            placeholder="Racconta qualcosa di te..."
+          />
+          <button onClick={handleSaveBio}>Salva Bio</button>
+        </div>
+      </div>
+      {/* Barra di completamento profilo */}
+      <div className="profile-completion">
+        <p>Completamento profilo: {completionPercent}%</p>
+        <progress value={completionPercent} max="100"></progress>
+        {completionPercent < 100 && <p>Completa il profilo aggiungendo {!profile.photoURL ? "una foto" : ""}{!profile.photoURL && !profile.bio ? " e " : ""}{!profile.bio ? "una biografia" : ""}.</p>}
+        {completionPercent === 100 && <p>Profilo completo! 🎉</p>}
+      </div>
+      {saveMessage && <p className="save-message">{saveMessage}</p>}
+    </div>
+  );
+}
+Commenti:
+Login/Registrazione: Nel file login.jsx abbiamo unificato la logica di login e registrazione via email, e aggiunto il login con Google. Dopo ogni autenticazione, chiamiamo creaProfiloUtente(user) per creare su Firestore un documento nella collection users se non esiste già. Questo documento contiene i campi di base: nome, email, photoURL (vuoto se l’utente registrato via email non ha ancora caricato una foto), bio (inizialmente vuota) e timestamp di creazione. In caso di registrazione, aggiorniamo anche il displayName dell’auth Firebase se il nome è stato fornito. Si gestiscono gli errori mostrando messaggi all’utente (setError). Dopo il login/reg, l’utente viene reindirizzato alla pagina /profilo (puoi adattare il redirect secondo la tua app, ad esempio alla home).
+Creazione Profilo: In profilo.jsx, carichiamo i dati utente da Firestore e li mostriamo. L’utente può: 1) caricare una nuova foto profilo (viene caricata su Firebase Storage e il link aggiornato nel documento utente e nell’auth profile), 2) aggiungere/modificare la biografia (campo bio). Ogni volta che salva, mostriamo un messaggio di conferma. La barra di completamento calcola quanti elementi del profilo sono compilati: in questo esempio consideriamo la foto e la bio. Se entrambe presenti, profilo al 100%, altrimenti 50% se solo una, 0% se nessuna. Questo è indicativo: puoi estendere la logica includendo altri campi (es. verifica email, numero di telefono, ecc.) e aggiornando totalSteps. La barra di progresso utilizza l’elemento HTML <progress> per semplicità.
+Abbiamo inserito controlli if (!user) per gestire i casi in cui l’utente non sia loggato o i dati non siano pronti, e mostrare un messaggio di caricamento. In produzione, potresti anche reindirizzare alla login se !user.
+Firebase Storage: Assicurati di aver inizializzato storage in firebase.js (es: import { getStorage } from "firebase/storage"; export const storage = getStorage(app);). Questo codice consente l’upload di immagini. Considera di limitare la dimensione del file e magari comprimere/riscalare le immagini lato client prima dell’upload per performance.
+Sicurezza: Le regole di sicurezza Firestore verranno gestite nel Prompt 11, ma anticipiamo che solo l’utente loggato può modificare il proprio documento in users e creare nuove voci in listings. Inoltre, assicurati di abilitare Email/Password e Google come provider di autenticazione nel tuo progetto Firebase.

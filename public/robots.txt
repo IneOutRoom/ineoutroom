@@ -1,0 +1,16 @@
+# robots.txt per ineoutroom.eu
+# Ultimo aggiornamento: 20 Aprile 2025
+
+# Consenti a tutti i crawler
+User-agent: *
+Allow: /
+
+# Esclusioni specifiche di pagine private o admin
+Disallow: /admin/
+Disallow: /account/settings
+Disallow: /api/
+Disallow: /checkout/
+Disallow: /documenti/privati/
+
+# Sitemaps
+Sitemap: https://ineoutroom.eu/sitemap.xml

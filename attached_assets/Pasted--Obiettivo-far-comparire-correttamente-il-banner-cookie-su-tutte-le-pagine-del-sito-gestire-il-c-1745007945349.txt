@@ -1,0 +1,101 @@
+🔧 Obiettivo: far comparire correttamente il banner cookie su tutte le pagine del sito, gestire il consenso e bloccare gli script di tracciamento finché non viene accettato.
+
+📂 File da controllare/modificare:
+- `src/components/CookieBanner.jsx`
+- `src/pages/_app.js` (Next.js) oppure `src/index.jsx` (React SPA)
+- `src/utils/cookieConsent.js`
+- Configurazione Analytics/Tag Manager (separata)
+
+📋 Azioni dettagliate:
+
+1. **Verifica componente CookieBanner**  
+   - Apri `src/components/CookieBanner.jsx` e assicurati che contenga:
+     ```jsx
+     import { useState, useEffect } from 'react';
+     import { getConsent, setConsent } from '../utils/cookieConsent';
+
+     export default function CookieBanner() {
+       const [show, setShow] = useState(false);
+
+       useEffect(() => {
+         if (getConsent() === null) setShow(true);
+       }, []);
+
+       const accept = () => {
+         setConsent(true);
+         setShow(false);
+         window.location.reload(); // per abilitare script dopo consenso
+       };
+
+       if (!show) return null;
+       return (
+         <div className="fixed bottom-0 w-full bg-gray-900 text-white p-4 flex justify-between items-center z-50">
+           <p>Usiamo cookie tecnici e, previo tuo consenso, cookie analytics e di marketing. <a href="/legal/cookies" className="underline">Maggiori info</a></p>
+           <button onClick={accept} className="ml-4 bg-yellow-400 text-black py-2 px-4 rounded">Accetta</button>
+         </div>
+       );
+     }
+     ```
+
+2. **Utility per gestione consenso**  
+   - In `src/utils/cookieConsent.js`:
+     ```js
+     export function getConsent() {
+       return localStorage.getItem('cookieConsent') === null
+         ? null
+         : localStorage.getItem('cookieConsent') === 'true';
+     }
+     export function setConsent(value) {
+       localStorage.setItem('cookieConsent', value ? 'true' : 'false');
+     }
+     ```
+
+3. **Includi il banner in tutte le pagine**  
+   - Se usi **Next.js**, modifica `src/pages/_app.js`:
+     ```jsx
+     import CookieBanner from '../components/CookieBanner';
+     function MyApp({ Component, pageProps }) {
+       return (
+         <>
+           <Component {...pageProps} />
+           <CookieBanner />
+         </>
+       );
+     }
+     export default MyApp;
+     ```
+   - Se usi **React SPA**, in `src/index.jsx`:
+     ```jsx
+     import React from 'react';
+     import ReactDOM from 'react-dom';
+     import App from './App';
+     import CookieBanner from './components/CookieBanner';
+
+     ReactDOM.render(
+       <React.StrictMode>
+         <App />
+         <CookieBanner />
+       </React.StrictMode>,
+       document.getElementById('root')
+     );
+     ```
+
+4. **Blocca script di analytics fino al consenso**  
+   - In `src/pages/_document.js` (Next.js) o in `public/index.html`, avvolgi gli snippet (Google Analytics, Tag Manager) in una verifica:
+     ```jsx
+     {getConsent() && (
+       /* inserisci qui il tuo script GA o GTM */
+     )}
+     ```
+   - Oppure caricali dinamicamente dopo il `window.location.reload()` in `accept()`.
+
+5. **Pulizia cache e testing**  
+   - Dopo aver implementato, esegui `npm run build && npm start` o riavvia il Replit server.  
+   - In DevTools → Application → Local Storage, cancella `cookieConsent`.  
+   - Ricarica la pagina: il banner deve comparire.  
+   - Clicca “Accetta”: il banner scompare e i cookie analytics si caricano.
+
+6. **Verifica su mobile e desktop**  
+   - Testa in viewport diversi: il banner deve essere responsive e sempre visibile finché non accetti.
+
+📌 Obiettivo finale: il banner cookie compare per tutti gli Utenti che non hanno ancora dato consenso, consente di accettare i cookie e blocca i tracker fino all’accettazione, rispettando la normativa GDPR. ```

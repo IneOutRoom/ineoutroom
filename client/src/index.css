@@ -1,0 +1,93 @@
+@import 'shepherd.js/dist/css/shepherd.css';
+@import './styles/accessibility.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  :root {
+    /* Colori originali */
+    --color-primary: #7716cb;  /* viola migliorato per contrasto */
+    --color-accent: #cc9700;   /* giallo migliorato per contrasto */
+    --color-bg-dark: #1e293b;  /* grigio scuro più accessibile */
+    --shadow-text: 1px 1px 2px rgba(0,0,0,0.5); /* Ombra ottimizzata per leggibilità */
+    
+    --primary-dark: #5a0c88;  /* Versione più scura ottimizzata */
+    --primary-light: #a76be9; /* Versione più chiara ottimizzata */
+    --primary-bg: #f8f0ff;    /* Sfondo leggero invariato */
+    --gradient-primary: linear-gradient(135deg, #7716cb, #5a0c88);
+  }
+}
+
+/* Font settings for Montserrat and Inter */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat;
+  }
+  
+  body {
+    @apply font-inter;
+  }
+}
+
+/* Utility classes */
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.1);
+}
+
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+}
+
+.card-title {
+  text-shadow: var(--shadow-text);
+}
+
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.shadow-primary {
+  box-shadow: 0 8px 30px rgba(149, 64, 255, 0.15);
+}
+
+.shadow-hover {
+  transition: all 0.3s ease;
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 10px 30px rgba(149, 64, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Stili per l'height della mappa sulla pagina di ricerca */
+.map-container {
+  height: 400px;
+}
+
+@media (min-width: 1024px) {
+  .map-container {
+    height: 550px;
+  }
+}
+
+/* Wave decoration */
+.wave-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

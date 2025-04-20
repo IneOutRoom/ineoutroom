@@ -1,0 +1,189 @@
+Filtri Avanzati  
+```plaintext
+🔧 Obiettivo: aggiungere filtri “arredato”, “animali ammessi”, “internet incluso”.
+
+📂 File/Cartelle:
+- `src/components/AdvancedFilters.jsx`
+- `src/api/search.js`
+
+📋 Azioni:
+1. **Frontend**  
+   - Checkbox per `isFurnished`, `allowsPets`, `internetIncluded`  
+2. **API** (`search.js`)  
+   - Aggiungi parametri query e condizioni SQL:  
+     ```js
+     if(isFurnished) query.where('arredato', true);
+     if(allowsPets) query.where('animali', true);
+     if(internetIncluded) query.where('internet', true);
+     ```
+3. **Test**  
+   - Cerca con tutti i filtri attivi e verifica risultati corretti.
+
+Prompt C3 – Two‑Factor Authentication (2FA)
+plaintext
+Copia
+🔧 Obiettivo: implementare 2FA via email OTP.
+
+📂 File/Cartelle:
+- Backend: `src/api/auth/2fa.js`
+- Frontend: `src/components/TwoFactor.jsx`
+
+📋 Azioni:
+1. **Generazione OTP**  
+   - Install `speakeasy` e `nodemailer`  
+   - API `POST /api/auth/2fa/generate` genera secret, invia OTP mail  
+2. **Verifica OTP**  
+   - API `POST /api/auth/2fa/verify` controlla OTP con `speakeasy.totp.verify`  
+3. **Flusso Login**  
+   - Dopo email/password, se 2FA abilitato, reindirizza a `/2fa`  
+4. **Test**  
+   - Abilita 2FA, effettua login e conferma OTP via email
+
+Prompt C4 – Push Notifications Web / Mobile
+plaintext
+Copia
+🔧 Obiettivo: inviare notifiche push via FCM o Web Push.
+
+📂 File/Cartelle:
+- `src/api/notifications.js`
+- Frontend: `src/components/NotificationPermission.jsx`, `usePush.js`
+
+📋 Azioni:
+1. **Web Push**  
+   - Installa `web-push`  
+   - Genera VAPID keys, salva in env  
+   - API `POST /api/notifications/subscribe` e `POST /api/notifications/send`
+2. **Frontend**  
+   - Chiedi permessi, registra service worker, salva subscription  
+   - Usa `usePush` hook per invio
+3. **Test**  
+   - Sottoscrivi e invia notifica di prova
+
+Prompt C5 – Eventi e Calendario Visite Light
+plaintext
+Copia
+🔧 Obiettivo: reintegrare calendario visite in forma semplificata.
+
+📂 File/Cartelle:
+- DB: `migrations/1620004000_create_viewing_slots.sql`
+- API: `src/api/viewings.js`
+- Frontend: `src/components/ViewingScheduler.jsx`
+
+📋 Azioni:
+1. **DB**  
+   ```sql
+   CREATE TABLE viewing_slots (
+     id SERIAL PRIMARY KEY,
+     announcement_id UUID,
+     slot_start TIMESTAMP,
+     slot_end TIMESTAMP,
+     booked_by UUID NULL
+   );
+API (viewings.js)
+
+GET /api/viewings/:announcementId
+
+POST /api/viewings/book { slotId }
+
+Frontend
+
+Calendario orario (react-day-picker) mostra slot
+
+Prenota click su slot libero
+
+Test
+
+Verifica creazione slot e prenotazione esclusiva
+
+yaml
+Copia
+
+---
+
+### Prompt D1 – Raccomandazioni On‑Boarding  
+```plaintext
+🔧 Obiettivo: al primo accesso chiedere preferenze e suggerire annunci.
+
+📂 File/Cartelle:
+- `src/components/OnboardingPreferences.jsx`
+- `src/services/onboardingService.js`
+- `src/api/onboarding.js`
+
+📋 Azioni:
+1. **Frontend**  
+   - Form: budget min/max, tipologia, città preferita  
+2. **API** (`/api/onboarding`)
+   - Salva preferenze utente  
+   - Restituisci top‑10 annunci basati su filtri
+3. **Test**  
+   - Primo login, compilazione form, visualizzazione suggerimenti
+
+Prompt D2 – Analisi Predittiva delle Disponibilità
+plaintext
+Copia
+🔧 Obiettivo: prevedere durata media di un annuncio sul mercato.
+
+📂 File/Cartelle:
+- `src/services/predictiveService.py` (Python microservice)
+- `src/api/predictive.js`
+
+📋 Azioni:
+1. **ML Model**  
+   - Usa scikit‑learn: Logistic Regression su features [city, price, size, date_posted]  
+   - Salva modello serializzato (`.pkl`)
+2. **API** (`predictive.js`)
+   ```js
+   import { spawnSync } from 'child_process';
+   router.get('/api/predict-lifespan', (req,res) => {
+     const result = spawnSync('python',['predict.py', JSON.stringify(req.query)]);
+     res.json(JSON.parse(result.stdout));
+   });
+Frontend (PredictLifespan.jsx)
+
+Chiedi “Quanto durera’ l’annuncio?” e mostra previsione in giorni
+
+Test
+
+Confronta previsione con dati storici reali in DB
+
+php
+Copia
+
+---
+
+### Prompt D3 – Assistente Conversazionale Proattivo  
+```plaintext
+🔧 Obiettivo: inviare suggerimenti proattivi su “hot deals” via chat.
+
+📂 File/Cartelle:
+- `src/services/proactiveBot.js`
+- `src/api/proactive.js`
+- `src/components/ProactiveBot.jsx`
+
+📋 Azioni:
+1. **Servizio** (`proactiveBot.js`)
+   ```js
+   export async function getHotDeals(userId) {
+     // Estrai preferenze e interazioni
+     const deals = await fetch('/api/recommendations');
+     const resp = await openai.chat.completions.create({
+       model:"gpt-4",
+       messages:[
+         { role:"system", content:"Sei assistente proattivo." },
+         { role:"user", content:`Suggerisci 3 annunci hot per utente ${userId} basati su ${deals}` }
+       ]
+     });
+     return resp.choices[0].message.content;
+   }
+API (/api/proactive)
+
+Frontend
+
+In ProactiveBot.jsx, on idle show widget con messaggio
+
+Test
+
+Utente attivo 1 minuto → compare suggerimento proattivo
+
+yaml
+Copia

@@ -1,0 +1,48 @@
+Abilitare modifica e cancellazione dei campi numerici (prezzo, metri quadri, mesi) nel form
+File: pages/annunci/nuovo.jsx (stesso form di inserimento annuncio)
+Modifica: Utilizza state di tipo stringa per i campi numerici in modo da consentire all’utente di cancellare il contenuto (es. per correggere un valore). In un input controllato di tipo number, uno state numerico non può essere vuoto (causando il problema di impossibilità di cancellare). Di seguito un esempio per i campi interessati (prezzo, metri quadri, mesi):
+jsx
+Copia
+Modifica
+// ... (all'interno del componente di pubblicazione annuncio)
+
+// Stati inizializzati a stringa vuota per consentire input vuoti
+const [price, setPrice] = useState("");       // Prezzo in euro
+const [area, setArea] = useState("");         // Superficie in mq
+const [months, setMonths] = useState("");     // Mesi disponibili
+
+// ... JSX dei campi di input numerici ...
+<div>
+  <label>Prezzo (€):</label>
+  <input 
+    type="number" 
+    value={price} 
+    onChange={(e) => setPrice(e.target.value)} 
+    placeholder="Prezzo al mese" 
+    min="0"
+  />
+</div>
+<div>
+  <label>Metri quadri:</label>
+  <input 
+    type="number" 
+    value={area} 
+    onChange={(e) => setArea(e.target.value)} 
+    placeholder="Superficie in mq" 
+    min="0"
+  />
+</div>
+<div>
+  <label>Mesi disponibili:</label>
+  <input 
+    type="number" 
+    value={months} 
+    onChange={(e) => setMonths(e.target.value)} 
+    placeholder="Es: 6" 
+    min="0"
+  />
+</div>
+
+// Nel submit (vedi Prompt 1), i valori price, area, months vengono convertiti in Number.
+// ...
+Commenti: Impostando gli state inizialmente come stringa (""), l’utente può cancellare completamente il contenuto degli <input type="number">. Il componente controllato accetta anche la stringa vuota come valore temporaneo. Solo al momento del submit si convertono tali valori in numeri (come mostrato nel Prompt 1). In questo modo risolvi il bug che impediva la cancellazione/modifica dei campi numerici. Verifica per ciascun campo numerico del form (prezzo, metri quadri, mesi disponibili) che sia applicata la stessa logica.

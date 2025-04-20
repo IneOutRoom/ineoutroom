@@ -1,0 +1,54 @@
+Logging degli errori frontend/backend (monitoraggio in tempo reale)
+Per individuare bug e problemi in produzione, è utile integrare un sistema di logging degli errori sia lato client (JS) che lato server (API/SSR). Una soluzione consolidata è Sentry, che fornisce monitoraggio in tempo reale degli errori con stacktrace. Integreremo Sentry in Next.js. Prima, installa il SDK Sentry per Next:
+bash
+Copia
+Modifica
+npm install @sentry/nextjs
+(Crea un progetto su sentry.io per ottenere il DSN, una URL che identifica il tuo progetto.) File: sentry.client.config.js – Configurazione Sentry per il browser
+jsx
+Copia
+Modifica
+// File: sentry.client.config.js
+import * as Sentry from "@sentry/nextjs";
+
+Sentry.init({
+  dsn: "https://TUO_DSN@oXXXXX.ingest.sentry.io/YYYYYY",  // sostituisci con il DSN del tuo progetto Sentry
+  tracesSampleRate: 1.0,  // traccia il 100% delle performance (puoi ridurre in prod)
+  // puoi aggiungere altre opzioni come environment, release, ecc.
+});
+File: sentry.server.config.js – Configurazione Sentry per il server (API routes, SSR)
+jsx
+Copia
+Modifica
+// File: sentry.server.config.js
+import * as Sentry from "@sentry/nextjs";
+
+Sentry.init({
+  dsn: "https://TUO_DSN@oXXXXX.ingest.sentry.io/YYYYYY",
+  tracesSampleRate: 1.0,
+  // opzioni analoghe al client, aggiungi 'integrations: [...]' se richiesto
+});
+Commento: In entrambi i file utilizza il DSN fornito da Sentry. Puoi anche metterlo in variabile d'ambiente (es. process.env.SENTRY_DSN) per non inserirlo in chiaro. Sentry separerà automaticamente gli errori client e server. Dopo aver configurato, Sentry intercetterà:
+Errori JavaScript runtime sul frontend (es. exception non catturate, errori in componenti React).
+Errori nelle API routes e durante il rendering server-side (getServerSideProps, etc.), incluso quelli che mandano il fallback Next error page.
+Verifica Logging: Puoi forzare un errore per test. Ad esempio, aggiungi temporaneamente in un componente:
+jsx
+Copia
+Modifica
+useEffect(() => {
+  Sentry.captureException(new Error("Test error di frontend"));
+}, []);
+E su un'API route:
+js
+Copia
+Modifica
+try {
+  // ...
+} catch(e) {
+  Sentry.captureException(e);
+  throw e;  // rilancia dopo aver loggato
+}
+Dopo il deploy/test, controlla la dashboard Sentry: dovresti vedere gli errori con stacktrace, dettagli sul browser, utente (se configurato), ecc. Logging manuale aggiuntivo: Oltre a Sentry, puoi mantenere alcuni log su Firebase:
+Ad esempio, potresti creare una collezione logs e, in un catch globale, scriverci dentro. Ma questo è sconsigliato per errori frequenti (rischi di generare troppe scritture e di non vedere subito il problema).
+Sentry è più indicato perché raccoglie, raggruppa errori simili, e puoi impostare alert email o su Slack quando avvengono certi errori.
+Catturare errori globali: Next.js con Sentry cattura automaticamente errori non gestiti. Per errori gestiti (ad esempio nel generatore AI, noi facciamo console.error ma intercettiamo l'errore), possiamo arricchire log: Nel catch del Prompt 4 potremmo aggiungere Sentry.captureException(err); in modo da loggare su Sentry anche quell’errore API che altrimenti non manderebbe stack al cliente. Analogamente, in componenti React se prevedi un errore (es. fallisce fetch in getServerSideProps), potresti loggarlo con Sentry oltre che mostrare messaggio. Protezione dati sensibili: Configura Sentry per scrubbare eventuali dati sensibili (di default fa già scrub di password, token, etc., ma se passi dati utente, assicurati di non inviare PII senza motivo). Puoi impostare Sentry.setUser({ id: user.uid, email: user.email }) dopo login per tracciare errori associati a utenti (utile se vuoi vedere se un certo utente ha errori frequenti), ma fallo solo se conforme a privacy e hai il consenso necessario. Alternativa: Se non vuoi usare un servizio esterno, potresti semplicemente abilitare logging su console e recuperare i log del server (ad es. su Replit o Vercel logs) ma questo richiede di monitorare manualmente. Sentry automatizza la raccolta e notifica. Conclusione: Con Sentry avrai un occhio su cosa accade in produzione: qualunque eccezione non gestita comparirà nel tuo pannello, permettendoti di replicarla e fixarla. Questo è fondamentale per mantenere la qualità dell'app nel tempo. Ricorda di inserire il DSN e testare l’integrazione. Puoi anche attivare la raccolta di performance (tracesSampleRate come sopra a 1.0 raccoglie tutte le transazioni di performance – es. tempi di API, rendering – valutane l'impatto e eventualmente abbassalo in prod).

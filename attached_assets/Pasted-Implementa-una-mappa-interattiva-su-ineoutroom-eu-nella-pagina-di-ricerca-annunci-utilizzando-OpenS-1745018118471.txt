@@ -1,0 +1,45 @@
+Implementa una mappa interattiva su ineoutroom.eu nella pagina di ricerca annunci, utilizzando OpenStreetMap tramite Leaflet.js, con le seguenti specifiche tecniche:
+
+🧰 TECNOLOGIA:
+- Utilizza la libreria `react-leaflet` per l’integrazione della mappa.
+- I tile devono provenire da OpenStreetMap o da un provider come CartoDB o Mapbox (gratuito).
+- Non utilizzare Google Maps o chiavi API.
+
+📍 MARKER CON PREZZO:
+- Ogni annuncio dovrà essere visualizzato sulla mappa con un marker personalizzato che mostri il prezzo (es. “€320”) in un box sopra il marker.
+- Il marker deve essere cliccabile e mostrare un tooltip con:
+  - Titolo dell’annuncio
+  - Prezzo
+  - Miniatura immagine (da URL dell’inserzione)
+  - Pulsante “Visualizza”
+
+🧠 CLUSTERING:
+- Usa `react-leaflet-markercluster` o `leaflet.markercluster` per raggruppare i marker in zone con alta densità.
+- Al click su un cluster, esegui lo zoom automatico nell’area per mostrare i marker singoli.
+- Mostra il numero totale di annunci nel cluster.
+
+🔁 SINCRONIZZAZIONE:
+- Quando l’utente effettua uno zoom o trascina la mappa, aggiorna dinamicamente:
+  - I marker visibili (limitandoli all’area visibile)
+  - La lista degli annunci visibile accanto o sotto la mappa
+- Recupera i dati da backend usando le coordinate visibili (`getBounds()` -> SW e NE).
+- Ottimizza con debounce (500ms) per non sovraccaricare le chiamate.
+
+🔍 UX RICERCA:
+- Inserisci l’opzione “Aggiorna ricerca mentre muovo la mappa” con toggle o checkbox.
+- Se attiva: aggiorna risultati al drag/zoom.
+- Se disattiva: mostra pulsante “Aggiorna”.
+
+📱 RESPONSIVITÀ:
+- La mappa deve adattarsi al 100% in larghezza.
+- Altezza minima 300px su mobile, adattabile a seconda della viewport.
+
+🧩 COMPONENTI SUGGERITI:
+- `MapContainerLeaflet` (inizializza mappa e clustering)
+- `MarkerWithTooltip`
+- `ClusterWrapper`
+- `MapSearchSyncHandler`
+
+📦 OTTIMIZZAZIONE:
+- Carica solo i marker visibili nella viewport attuale.
+- Usa `React.memo` o `useMemo` per non ricaricare l’intera mappa a ogni interazione.

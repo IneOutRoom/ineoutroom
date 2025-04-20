@@ -1,0 +1,123 @@
+Prompt 6 – Sitemap.xml & robots.txt  
+```plaintext
+🔧 Obiettivo: generare automaticamente `sitemap.xml` e `robots.txt`.
+
+📂 File/Cartelle:
+- `scripts/generate-sitemap.js`
+- Root `public/robots.txt`
+
+📋 Azioni:
+1. Installa `npm install --save-dev sitemap`
+2. In `scripts/generate-sitemap.js`:
+   ```js
+   const { SitemapStream, streamToPromise } = require('sitemap');
+   const fs = require('fs');
+   const announcements = await db.query('SELECT id, updated_at FROM announcements');
+   const smStream = new SitemapStream({ hostname: 'https://in-out.com' });
+   announcements.forEach(a => smStream.write({ url: `/annunci/${a.id}`, lastmodISO: a.updated_at.toISOString() }));
+   smStream.end();
+   const sitemap = await streamToPromise(smStream);
+   fs.writeFileSync('./public/sitemap.xml', sitemap);
+Aggiungi script in package.json: "postbuild": "node scripts/generate-sitemap.js"
+
+Crea public/robots.txt:
+
+makefile
+Copia
+User-agent: *
+Allow: /
+Sitemap: https://in-out.com/sitemap.xml
+Test: build + verifica sitemap.xml e robots.txt su produzione.
+
+php-template
+Copia
+
+---
+
+### Prompt 7 – Google Analytics / Mixpanel Integration  
+```plaintext
+🔧 Obiettivo: tracciare eventi chiave con Google Analytics 4 o Mixpanel.
+
+📂 File/Cartelle:
+- `src/utils/analytics.js`
+- `pages/_app.js`
+
+📋 Azioni:
+1. Installa GA4: includi script in `<Head>` di `_document.js`:
+   ```html
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+   <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-XXXXXX');
+   </script>
+In analytics.js, esporta trackEvent(name, params) che chiama gtag('event', name, params).
+
+Chiama trackEvent('search', { city, filters }) in SearchBar.jsx, trackEvent('contact_click', {...}) in Detail.jsx.
+
+Test: verifica in realtime di GA che compaiono eventi.
+
+ruby
+Copia
+
+---
+
+### Prompt 8 – Blog / Content Hub  
+```plaintext
+🔧 Obiettivo: aggiungere una sezione blog con post CMS‑style.
+
+📂 File/Cartelle:
+- `pages/blog/index.js`
+- `pages/blog/[slug].js`
+- `content/posts/*.md`
+
+📋 Azioni:
+1. Usa MDX: `npm install @next/mdx @mdx-js/loader`
+2. In `next.config.js` abilita MDX:
+   ```js
+   const withMDX = require('@next/mdx')({ extension: /\.mdx?$/ });
+   module.exports = withMDX({ pageExtensions: ['js','jsx','mdx'] });
+Crea content/posts/first-post.mdx con frontmatter title, date, author.
+
+In pages/blog/index.js usa fs per leggere file e generare lista.
+
+In pages/blog/[slug].js importa MDX e renderizza.
+
+Aggiungi link “Blog” in Navbar.
+
+Test: crea due post e verifica navigazione blog→post.
+
+yaml
+Copia
+
+---
+
+### Prompt 9 – Cookie Banner & GDPR  
+```plaintext
+🔧 Obiettivo: mostrare banner cookie e gestire opt‑in.
+
+📂 File/Cartelle:
+- `src/components/CookieBanner.jsx`
+- Storage localStorage
+
+📋 Azioni:
+1. Crea `CookieBanner.jsx` con checkbox “Accetto cookies di tracking”.
+2. Salva scelta in `localStorage.setItem('cookieConsent', true/false)`.
+3. In `_app.js`, prima di caricare Analytics, verifica `cookieConsent === 'true'`.
+4. Stili: banner bottom fixed con pulsante “Accetta”.
+5. Test: ricarica pagina, banner scompare se accettato e Analytics si attiva.
+Prompt 10 – Pagine Legali (TOS, Privacy, Cookie)
+plaintext
+Copia
+🔧 Obiettivo: creare pagine statiche per Termini, Privacy e Cookie.
+
+📂 File/Cartelle:
+- `pages/terms.js`, `pages/privacy.js`, `pages/cookie-policy.js`
+- Link in footer di `_app.js`
+
+📋 Azioni:
+1. In ogni pagina, inserisci contenuti legali base (bozza TOS, informativa GDPR).
+2. Aggiungi `<Link href="/terms">Termini</Link>` ecc. in `<Footer />`.
+3. Stili coerenti con il design esistente.
+4. Test: verifica link footer → pagina legale caricata.

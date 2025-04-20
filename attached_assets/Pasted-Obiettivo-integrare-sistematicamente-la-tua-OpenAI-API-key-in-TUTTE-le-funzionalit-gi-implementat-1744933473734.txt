@@ -1,0 +1,102 @@
+Obiettivo: integrare sistematicamente la tua OpenAI API key in TUTTE le funzionalità già implementate **e** in tutte quelle future, per rendere il sistema **intelligente**, **automatico**, **performante** e **scalabile**.
+
+📂 Setup Comune  
+- In `src/services/openaiClient.js`:
+  ```js
+  import OpenAI from "openai";
+  export const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+Assicurati che OPENAI_API_KEY sia correttamente definita nelle env.
+
+1. Descrizione Automatica Annuncio
+File API: src/api/generate-description.js
+
+Usa gpt-4 con prompt:
+
+arduino
+Copia
+“Sei un copywriter immobiliare. Genera bullet point descrittivi per un {type} di {size}m² a {city}, prezzo {price}€/mese.”
+Frontend: src/components/DescriptionGenerator.jsx
+
+2. Moderazione Contenuti
+API: src/api/moderate.js (usata da POST annunci, recensioni)
+
+Inietta:
+
+js
+Copia
+const { results } = await openai.moderations.create({ input: text });
+if (results[0].flagged) throw new Error("Contenuto non conforme");
+3. Chatbot Contestualizzato
+API: src/api/assistant.js
+
+Mantieni conversationHistory e chiama:
+
+js
+Copia
+await openai.chat.completions.create({
+  model: "gpt-4",
+  messages: conversationHistory.concat({ role:"user", content: question })
+});
+4. Ricerca Semantica con Embedding
+Servizio: src/services/semanticSearch.js
+
+Usa text-embedding-ada-002 per indicizzare title+description
+
+API GET /api/semantic-search?q= calcola embedding di q e restituisce top‑10 per cosine similarity.
+
+5. Raccomandazioni Personalizzate
+Servizio: src/services/recommendationService.js
+
+Salva embedding delle interazioni utente (view/save/contact)
+
+API GET /api/recommendations usa cosine similarity tra embedding utente e annunci.
+
+6. Sentiment Analysis Recensioni
+In src/api/post-review.js:
+
+js
+Copia
+const cls = await openai.classifications.create({
+  model: "text-classification-001",
+  query: comment,
+  examples: [["Molto bello", "POS"], ["Non mi piace", "NEG"]]
+});
+if (cls.label === "NEG") flagReview();
+7. Traduzione On‑the‑fly
+API GET /api/translate-openai?text=&lang=:
+
+js
+Copia
+await openai.chat.completions.create({
+  model: "gpt-3.5-turbo",
+  messages: [{ role:"user", content:`Traduci in ${lang}: ${text}` }]
+});
+8. Suggerimento Prezzi Dinamico (Italia & Spagna)
+DB: tabella market_stats(city,country,avg_price,std_dev)
+
+Servizio: src/services/priceSuggestionService.js:
+
+js
+Copia
+const resp = await openai.chat.completions.create({
+  model: "gpt-4",
+  messages:[
+    { role:"system", content:"Sei un esperto di mercato immobiliare IT/ES." },
+    { role:"user", content:
+      `Per ${city} (${country}), avg=${avg_price}, std=${std_dev}. Suggerisci range di prezzo €/m² per appartamenti 30m² e 50m².` }
+  ]
+});
+return resp.choices[0].message.content;
+API GET /api/price-advice?city=&country=IT|ES
+
+9. Fraud Detection & Anomaly Detection
+Servizio: src/services/fraudDetection.js usa Isolation Forest
+
+API GET /api/fraud/:announcementId restituisce score
+
+Frontend: src/components/FraudWarning.jsx mostra alert se score>0.8
+
+🔁 Estendi questa integrazione OpenAI API a tutte le nuove funzionalità future:
+ogni volta che aggiungi un modulo (analytics, PWA, referral, chat interna avanzata, document automation, A/B testing, ecc.), collega quel modulo a OpenAI per generazione dinamica, moderazione, classificazione, traduzione, analisi semantica o suggerimenti intelligenti.
+
+🎯 Obiettivo Finale: ogni parte del sistema, presente e futura, sfrutta OpenAI per essere robusta, adattiva e offrire l’esperienza più performante possibile.```

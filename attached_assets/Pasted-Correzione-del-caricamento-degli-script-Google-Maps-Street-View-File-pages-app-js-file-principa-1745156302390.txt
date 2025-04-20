@@ -1,0 +1,34 @@
+Correzione del caricamento degli script Google Maps / Street View
+File: pages/_app.js (file principale dell’app Next.js)
+Modifica: Assicura che l’API di Google Maps venga caricata una sola volta, in modo corretto e senza conflitti. Utilizza il componente <Script> di Next.js per includere lo script con la tua API key, ed evita duplicazioni rimuovendo eventuali altri inserimenti dello script. Ad esempio:
+jsx
+Copia
+Modifica
+// File: pages/_app.jsx
+import Script from 'next/script';
+import React from 'react';
+import '../styles/globals.css';  // import global styles se presenti
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      {/* Caricamento Google Maps API una sola volta */}
+      <Script 
+        id="google-maps-js" 
+        src={`https://maps.googleapis.com/maps/api/js?key=LA_TUA_API_KEY&libraries=places`} 
+        strategy="afterInteractive"
+      />
+      <Component {...pageProps} />
+    </>
+  );
+}
+
+export default MyApp;
+Nella tua configurazione, sostituisci LA_TUA_API_KEY con la chiave API Google Maps corretta.
+jsx
+Copia
+Modifica
+// Rimuovi altri caricamenti duplicati dello script Google Maps/StreetView altrove nel codice.
+// Ad esempio, se avevi <script> nel file _document o nelle pagine, eliminali per evitare conflitti.
+Commenti: Questo approccio carica l’API di Google Maps (inclusa la libreria Places, utile per funzioni avanzate) dopo che l’app è interattiva, evitando blocchi nel caricamento iniziale. Assicurati che il codice che utilizza window.google o google.maps (ad es. inizializzazione della mappa o Street View) venga eseguito dopo che lo script è stato caricato. Puoi verificare if(window.google) o usare un listener sull'evento di load dello script se necessario. Inoltre, rimuovendo duplicati e caricando correttamente lo script, risolvi errori comuni come "You have included the Google Maps API multiple times" o problemi di inizializzazione di Street View.
+Suggerimento: in alternativa a Google Maps, potresti valutare l’uso di mappe open source (OpenStreetMap) con librerie come Leaflet. Ad esempio, npm install react-leaflet leaflet e utilizzare componenti <MapContainer> e <TileLayer> al posto dell’API Google. Questa soluzione elimina la dipendenza da Google e le relative quote, ma richiede modificare i componenti mappa/marker di conseguenza.

@@ -1,0 +1,169 @@
+/**
+ * CSS per migliorare l'accessibilità di ineoutroom.eu
+ * Contiene variabili e classi ottimizzate per WCAG AA/AAA
+ */
+
+:root {
+  /* Colori principali ottimizzati per accessibilità */
+  --primary-accessible: #7716cb;      /* Versione più scura del viola primario per contrasto */
+  --primary-light-accessible: #a76be9; /* Versione più chiara con contrasto migliorato su bg scuro */
+  --primary-dark-accessible: #5a0c88; /* Versione ancora più scura per forte contrasto su bg chiaro */
+  
+  --accent-accessible: #cc9700;       /* Versione più scura dell'accent per contrasto migliore */
+  --accent-light: #ffe066;            /* Versione più chiara per contrasto su sfondi scuri */
+  --accent-dark: #997100;             /* Versione ancora più scura per contrasto su sfondi chiari */
+  
+  /* Grigi per testo con contrasti ottimali */
+  --text-primary: #222222;            /* Testo principale su sfondo chiaro (contrasto 13:1) */
+  --text-secondary: #555555;          /* Testo secondario con contrasto 7:1 */
+  --text-light: #f8f9fa;              /* Testo su sfondo scuro (contrasto >15:1) */
+  --text-muted: #64748b;              /* Testo attenuato ma ancora con contrasto 4.5:1 */
+  
+  /* Sfondi ottimizzati */
+  --bg-light: #ffffff;                /* Sfondo chiaro principale */
+  --bg-light-alt: #f5f6f8;            /* Sfondo alternativo chiaro */
+  --bg-dark: #1e293b;                 /* Sfondo scuro con contrasto ottimizzato */
+  --bg-dark-alt: #334155;             /* Sfondo alternativo scuro */
+  
+  /* Stati e feedback */
+  --success: #0f766e;                 /* Success con contrasto migliorato */
+  --warning: #b45309;                 /* Warning con contrasto migliorato */
+  --error: #b91c1c;                   /* Error con contrasto migliorato */
+  --info: #1e40af;                    /* Info con contrasto migliorato */
+  
+  /* Focus outlines */
+  --focus-ring: 0 0 0 2px rgba(107, 33, 168, 0.6);  /* Anello di focus visibile */
+  --focus-visible-color: #7716cb;                   /* Colore per :focus-visible */
+}
+
+/* Regole di accessibilità per elementi interattivi */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--focus-visible-color);
+  outline-offset: 2px;
+  box-shadow: var(--focus-ring);
+}
+
+/* Gestione del testo per l'accessibilità */
+.text-accessible-primary {
+  color: var(--primary-accessible);
+}
+
+.text-accessible-accent {
+  color: var(--accent-accessible);
+}
+
+.bg-accessible-primary {
+  background-color: var(--primary-accessible);
+  color: var(--text-light);
+}
+
+.bg-accessible-accent {
+  background-color: var(--accent-accessible);
+  color: var(--text-primary);
+}
+
+/* Fix per testo troppo piccolo */
+.small-text {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Specifiche per badge accessibili */
+.badge-accessible-primary {
+  background-color: var(--primary-accessible);
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.badge-accessible-accent {
+  background-color: var(--accent-accessible);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Colori per bottoni accessibili */
+.btn-accessible-primary {
+  background-color: var(--primary-accessible);
+  color: var(--text-light);
+  border: 1px solid transparent;
+}
+
+.btn-accessible-primary:hover {
+  background-color: var(--primary-dark-accessible);
+}
+
+.btn-accessible-outline {
+  background-color: transparent;
+  border: 1px solid var(--primary-accessible);
+  color: var(--primary-accessible);
+}
+
+.btn-accessible-outline:hover {
+  background-color: var(--primary-accessible);
+  color: var(--text-light);
+}
+
+/* Skip link per accessibilità da tastiera */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-light);
+  color: var(--primary-accessible);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
+  top: 0;
+}
+
+/* Miglioramenti per la leggibilità del testo ombreggiato */
+.text-shadow-accessible {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  font-weight: 600;
+}
+
+/* Stili per link accessibili */
+a.accessible-link {
+  color: var(--primary-accessible);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a.accessible-link:hover {
+  color: var(--primary-dark-accessible);
+  text-decoration-thickness: 2px;
+}
+
+/* Utilità per screenreader */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}

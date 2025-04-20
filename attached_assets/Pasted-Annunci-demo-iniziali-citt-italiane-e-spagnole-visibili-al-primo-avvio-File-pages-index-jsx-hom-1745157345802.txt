@@ -1,0 +1,105 @@
+Annunci demo iniziali (città italiane e spagnole visibili al primo avvio)
+File: pages/index.jsx (homepage con lista annunci)
+Modifica: Mostra alcuni annunci demo se il database non contiene ancora annunci, in modo che l’interfaccia non sia vuota al primo utilizzo. La soluzione seguente utilizza Firestore: carica in tempo reale gli annunci e, se non ne trova, visualizza una lista di demo predefiniti.
+jsx
+Copia
+Modifica
+// File: pages/index.jsx
+import { useEffect, useState } from 'react';
+import { db } from '../firebase';
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import Image from 'next/image';
+
+export default function HomePage() {
+  const [listings, setListings] = useState([]);
+
+  useEffect(() => {
+    // Query Firestore per tutti gli annunci
+    const q = query(collection(db, "listings"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      if (snapshot.empty) {
+        // Nessun annuncio reale: usa dati demo
+        const demoListings = [
+          {
+            id: "demo1",
+            title: "Stanza luminosa a Milano",
+            city: "Milano",
+            country: "Italia",
+            price: 500,
+            image: "https://placeimg.com/640/480/arch",  // immagine placeholder
+          },
+          {
+            id: "demo2",
+            title: "Habitación céntrica en Madrid",
+            city: "Madrid",
+            country: "Spagna",
+            price: 450,
+            image: "https://placeimg.com/640/480/arch",
+          },
+          {
+            id: "demo3",
+            title: "Camera accogliente a Roma",
+            city: "Roma",
+            country: "Italia",
+            price: 400,
+            image: "https://placeimg.com/640/480/arch",
+          },
+          {
+            id: "demo4",
+            title: "Habitación con vistas en Barcelona",
+            city: "Barcellona",
+            country: "Spagna",
+            price: 480,
+            image: "https://placeimg.com/640/480/arch",
+          }
+        ];
+        setListings(demoListings);
+      } else {
+        // Mappa i documenti Firestore in oggetti annuncio
+        const realListings = snapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            title: data.title,
+            city: data.city,
+            country: data.country,
+            price: data.price,
+            image: data.imageURL || "https://placeimg.com/640/480/arch"  // usa un campo imageURL se esiste, altrimenti placeholder
+          };
+        });
+        setListings(realListings);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  return (
+    <div className="home-page">
+      <h1>Annunci Disponibili</h1>
+      <div className="listings-grid">
+        {listings.map(listing => (
+          <div key={listing.id} className="listing-card">
+            {/* Usa Next/Image per ottimizzare immagini (vedi Prompt 12) */}
+            <Image 
+              src={listing.image} 
+              alt={listing.title} 
+              width={300} 
+              height={200} 
+              style={{ objectFit: 'cover' }} 
+            />
+            <h3>{listing.title}</h3>
+            <p>{listing.city}, {listing.country}</p>
+            <p><strong>{listing.price} €</strong> / mese</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+Commenti: Quando l’app viene aperta la prima volta e non ci sono annunci nel database, la snapshot snapshot.empty è vera. In tal caso creiamo un array di oggetti demo (demoListings) con alcuni annunci fittizi: abbiamo messo esempi in città italiane e spagnole come richiesto (Milano, Roma, Madrid, Barcellona) con titoli in italiano/spagnolo e prezzi ragionevoli. Questi annunci di esempio vengono settati nello state listings così compaiono nell’interfaccia. Man mano che gli utenti aggiungono veri annunci, Firestore li restituirà e il codice nel branch else li mapperà su realListings – sovrascrivendo i demo. In pratica:
+Se listings contiene dati demo e poi Firestore trova annunci reali, i demo verranno rimpiazzati automaticamente dalla funzione onSnapshot (perché scatta di nuovo quando il db cambia).
+Una volta che esiste almeno un annuncio reale, snapshot.empty sarà false e i demo non verranno più mostrati.
+Nell’esempio, per semplicità, l’immagine è uguale per tutti (usiamo un servizio placeholder). Sarebbe meglio avere immagini più rappresentative:
+Puoi sostituire listing.image con un campo reale imageURL preso da Firestore (se il tuo schema prevede un URL immagine per annuncio, come salvato su Firebase Storage). Nel codice è già previsto data.imageURL in fallback.
+Oppure potresti usare link a immagini pubbliche di appartamenti relativi alle città (assicurati di avere diritto di utilizzo, o utilizza servizi come Unsplash con API).
+Infine, il layout è presentato in forma semplice (una griglia .listings-grid di card). Assicurati di aggiungere un po’ di CSS per presentare bene le card. Ad esempio, .listing-card con bordo leggero, padding, hover, ecc. Questo approccio evita che un nuovo utente si trovi davanti a una pagina vuota: dà subito contezza del funzionamento dell’app mostrando esempi di annunci. Puoi anche etichettare questi annunci demo graficamente (es. un badge “Demo” sulla card) per distinguerli da quelli reali, ed eventualmente rimuoverli dopo un certo tempo o azione.

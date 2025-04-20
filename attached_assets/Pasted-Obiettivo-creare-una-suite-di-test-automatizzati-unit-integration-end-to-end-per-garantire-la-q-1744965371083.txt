@@ -1,0 +1,131 @@
+Obiettivo: creare una suite di test automatizzati (unit, integration, end-to-end) per garantire la qualità del codice.
+
+📂 File/Cartelle:
+- `__tests__` nella radice per unit/integration
+- `cypress/` per E2E
+
+📋 Azioni:
+1. **Unit Test (Jest)**  
+   - Installa: `npm install --save-dev jest @testing-library/react`  
+   - Configura in `package.json`:  
+     ```json
+     "scripts": {
+       "test:unit": "jest --config jest.unit.config.js"
+     }
+     ```
+   - Crea `jest.unit.config.js` che includa `src/**/*.test.jsx`  
+   - Scrivi test esempio per `Button.jsx` e `Card.jsx`.
+
+2. **Integration Test (Supertest)**  
+   - Installa: `npm install --save-dev supertest jest`  
+   - Configura in `jest.integration.config.js` con setup server.  
+   - Crea test per endpoint `/api/announcements` e `/api/auth`.
+
+3. **End‑to‑End (Cypress)**  
+   - Installa: `npm install --save-dev cypress`  
+   - In `cypress/integration/app.spec.js`, scrivi test:  
+     - Login, pubblica annuncio di prova, ricerca, logout.  
+   - Aggiungi script:  
+     ```json
+     "scripts": {
+       "test:e2e": "cypress run"
+     }
+     ```
+
+4. **Report di Coverage**  
+   - Configura Jest con `--coverage` e genera badge.  
+   - Assicurati copertura >80%.
+
+5. **Test in CI**  
+   - In GitHub Actions, esegui `npm run test:unit && npm run test:e2e`.
+
+Prompt A2 – CI/CD e Deploy Automatizzato
+plaintext
+Copia
+🔧 Obiettivo: configurare CI/CD con GitHub Actions per lint, test, build e deploy automatico.
+
+📂 File/Cartelle:
+- `.github/workflows/ci-cd.yml`
+
+📋 Azioni:
+1. **Workflow** (`ci-cd.yml`):
+   ```yaml
+   name: CI/CD
+   on: [push]
+   jobs:
+     build-and-test:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v2
+         - uses: actions/setup-node@v2
+           with: node-version: '18'
+         - run: npm ci
+         - run: npm run lint
+         - run: npm run test:unit
+         - run: npm run test:e2e
+         - run: npm run build
+         - uses: actions/upload-artifact@v2
+           with: name: build
+                 path: build
+     deploy:
+       needs: build-and-test
+       runs-on: ubuntu-latest
+       if: github.ref == 'refs/heads/main'
+       steps:
+         - uses: actions/download-artifact@v2
+           with: name: build
+         - name: Deploy to Vercel
+           uses: amondnet/vercel-action@v20
+           with:
+             vercel-token: ${{ secrets.VERCEL_TOKEN }}
+             vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+             vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+             working-directory: ./
+             alias-domains: 'in-out.example.com'
+Secrets
+
+Imposta in GitHub: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID
+
+Test
+
+Commit su main → verifica esecuzione workflow e deploy automatico.
+
+markdown
+Copia
+
+---
+
+### Prompt A3 – Performance & Bundle Optimization  
+```plaintext
+🔧 Obiettivo: ridurre dimensione bundle, abilitare code‑splitting e analisi bundle.
+
+📂 File/Cartelle:
+- `webpack.config.js` o `craco.config.js`  
+- `src/components/LazyComponent.jsx`
+
+📋 Azioni:
+1. **Code‑splitting**  
+   - In router:
+     ```js
+     const Home = React.lazy(() => import('./pages/Home'));
+     ```
+   - Avvolgi in `<Suspense fallback={<Spinner/>}>`
+
+2. **Bundle Analyzer**  
+   - Installa: `npm install --save-dev webpack-bundle-analyzer`  
+   - Configura plugin in `webpack.config.js`:
+     ```js
+     const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+     plugins: [new BundleAnalyzerPlugin({ analyzerMode: 'static' })]
+     ```
+
+3. **Ottimizzazione immagini**  
+   - Integra `image-webpack-loader` in Webpack  
+   - Usa WebP e srcset per componenti `<img>`
+
+4. **Lazy loading CSS**  
+   - Usa `MiniCssExtractPlugin` con chunkId
+
+5. **Test**  
+   - Esegui `npm run build`, apri `dist/analyzer.html` e verifica punti di miglioramento.
+

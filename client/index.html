@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>In&Out - Trova stanze e alloggi in Europa</title>
+    
+    <!-- Meta Tags per SEO e accessibilità -->
+    <meta name="description" content="In&Out - La piattaforma per trovare e pubblicare alloggi in Europa. Scopri stanze, appartamenti e soluzioni abitative in tutta Europa." />
+    <meta name="theme-color" content="#6a0dad" />
+    <meta name="apple-mobile-web-app-title" content="In&Out" />
+    <meta name="application-name" content="In&Out" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="keywords" content="alloggi, stanze, appartamenti, affitto, europa, studenti, erasmus, lavoratori, turismo" />
+    <meta name="author" content="In&Out Team" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="canonical" href="https://ineoutroom.eu" />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="In&Out - Trova stanze e alloggi in Europa" />
+    <meta property="og:description" content="Trova e affitta stanze, appartamenti e soluzioni abitative in tutta Europa. Pubblica il tuo annuncio su In&Out." />
+    <meta property="og:url" content="https://ineoutroom.eu" />
+    <meta property="og:image" content="/social-preview.webp" />
+    <meta property="og:image:alt" content="Logo e anteprima di In&Out - piattaforma per trovare alloggi in Europa" />
+    <meta property="og:site_name" content="In&Out Rooms" />
+    <meta property="og:locale" content="it_IT" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="In&Out - Trova stanze e alloggi in Europa" />
+    <meta name="twitter:description" content="Trova e affitta stanze, appartamenti e soluzioni abitative in tutta Europa." />
+    <meta name="twitter:image" content="/social-preview.webp" />
+    <meta name="twitter:image:alt" content="Logo e anteprima di In&Out" />
+    
+    <!-- Schema.org markup per i motori di ricerca -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "In&Out",
+      "alternateName": "ineoutroom",
+      "url": "https://ineoutroom.eu",
+      "description": "La piattaforma per trovare e pubblicare alloggi in Europa. Scopri stanze, appartamenti e soluzioni abitative in tutta Europa.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ineoutroom.eu/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- Schema.org markup per l'organizzazione -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "In&Out Rooms",
+      "url": "https://ineoutroom.eu",
+      "logo": "https://ineoutroom.eu/icons/icon-512x512.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "info@ineoutroom.eu"
+      },
+      "sameAs": [
+        "https://facebook.com/ineoutroom",
+        "https://instagram.com/ineoutroom",
+        "https://twitter.com/ineoutroom"
+      ]
+    }
+    </script>
+    
+    <!-- PWA Manifest and Icons -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/icons/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    
+    <!-- Apple PWA support -->
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-startup-image" href="/icons/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" />
+    <link rel="apple-touch-startup-image" href="/icons/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
+    <link rel="apple-touch-startup-image" href="/icons/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" />
+    <link rel="apple-touch-startup-image" href="/icons/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
+    
+    <!-- DNS prefetch e preconnect per performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//maps.googleapis.com" />
+    <link rel="dns-prefetch" href="//maps.gstatic.com" />
+    
+    <!-- Fonts con ottimizzazione di performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Fallback per browser che non supportano onload -->
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+    
+    <!-- Script per catturare gli errori di console per debugging -->
+    <script>
+      // Salva gli errori della console per diagnosticare problemi
+      window.__console_errors__ = [];
+      
+      // Override dei metodi console.error
+      var originalConsoleError = console.error;
+      console.error = function() {
+        window.__console_errors__.push(Array.from(arguments).join(' '));
+        originalConsoleError.apply(console, arguments);
+      };
+    </script>
+    
+    <!-- Nota: Google Maps viene ora caricato tramite @react-google-maps/api nei componenti React -->
+  </head>
+  <body>
+    <div id="root" role="application" aria-live="polite"></div>
+    <!-- Messaggio di fallback per JavaScript disabilitato -->
+    <noscript>
+      <div class="noscript-message" style="font-family: system-ui, sans-serif; text-align: center; padding: 2rem; max-width: 600px; margin: 0 auto; line-height: 1.5;">
+        <h1 style="color: #6a0dad;">In&Out - Trova stanze e alloggi in Europa</h1>
+        <p>Per utilizzare questa applicazione è necessario abilitare JavaScript nel browser.</p>
+        <p>Ti invitiamo ad attivare JavaScript o a utilizzare un browser che lo supporti.</p>
+      </div>
+    </noscript>
+    
+    <!-- Script principale dell'applicazione -->
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Script per installazione PWA -->
+    <script>
+      // Registrazione del service worker (solo in produzione)
+      if ('serviceWorker' in navigator && window.location.hostname !== 'localhost') {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(reg => console.log('Service worker registrato con successo:', reg.scope))
+            .catch(err => console.log('Errore nella registrazione del service worker:', err));
+        });
+      }
+    </script>
+    
+    <!-- Script per ambiente di sviluppo Replit -->
+    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+  </body>
+</html>

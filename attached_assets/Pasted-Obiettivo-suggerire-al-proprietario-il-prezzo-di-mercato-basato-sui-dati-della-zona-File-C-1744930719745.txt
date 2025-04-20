@@ -1,0 +1,84 @@
+Obiettivo: suggerire al proprietario il prezzo di mercato basato sui dati della zona.
+
+📂 File / Cartelle:
+- DB migrazione: `migrations/1620001000_create_price_stats.sql`
+- Servizio: `src/services/pricingService.js`
+- API: `src/api/pricing.js`
+- Frontend: `src/components/PriceSuggestion.jsx`
+
+📋 Azioni:
+1. **DB**  
+   ```sql
+   CREATE TABLE price_stats (
+     city TEXT,
+     average_price NUMERIC,
+     std_dev NUMERIC,
+     last_updated TIMESTAMP
+   );
+Servizio (pricingService.js)
+
+Job nightly che calcola AVG(price) e STDDEV(price) per città e popola price_stats
+
+Funzione getPriceSuggestion(city) che restituisce { average, min: avg-std, max: avg+std }
+
+API (pricing.js)
+
+js
+Copia
+router.get('/api/pricing-suggestion', async (req, res) => {
+  const { city } = req.query;
+  const suggestion = await getPriceSuggestion(city);
+  res.json(suggestion);
+});
+Frontend (PriceSuggestion.jsx)
+
+Nel form annuncio, dopo selezione città: fetch /api/pricing-suggestion?city=...
+
+Mostra “Prezzo medio in zona: €X. Consigliato: tra €Y e €Z.”
+
+✅ Test: in “Milano” suggerisce valori coerenti con statistiche.
+
+yaml
+Copia
+
+---
+
+**Prompt 4 – Fraud Detection & Anomaly Detection**  
+```plaintext
+🔧 Obiettivo: score di affidabilità per annunci e utenti con algoritmo di anomaly detection.
+
+📂 File / Cartelle:
+- DB migrazione: `migrations/1620002000_create_fraud_scores.sql`
+- Servizio: `src/services/fraudDetection.js`
+- API: `src/api/fraud.js`
+- Frontend: `src/components/FraudWarning.jsx`
+
+📋 Azioni:
+1. **DB**  
+   ```sql
+   CREATE TABLE fraud_scores (
+     announcement_id UUID PRIMARY KEY,
+     score NUMERIC,
+     last_evaluated TIMESTAMP
+   );
+Servizio (fraudDetection.js)
+
+Usa libreria isolation-forest o Python microservice
+
+Features: prezzo/pixel_of_image/descrizione_length/rapporti anomali
+
+Job scheduled /cron/fraudJob ogni ora
+
+API (fraud.js)
+
+js
+Copia
+router.get('/api/fraud/:announcementId', async (req, res) => {
+  const score = await getFraudScore(req.params.announcementId);
+  res.json({ score });
+});
+Frontend (FraudWarning.jsx)
+
+Se score > 0.8, mostra badge “Potenziale inserzione sospetta”
+
+✅ Test: crea annuncio con prezzo troppo basso/alto, score alto, warning visibile.

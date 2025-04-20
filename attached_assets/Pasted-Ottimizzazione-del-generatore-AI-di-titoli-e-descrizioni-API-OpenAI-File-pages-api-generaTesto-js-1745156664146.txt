@@ -1,0 +1,88 @@
+Ottimizzazione del generatore AI di titoli e descrizioni (API OpenAI)
+File: pages/api/generaTesto.js (API Route per generare titolo/descrizione con OpenAI)
+Modifica: Sposta la logica di generazione AI su un endpoint backend e ottimizzala per ridurre chiamate ridondanti. Utilizza una singola richiesta per ottenere sia il titolo che la descrizione in un colpo solo, e assicurati di gestire errori e performance. Prima di tutto, installa la libreria OpenAI sul progetto:
+bash
+Copia
+Modifica
+npm install openai   # da eseguire nel terminale Replit
+Crea (o modifica) l’API route come segue:
+jsx
+Copia
+Modifica
+// File: pages/api/generaTesto.js
+import { Configuration, OpenAIApi } from "openai";
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,  // Assicurati che la chiave sia impostata negli env (Replit Secrets)
+});
+const openai = new OpenAIApi(configuration);
+
+// Questo endpoint riceve dati (es. alcuni dettagli dell'annuncio) e restituisce un titolo e una descrizione generati
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Metodo non consentito" });
+  }
+  const { datiAnnuncio } = req.body;
+  // Prepara un prompt dettagliato per generare sia titolo che descrizione
+  const prompt = `Sei un assistente che genera un titolo e una descrizione per un annuncio immobiliare.
+Dati dell'annuncio: ${datiAnnuncio}
+Fornisci il risultato in italiano con il formato:
+Titolo: <una frase breve e accattivante>
+Descrizione: <un paragrafo descrittivo che evidenzi i punti di forza>`;
+  
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",  // modello GPT-3 (puoi valutare gpt-3.5-turbo via API chat per maggiore velocità/costi minori)
+      prompt: prompt,
+      max_tokens: 200,           // limita i token per evitare risposte troppo lunghe/costi eccessivi
+      temperature: 0.7,          // creatività moderata
+    });
+    const outputText = response.data.choices[0].text || "";
+    // Estrae titolo e descrizione dal testo generato
+    let titoloGenerato = "";
+    let descrizioneGenerata = "";
+    const titoloMatch = outputText.match(/Titolo:\s*(.*)/i);
+    const descrMatch = outputText.match(/Descrizione:\s*([\s\S]*)/i);
+    if (titoloMatch) titoloGenerato = titoloMatch[1].trim();
+    if (descrMatch) descrizioneGenerata = descrMatch[1].trim();
+
+    return res.status(200).json({
+      titolo: titoloGenerato,
+      descrizione: descrizioneGenerata
+    });
+  } catch (err) {
+    console.error("Errore API OpenAI:", err);
+    return res.status(500).json({ error: "Errore nella generazione del testo AI" });
+  }
+}
+Nel componente frontend dove offri la funzionalità (es. form di creazione annuncio), chiama questa API route invece di usare la chiave OpenAI direttamente sul client. Ad esempio:
+jsx
+Copia
+Modifica
+// Esempio di utilizzo nel form (frontend React)
+const generaTestoAnnuncio = async () => {
+  setGenerating(true);
+  try {
+    const res = await fetch("/api/generaTesto", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ datiAnnuncio: {/* inserisci qui i dati utili per contestualizzare l'annuncio */} })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      // Usa data.titolo e data.descrizione per popolare i campi del form
+      setTitle(data.titolo);
+      setDescription(data.descrizione);
+    } else {
+      console.error("Errore generazione:", data.error);
+      alert("Impossibile generare il testo, compila manualmente.");
+    }
+  } catch (err) {
+    console.error("Errore di rete:", err);
+    alert("Errore nella richiesta di generazione AI.");
+  } finally {
+    setGenerating(false);
+  }
+};
+Commenti: Con questa implementazione, l’API OpenAI viene chiamata una volta sola per ottenere sia titolo che descrizione (nel prompt abbiamo specificato il formato). Ciò riduce il numero di richieste e quindi i tempi di attesa e i costi. Abbiamo inoltre spostato la chiamata sul server (API route Next.js), proteggendo la chiave API OpenAI e rispettando le best practice di sicurezza. Assicurati di impostare la tua chiave OpenAI in un file .env o nei Secrets di Replit (es. OPENAI_API_KEY) e non nel codice front-end. Il codice gestisce anche errori: in caso di fallimento della generazione, logga l’errore e notifica l’utente senza rompere l’esperienza.
+Nota: Puoi sperimentare parametri diversi (ad es. modello gpt-3.5-turbo usando openai.createChatCompletion) per migliorare velocità o qualità. Inoltre, puoi implementare una cache semplice: se l’utente genera più volte per lo stesso input, evita di richiamare l’API inutilmente (magari memorizzando l’ultimo risultato generato).

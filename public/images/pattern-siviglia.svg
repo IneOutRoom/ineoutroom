@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="tiles" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="20" height="20" fill="none" stroke="white" stroke-width="1" opacity="0.2"/>
+      <rect x="20" y="20" width="20" height="20" fill="none" stroke="white" stroke-width="1" opacity="0.2"/>
+    </pattern>
+    <pattern id="stars" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M25,10 L28,18 L36,18 L30,24 L33,32 L25,27 L17,32 L20,24 L14,18 L22,18 Z" fill="none" stroke="white" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#tiles)"/>
+  <rect width="100%" height="100%" fill="url(#stars)"/>
+  <path d="M0,0 L40,0 L40,40 L80,40 L80,80 L120,80 L120,120 L160,120 L160,160 L200,160" fill="none" stroke="white" stroke-width="1" opacity="0.2"/>
+</svg>

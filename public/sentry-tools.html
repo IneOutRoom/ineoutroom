@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentry Test Tools - In&Out</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #6a0dad;
+      margin-bottom: 1rem;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #333;
+      font-size: 1.25rem;
+    }
+    button {
+      background-color: #6a0dad;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    button:hover {
+      background-color: #5a0a9d;
+    }
+    .green {
+      background-color: #28a745;
+    }
+    .green:hover {
+      background-color: #218838;
+    }
+    .red {
+      background-color: #dc3545;
+    }
+    .red:hover {
+      background-color: #c82333;
+    }
+    .blue {
+      background-color: #007bff;
+    }
+    .blue:hover {
+      background-color: #0069d9;
+    }
+    .orange {
+      background-color: #fd7e14;
+    }
+    .orange:hover {
+      background-color: #e76b06;
+    }
+    .response {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 12px;
+      margin-top: 12px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      font-size: 14px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .error {
+      color: #dc3545;
+    }
+    .success {
+      color: #28a745;
+    }
+    .info {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sentry Test Tools - In&Out</h1>
+  <p>Strumenti per testare l'integrazione e il monitoraggio di Sentry nel progetto In&Out</p>
+  
+  <div class="card">
+    <h2>Stato Sentry</h2>
+    <button id="checkStatus" class="green">Verifica stato Sentry</button>
+    <div id="statusResponse" class="response">Clicca il pulsante per verificare lo stato di Sentry</div>
+  </div>
+  
+  <div class="card">
+    <h2>Test errori API</h2>
+    <button id="testLatency" class="blue">Test latenza API</button>
+    <button id="testError" class="red">Test errore API</button>
+    <button id="testSentryError" class="orange">Test Sentry API</button>
+    <div id="apiResponse" class="response">Clicca un pulsante per testare le API</div>
+  </div>
+  
+  <div class="card">
+    <h2>Test errori JavaScript</h2>
+    <button id="testUndefinedFunction" class="red">Test Undefined Function</button>
+    <button id="testTypeError" class="red">Test Type Error</button>
+    <button id="testReferenceError" class="red">Test Reference Error</button>
+    <div id="jsResponse" class="response">Clicca un pulsante per testare gli errori JavaScript</div>
+    <div class="info">Nota: Questi test generano errori JavaScript che vengono catturati e inviati a Sentry.</div>
+  </div>
+  
+  <script>
+    // Funzione per aggiornare l'area di risposta con formattazione JSON
+    function updateResponse(elementId, data, isError = false) {
+      const element = document.getElementById(elementId);
+      element.className = isError ? 'response error' : 'response success';
+      element.textContent = JSON.stringify(data, null, 2);
+    }
+    
+    // Test stato Sentry
+    document.getElementById('checkStatus').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/api/sentry-check');
+        const data = await response.json();
+        updateResponse('statusResponse', data);
+      } catch (error) {
+        updateResponse('statusResponse', { error: error.message }, true);
+      }
+    });
+    
+    // Test latenza API
+    document.getElementById('testLatency').addEventListener('click', async () => {
+      try {
+        const start = performance.now();
+        const response = await fetch('/api/test-latency');
+        const data = await response.json();
+        const end = performance.now();
+        
+        data.clientLatency = Math.round(end - start);
+        updateResponse('apiResponse', data);
+      } catch (error) {
+        updateResponse('apiResponse', { error: error.message }, true);
+      }
+    });
+    
+    // Test errore API
+    document.getElementById('testError').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/api/test-error');
+        const data = await response.json();
+        updateResponse('apiResponse', data);
+      } catch (error) {
+        updateResponse('apiResponse', { error: error.message }, true);
+      }
+    });
+    
+    // Test Sentry API
+    document.getElementById('testSentryError').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/api/sentry-check', {
+          method: 'POST'
+        });
+        const data = await response.json();
+        updateResponse('apiResponse', data);
+      } catch (error) {
+        updateResponse('apiResponse', { error: error.message }, true);
+      }
+    });
+    
+    // Test errori JavaScript
+    document.getElementById('testUndefinedFunction').addEventListener('click', () => {
+      try {
+        // Genera un errore chiamando una funzione non definita
+        myUndefinedFunction();
+      } catch (error) {
+        updateResponse('jsResponse', { 
+          type: 'UndefinedFunction',
+          message: error.message,
+          stack: error.stack,
+          timestamp: new Date().toISOString()
+        });
+      }
+    });
+    
+    document.getElementById('testTypeError').addEventListener('click', () => {
+      try {
+        // Genera un errore di tipo chiamando un metodo su null
+        const obj = null;
+        obj.method();
+      } catch (error) {
+        updateResponse('jsResponse', { 
+          type: 'TypeError',
+          message: error.message,
+          stack: error.stack,
+          timestamp: new Date().toISOString()
+        });
+      }
+    });
+    
+    document.getElementById('testReferenceError').addEventListener('click', () => {
+      try {
+        // Genera un errore di riferimento a una variabile non definita
+        console.log(undefinedVariable);
+      } catch (error) {
+        updateResponse('jsResponse', { 
+          type: 'ReferenceError',
+          message: error.message,
+          stack: error.stack,
+          timestamp: new Date().toISOString()
+        });
+      }
+    });
+  </script>
+</body>
+</html>

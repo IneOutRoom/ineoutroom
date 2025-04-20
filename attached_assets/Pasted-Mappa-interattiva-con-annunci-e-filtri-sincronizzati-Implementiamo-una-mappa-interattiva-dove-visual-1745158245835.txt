@@ -1,0 +1,191 @@
+Mappa interattiva con annunci e filtri sincronizzati
+Implementiamo una mappa interattiva dove visualizzare i marker degli annunci e filtrare i risultati in base all’area visibile e ad altri criteri (es. prezzo). Quando l’utente muove la mappa o applica filtri, la lista di annunci si aggiorna di conseguenza. Prerequisiti: Assicurati di aver corretto il caricamento dell’API Google Maps (Prompt 3). Stiamo usando l’API JavaScript di Google Maps già inclusa globalmente. Inoltre, per comodità, ogni annuncio dovrebbe avere coordinate geografiche (lat e lng) salvate nel database (ad esempio ottenute tramite geocoding dell’indirizzo). Se non le hai, puoi inserirle manualmente per gli annunci demo e futuri. File: pages/index.jsx – Estensione della homepage con mappa e filtri
+jsx
+Copia
+Modifica
+// File: pages/index.jsx  (homepage con lista + mappa)
+import { useEffect, useRef, useState } from 'react';
+import { db } from '../firebase';
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import Image from 'next/image';
+
+export default function HomePage() {
+  const [listingsAll, setListingsAll] = useState([]);        // tutti gli annunci (reali o demo)
+  const [filteredListings, setFilteredListings] = useState([]); // annunci filtrati da mostrare
+  const [priceMax, setPriceMax] = useState(2000);            // filtro: prezzo massimo (di default 2000 €)
+  const [bounds, setBounds] = useState(null);                // confini correnti della mappa (lat/lng bounds)
+  const mapRef = useRef(null);    // riferimento al div della mappa
+  const mapInstance = useRef(null); // memorizza l'istanza della mappa Google
+  const markersRef = useRef([]);  // mantiene i marker attivi sulla mappa
+
+  useEffect(() => {
+    // Recupera tutti gli annunci da Firestore in realtime
+    const q = query(collection(db, "listings"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      if (snapshot.empty) {
+        // Usa gli annunci demo se nessun annuncio reale
+        const demoListings = [
+          { id: "demo1", title: "Stanza luminosa a Milano", city: "Milano", country: "Italia", price: 500, lat: 45.4641, lng: 9.1919, image: "https://placeimg.com/400/300/arch" },
+          { id: "demo2", title: "Habitación céntrica en Madrid", city: "Madrid", country: "Spagna", price: 450, lat: 40.4168, lng: -3.7038, image: "https://placeimg.com/400/300/arch" },
+          { id: "demo3", title: "Camera accogliente a Roma", city: "Roma", country: "Italia", price: 400, lat: 41.9028, lng: 12.4964, image: "https://placeimg.com/400/300/arch" },
+          { id: "demo4", title: "Habitación con vistas en Barcelona", city: "Barcellona", country: "Spagna", price: 480, lat: 41.3874, lng: 2.1686, image: "https://placeimg.com/400/300/arch" }
+        ];
+        setListingsAll(demoListings);
+        setFilteredListings(demoListings);
+      } else {
+        const all = snapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            title: data.title,
+            city: data.city,
+            country: data.country,
+            price: data.price,
+            lat: data.lat,
+            lng: data.lng,
+            image: data.imageURL || "https://placeimg.com/400/300/arch"
+          };
+        });
+        setListingsAll(all);
+        // Inizialmente, gli annunci filtrati coincidono con tutti
+        setFilteredListings(all);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    // Inizializza la mappa Google quando lo script è pronto
+    const initMap = () => {
+      if (!mapRef.current) return;
+      mapInstance.current = new window.google.maps.Map(mapRef.current, {
+        center: { lat: 42.0, lng: 12.0 },  // centro approssimativo (Italia)
+        zoom: 5
+      });
+      // Listener: quando la mappa smette di muoversi (idle), aggiorna bounds
+      window.google.maps.event.addListener(mapInstance.current, 'idle', () => {
+        if (!mapInstance.current) return;
+        const boundsObj = mapInstance.current.getBounds();
+        if (boundsObj) {
+          const ne = boundsObj.getNorthEast();
+          const sw = boundsObj.getSouthWest();
+          setBounds({
+            north: ne.lat(), 
+            south: sw.lat(), 
+            east: ne.lng(), 
+            west: sw.lng()
+          });
+        }
+      });
+    };
+    // Attendi finché l'API Google Maps non è caricata
+    if (window.google && window.google.maps && !mapInstance.current) {
+      initMap();
+    } else {
+      // Polling: controlla ogni 500ms se google è disponibile
+      const interval = setInterval(() => {
+        if (window.google && window.google.maps && !mapInstance.current) {
+          initMap();
+          clearInterval(interval);
+        }
+      }, 500);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Aggiorna i marker sulla mappa in base a filteredListings
+    if (!mapInstance.current) return;
+    // Rimuovi marker esistenti
+    markersRef.current.forEach(marker => marker.setMap(null));
+    markersRef.current = [];
+    // Aggiungi marker per ciascun annuncio filtrato
+    filteredListings.forEach(listing => {
+      if (!listing.lat || !listing.lng) return;
+      const marker = new window.google.maps.Marker({
+        position: { lat: listing.lat, lng: listing.lng },
+        map: mapInstance.current,
+        title: listing.title
+      });
+      markersRef.current.push(marker);
+    });
+  }, [filteredListings]);
+
+  useEffect(() => {
+    // Filtra gli annunci in base a prezzo e bounds della mappa
+    let result = listingsAll;
+    // Filtro per prezzo massimo
+    result = result.filter(listing => listing.price <= priceMax);
+    // Filtro per bounds mappa (mostra solo annunci i cui lat/lng sono visibili)
+    if (bounds) {
+      result = result.filter(listing => {
+        if (!listing.lat || !listing.lng) return true;  // se non ha coordinate, lo consideriamo comunque
+        return (
+          listing.lat <= bounds.north &&
+          listing.lat >= bounds.south &&
+          listing.lng <= bounds.east &&
+          listing.lng >= bounds.west
+        );
+      });
+    }
+    setFilteredListings(result);
+  }, [priceMax, bounds, listingsAll]);
+
+  return (
+    <div className="home-page">
+      <h1>Annunci Disponibili</h1>
+
+      {/* Sezione filtri */}
+      <div className="filters">
+        <label>Filtra per prezzo (max {priceMax} €):</label>
+        <input 
+          type="range" 
+          min="0" 
+          max="2000" 
+          step="50"
+          value={priceMax} 
+          onChange={(e) => setPriceMax(Number(e.target.value))} 
+        />
+        <span>{priceMax} €</span>
+      </div>
+
+      <div className="content-wrapper" style={{ display: 'flex' }}>
+        {/* Lista degli annunci filtrati */}
+        <div className="listings" style={{ flex: '1 1 50%', maxHeight: '80vh', overflowY: 'auto', paddingRight: '1rem' }}>
+          {filteredListings.map(listing => (
+            <div key={listing.id} className="listing-card">
+              <Image 
+                src={listing.image} 
+                alt={listing.title} 
+                width={280} 
+                height={180} 
+                style={{ objectFit: 'cover' }} 
+              />
+              <h3>{listing.title}</h3>
+              <p>{listing.city}, {listing.country}</p>
+              <p><strong>{listing.price} €</strong> / mese</p>
+            </div>
+          ))}
+          {filteredListings.length === 0 && <p>Nessun annuncio corrisponde ai filtri.</p>}
+        </div>
+
+        {/* Mappa */}
+        <div className="map" style={{ flex: '1 1 50%', height: '80vh' }}>
+          <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+Commenti:
+Stato e dati: abbiamo listingsAll (tutti gli annunci recuperati) e filteredListings (quelli visibili secondo i filtri correnti). Al caricamento, recuperiamo gli annunci da Firestore in realtime con onSnapshot. Se vuoto, carichiamo i demo (con coordinate lat/lng per poterli mostrare sulla mappa). Notare che abbiamo aggiunto campi lat e lng negli oggetti demo e nei reali (supponendo che Firestore abbia questi campi; in caso contrario dovrai popolarli manualmente, altrimenti i marker non appariranno).
+Inizializzazione mappa: utilizziamo useEffect per creare la mappa Google dentro il div mapRef. Poiché lo script Google è caricato asincrono, usiamo un polling che ogni 500ms controlla se window.google.maps è pronto, dopodiché inizializza la mappa (new google.maps.Map). Impostiamo un centro di default (lat 42, lng 12 che cade in Italia centrale) e zoom 5 per inquadrare grossomodo l’Italia e la Spagna. Poi registriamo un listener 'idle' sulla mappa: ad ogni fine movimento/zoom, calcoliamo i nuovi confini bounds con getBounds(), e li mettiamo nello state. Questo state bounds viene usato per filtrare gli annunci mostrati (mostriamo solo quelli i cui lat/lng rientrano nella mappa visibile).
+Filtri sincronizzati: nel useEffect finale, ogni volta che cambia priceMax, bounds o l’elenco completo listingsAll, ricalcoliamo filteredListings. Filtro prezzo: includiamo solo annunci con price <= priceMax. Filtro mappa: se bounds è definito, includiamo solo annunci con coordinate entro i limiti nord/sud/est/ovest. Se un annuncio non ha coordinate (lat/lng undefined), per sicurezza lo includiamo (potresti anche escluderlo, ma qui mettiamo return true così non sparisce – magari è un annuncio senza posizione precisa).
+Marker sulla mappa: altro useEffect osserva filteredListings. Ogni volta che la lista filtrata cambia, rimuoviamo i marker esistenti (marker.setMap(null)) e ne creiamo di nuovi per ogni annuncio filtrato corrente. Conserviamo i marker creati in markersRef.current in modo da poterli cancellare al prossimo update. Ogni marker ha come posizione listing.lat, listing.lng e title l’intestazione dell’annuncio (così appare un tooltip al hover sulla mappa). Nota: Per evitare memory leak, potresti anche voler rimuovere i listener associati ai marker se ne avessi, ma qui non ne abbiamo aggiunti (potresti aggiungere un click listener per mostrare info-window, non incluso per brevità).
+UI layout: Abbiamo creato un wrapper .content-wrapper con display: flex per affiancare la lista e la mappa (50% ciascuno). La lista è scrollabile verticalmente (overflowY: auto) con altezza massima 80vh (80% viewport) per lasciare un margine. La mappa è impostata a 80vh di altezza per corrispondere. Puoi adattare questi valori o usare CSS esterno. L’importante è che mentre la mappa occupa il lato destro, la lista a sinistra possa scrollare indipendentemente.
+Filtro prezzo: un input range controlla priceMax. L’utente può trascinarlo e filtrare i risultati; il valore selezionato è mostrato accanto. Puoi definire min, max, step in base ai range di prezzo degli annunci. (Abbiamo messo max 2000€ con step di 50). All’aggiornarsi priceMax, il useEffect di filtro reagirà e aggiornerà la lista e i marker. Se nessun annuncio soddisfa i filtri, compare il messaggio "Nessun annuncio corrisponde ai filtri."
+Filtro area (mappa): quando l’utente zooma o trascina la mappa, il listener 'idle' aggiorna bounds, il quale attiva il re-filter. Così la lista a sinistra mostra solo gli annunci nell’area visibile corrente. Se l’utente sposta la mappa su un’altra città, vedrà solo annunci di quella zona. Questo è simile al comportamento di Airbnb/Idealista dove la lista è sincronizzata con la mappa. Potresti aggiungere un controllo di zoom: ad esempio, se lo zoom è molto basso (mappa molto ampia), magari preferiresti non filtrare troppo, ma per ora consideriamo bounds sempre, indipendentemente dallo zoom.
+Considerazioni aggiuntive:
+Marker clustering: se prevedi tantissimi annunci, potresti voler raggruppare marker vicini (Google Maps offre MarkerClusterer). Non implementato qui, ma utile sapere.
+Info Window: potresti aggiungere un info-window quando clicchi un marker, mostrando titolo/prezzo e magari un link al dettaglio annuncio. Questo arricchirebbe l’esperienza ma richiede qualche riga in più con new google.maps.InfoWindow({...}) e marker.addListener('click', ...).
+Prestazioni: Filtrare lato client va bene per quantità moderate di annunci. Se prevedi migliaia di annunci, questa soluzione potrebbe essere inefficiente (downloading tutti per poi filtrarli). In Prompt 11 vedremo ottimizzazioni come query lato server con filtri (anche se Firestore non supporta query geospaziali facilmente senza geohash). In contesti più grandi, si usano servizi di geosearch (Algolia) o si memorizzano geohash per fare ricerche per area. Per ora, questa implementazione va bene per numeri piccoli-medi e demo.
+Con questa mappa interattiva, l’utente può esplorare geograficamente gli annunci: i filtri rimangono in sync, offrendo un’esperienza simile a Airbnb (che mostra risultati pertinenti all’area visualizzata).

@@ -1,0 +1,94 @@
+Obiettivo: costruire un motore di raccomandazione che mostri all’utente annunci basati su similarità di comportamento e preferenze.
+
+📂 File / Cartelle:
+- DB migrazione: `migrations/1620000000_create_user_interactions.sql`
+- Servizio: `src/services/recommendationService.js`
+- API: `src/api/recommendations.js`
+- Frontend: `src/components/Recommendations.jsx`
+
+📋 Azioni:
+1. **DB**  
+   ```sql
+   CREATE TABLE user_interactions (
+     id SERIAL PRIMARY KEY,
+     user_id UUID REFERENCES users(id),
+     announcement_id UUID REFERENCES announcements(id),
+     action TEXT CHECK (action IN ('view','save','contact')),
+     created_at TIMESTAMP DEFAULT NOW()
+   );
+Servizio (recommendationService.js)
+
+Implementa collaborative filtering semplice:
+
+Raggruppa utenti per annunci salvati/visti
+
+Usa Jaccard similarity e restituisci top‑10 annunci
+
+Funzione: async function getRecommendations(userId) { … }
+
+API (recommendations.js)
+
+js
+Copia
+router.get('/api/recommendations', async (req, res) => {
+  const recs = await getRecommendations(req.auth.uid());
+  res.json(recs);
+});
+Frontend (Recommendations.jsx)
+
+Effettua fetch a /api/recommendations
+
+Mostra elenco card “Annunci consigliati per te”
+
+✅ Test: utente A salva 3 annunci simili, il sistema gli suggerisce annunci analoghi.
+
+yaml
+Copia
+
+---
+
+**Prompt 2 – Ricerca Testuale e Geospaziale Avanzata**  
+```plaintext
+🔧 Obiettivo: integrare Elasticsearch per ricerche full‑text e geosearch per ricerche entro raggio.
+
+📂 File / Cartelle:
+- `docker-compose.yml` (aggiungi servizio `elasticsearch`)
+- Script di indexing: `src/scripts/indexAnnouncements.js`
+- API: `src/api/search.js`
+- Frontend: `src/components/SearchBar.jsx`
+
+📋 Azioni:
+1. **docker‑compose.yml**  
+   ```yaml
+   services:
+     elasticsearch:
+       image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+       environment:
+         - discovery.type=single-node
+       ports:
+         - "9200:9200"
+Indexing (indexAnnouncements.js)
+
+Mappa con campi title, description, location (geo_point)
+
+Script che cicla SELECT * FROM announcements e li inserisce in ES
+
+API (search.js)
+
+js
+Copia
+router.get('/api/search', async (req, res) => {
+  const { q, lat, lng, radius } = req.query;
+  const body = { query: { bool: { must: [{ match: { description: q }}], filter: [{ geo_distance: { distance: `${radius}km`, location: { lat, lon: lng }}}] }}};
+  const results = await esClient.search({ index:'announcements', body });
+  res.json(results.hits.hits);
+});
+Frontend (SearchBar.jsx)
+
+Autocomplete ES per q
+
+Geopicker per lat/lng e raggio
+
+Chiamata a /api/search
+
+✅ Test: cerca “bilocale” entro 5 km → ritorna solo gli annunci geolocalizzati.

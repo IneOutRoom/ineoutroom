@@ -1,0 +1,75 @@
+🔧 Obiettivo: creare una pagina profilo personale protetta (/profile) per ogni utente, con interfaccia coerente al design del sito, dati unici di ciascuno, upload avatar e barra di avanzamento del profilo.
+
+📂 File/Cartelle da creare/modificare:
+- Route/Pages:
+  - `src/pages/profile.js` (Next.js) oppure `src/views/ProfilePage.jsx`
+- Componenti:
+  - `src/components/ProfileHeader.jsx`
+  - `src/components/ProfileProgressBar.jsx`
+  - `src/components/ProfileTabs.jsx`
+  - `src/components/MyAnnouncements.jsx`
+  - `src/components/MyFavorites.jsx`
+  - `src/components/MySubscriptions.jsx`
+  - `src/components/ProfileSettings.jsx`
+- API:
+  - `GET /api/users/me` → `{ id, name, surname, email, avatarUrl, hasVat, vatNumber, phone, bio }`
+  - `PUT /api/users/me` → aggiorna profilo
+  - `POST /api/users/me/avatar` → upload immagine profilo
+  - `GET /api/announcements?userId=me`
+  - `GET /api/favorites?userId=me`
+  - `GET /api/subscriptions?userId=me`
+- Navbar:
+  - Aggiungere link “Il mio profilo” visibile quando autenticato
+
+📋 Azioni dettagliate:
+
+1. **Protezione rotta**  
+   - In `profile.js`, includi guard che reindirizza a `/login` se non autenticato (sia Google sia email).
+
+2. **ProfileHeader.jsx**  
+   - Mostra avatar (fallback icona se non impostato), nome completo  
+   - Pulsante “Modifica Avatar” che apre upload via `POST /api/users/me/avatar`  
+
+3. **ProfileProgressBar.jsx**  
+   - Calcola percentuale completamento su 6 campi: avatar (15%), nome (15%), cognome (15%), email verificata (15%), numero di telefono (20%), partita IVA (10%), bio (10%)  
+   - Mostra barra colorata: 0–50% arancio, 51–99% giallo, 100% verde
+
+4. **ProfileTabs.jsx**  
+   - Tabbed UI:
+     - “Il mio profilo” → `ProfileSettings.jsx`
+     - “Annunci” → `MyAnnouncements.jsx`
+     - “Preferiti” → `MyFavorites.jsx`
+     - “Abbonamenti” → `MySubscriptions.jsx`
+
+5. **ProfileSettings.jsx**  
+   - Form con campi: nome, cognome, email (non editabile se Google), telefono, bio, checkbox “Ho Partita IVA” se spuntata mostra campo `vatNumber`  
+   - Al submit `PUT /api/users/me` aggiorna dati e ricalcola progress bar  
+
+6. **MyAnnouncements.jsx**  
+   - Fetch `GET /api/announcements?userId=me`  
+   - Elenco card con “Modifica”/“Elimina”
+
+7. **MyFavorites.jsx**  
+   - Fetch `GET /api/favorites?userId=me`  
+   - Elenco card preferite con “Rimuovi”
+
+8. **MySubscriptions.jsx**  
+   - Fetch `GET /api/subscriptions?userId=me`  
+   - Mostra piano attivo, inserzioni rimanenti, pulsante “Rinnova”
+
+9. **Navbar update**  
+   - In `Navbar.jsx`, sotto `if(user)`, aggiungi `<Link href="/profile">Il mio profilo</Link>`
+
+10. **Stile & Responsive**  
+    - Palette primaria (viola, giallo, grigio/nero)  
+    - Su mobile: progress bar sopra il tab content, tabs swipeable o select dropdown  
+    - Coerenza padding, font, ombre con resto del sito
+
+🔁 **Test**:
+- Login via Google e via email → “Il mio profilo” appare
+- Carica avatar → barra sale del 15%
+- Compila nome, cognome, telefono, bio, partita IVA → progress bar avanza correttamente fino al 100%
+- Naviga tra tab Profilo, Annunci, Preferiti, Abbonamenti senza errori
+- Modifica dati e verifica persistenza e UI aggiornata
+
+🎯 Obiettivo finale: pagina profilo completa, con upload immagine, progress bar dinamica e gestione di tutti i dati utente, perfettamente integrata nel design del sito.```

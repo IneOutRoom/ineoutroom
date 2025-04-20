@@ -1,0 +1,128 @@
+Prompt 9 – Monitoraggio e Allarmi**  
+```plaintext
+🔧 Obiettivo: logging strutturato e alerting su errori e prestazioni.
+
+📂 File / Cartelle:
+- Logger: `src/utils/logger.js`
+- Config Elastic Stack: `docker-compose-logging.yml`
+- Alerting: Grafana dashboard JSON
+
+📋 Azioni:
+1. **Logger** (`logger.js`)  
+   ```js
+   import winston from 'winston';
+   export const logger = winston.createLogger({ transports:[ new winston.transports.Console(), new winston.transports.Http({ host:'elasticsearch', path:'/logs' }) ]});
+Elastic / Kibana
+
+Docker‑compose per Elastic, Kibana, Logstash
+
+Config Index pattern app-logs-*
+
+Grafana
+
+Import JSON con alert su error rate >5% o latenza API >500ms
+
+✅ Test: forza un’errore 500, verifica comparsa alert in Grafana.
+
+yaml
+Copia
+
+---
+
+**Prompt 10 – Caching Distribuito**  
+```plaintext
+🔧 Obiettivo: velocizzare risposte e alleggerire il database con Redis cache.
+
+📂 File / Cartelle:
+- `docker-compose.yml` (aggiungi servizio `redis`)
+- Cache helper: `src/services/cache.js`
+- API modifications: es. `src/api/search.js`
+
+📋 Azioni:
+1. **docker‑compose.yml**  
+   ```yaml
+   services:
+     redis:
+       image: redis:6
+       ports: ["6379:6379"]
+Cache Helper (cache.js)
+
+js
+Copia
+import Redis from 'ioredis';
+const redis = new Redis();
+export async function cache(key, fn, ttl=60) {
+  const cached = await redis.get(key);
+  if (cached) return JSON.parse(cached);
+  const result = await fn();
+  await redis.set(key, JSON.stringify(result), 'EX', ttl);
+  return result;
+}
+API (search.js)
+
+js
+Copia
+router.get('/api/search', async (req, res) => {
+  const key = `search:${JSON.stringify(req.query)}`;
+  const data = await cache(key, () => performSearch(req.query), 300);
+  res.json(data);
+});
+✅ Test: chiamata identica a /api/search?q=... risponde da cache se entro 5 minuti.
+
+yaml
+Copia
+
+---
+
+**Prompt 11 – Background Jobs e Code Queue**  
+```plaintext
+🔧 Obiettivo: eseguire operazioni asincrone con BullMQ e Redis.
+
+📂 File / Cartelle:
+- Queue config: `src/queues/jobQueue.js`
+- Worker: `workers/cleanupWorker.js`
+- Cron schedule: `src/cron.js`
+
+📋 Azioni:
+1. **Queue** (`jobQueue.js`)  
+   ```js
+   import { Queue } from 'bullmq';
+   export const queue = new Queue('jobs', { connection:{ host:'localhost', port:6379 }});
+Worker (cleanupWorker.js)
+
+js
+Copia
+import { Worker } from 'bullmq';
+new Worker('jobs', async job => {
+  if (job.name==='cleanupExpired') { await cleanupAnnouncements(); }
+}, { connection:{ host:'localhost', port:6379 }});
+Cron (cron.js)
+
+js
+Copia
+import cron from 'node-cron';
+import { queue } from './src/queues/jobQueue';
+cron.schedule('0 0 * * *', () => queue.add('cleanupExpired'));
+✅ Test: lancia manualmente queue.add('cleanupExpired') e verifica rimozione annunci scaduti.
+
+yaml
+Copia
+
+---
+
+**Prompt 12 – SEO e Performance Web**  
+```plaintext
+🔧 Obiettivo: migrare a SSR/SSG con Next.js, ottimizzare SEO e immagini.
+
+📂 File / Cartelle:
+- Nuovo progetto: `pages/` directory (Next.js)
+- Components: `pages/index.js`, `pages/annunci/[id].js`
+- Config: `next.config.js`
+
+📋 Azioni:
+1. **Migr
+
+
+
+
+

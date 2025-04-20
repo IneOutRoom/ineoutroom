@@ -1,0 +1,115 @@
+Obiettivo: creare un tour in‑app che spiega le feature principali.
+
+📂 File/Cartelle:
+- `src/components/OnboardingTour.jsx`
+- Aggiungi dipendenza: `npm install shepherd.js`
+
+📋 Azioni:
+1. **Configurazione Shepherd**  
+   ```js
+   import Shepherd from 'shepherd.js';
+   const tour = new Shepherd.Tour({...});
+   tour.addStep('step1', { text:'Usa la ricerca per trovare casa', attachTo:{ element:'.search-bar', on:'bottom' } });
+   // step2: filtri; step3: mappa; step4: chat
+Trigger Tour
+
+Avvia su primo login: in Profile.jsx se user.firstLogin → tour.start()
+
+Test
+
+Nuovo utente, primo accesso → parte tour con 4 step e pulsanti Avanti/Salta.
+
+yaml
+Copia
+
+---
+
+### Prompt B3 – Interfaccia Amministratore  
+```plaintext
+🔧 Obiettivo: espandere dashboard admin con azioni bulk e permessi.
+
+📂 File/Cartelle:
+- `src/components/AdminPanel.jsx`
+- `src/api/admin/**`
+
+📋 Azioni:
+1. **Bulk Actions**  
+   - Aggiungi checkbox in tabella annunci e pulsanti “Rimuovi selezionati” e “Approva selezionati”
+
+2. **Gestione Utenti**  
+   - Sezione “Utenti” con demote/promote (admin/moderator/user)
+
+3. **Permessi**  
+   - RLS: sola chiave `role = 'admin'` può accedere a `/api/admin/*`
+
+4. **Test**  
+   - Admin effettua bulk approve/remove; utenti non admin non vedono sezioni admin.
+
+Prompt B4 – Mobile App Shell / PWA Avanzata
+plaintext
+Copia
+🔧 Obiettivo: migliorare PWA per UX native.
+
+📂 File/Cartelle:
+- `public/manifest.json`
+- `src/service-worker.js`
+- `public/icons/`
+
+📋 Azioni:
+1. **Splash Screen**  
+   - In manifest aggiungi:
+     ```json
+     "icons":[{"src":"/icons/icon-192.png","sizes":"192x192","type":"image/png"}],
+     "background_color":"#6a0dad","theme_color":"#6a0dad"
+     ```
+
+2. **Offline Fallback**  
+   - In `service-worker.js` aggiungi fallback HTML per navigazione.
+
+3. **Install Prompt**  
+   - In `App.jsx`:
+     ```js
+     window.addEventListener('beforeinstallprompt', e => { e.prompt(); });
+     ```
+
+4. **Test**  
+   - Aggiungi a schermata home mobile iOS/Android, verifica splash e offline.
+
+Prompt C1 – Favoriti / Wishlist
+plaintext
+Copia
+🔧 Obiettivo: permettere user di salvare annunci come preferiti.
+
+📂 File/Cartelle:
+- DB migrazione: `migrations/1620003000_create_favorites.sql`
+- API: `src/api/favorites.js`
+- Frontend: `src/components/FavoriteButton.jsx`, `FavoritesList.jsx`
+
+📋 Azioni:
+1. **DB**  
+   ```sql
+   CREATE TABLE favorites (
+     id SERIAL PRIMARY KEY,
+     user_id UUID REFERENCES users(id),
+     announcement_id UUID REFERENCES announcements(id),
+     created_at TIMESTAMP DEFAULT NOW()
+   );
+API (favorites.js)
+
+js
+Copia
+POST /api/favorites { announcement_id }
+DELETE /api/favorites/:id
+GET /api/favorites
+FavoriteButton.jsx
+
+Toggle heart icon, chiama POST/DELETE
+
+FavoritesList.jsx
+
+Mostra lista card da GET /api/favorites
+
+✅ Test: utente salva/rimuove e vede lista preferiti in dashboard.
+
+yaml
+Copia

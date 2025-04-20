@@ -1,0 +1,100 @@
+Correzione bug nel form di pubblicazione annuncio (Required/invalid_type)
+File: pages/annunci/nuovo.jsx (pagina del form di nuovo annuncio)
+Modifica: Gestisci correttamente i campi obbligatori e i tipi delle variabili prima di salvare l'annuncio. In particolare, converti i campi numerici da stringa a numero ed assegna valori di default ai campi non compilati per evitare errori required o invalid_type. Ad esempio, nel gestore di submit del form:
+jsx
+Copia
+Modifica
+// ... (all'interno del componente di pubblicazione annuncio)
+
+// Stato per i campi del form, inizializzati con stringhe vuote per permettere cancellazione
+const [title, setTitle] = useState("");
+const [price, setPrice] = useState("");
+const [area, setArea] = useState("");         // area (metri quadri)
+const [months, setMonths] = useState("");     // mesi disponibili
+
+// ... altri stati e logica del form ...
+
+// Funzione di submit del form
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  // Validazione lato client per evitare campi obbligatori vuoti
+  if (!title.trim()) {
+    alert("Titolo obbligatorio");
+    return;
+  }
+  if (price === "" || isNaN(Number(price))) {
+    alert("Inserisci un prezzo valido");
+    return;
+  }
+  if (area === "" || isNaN(Number(area))) {
+    alert("Inserisci i metri quadri (numero)");
+    return;
+  }
+  if (months === "" || isNaN(Number(months))) {
+    alert("Specifica i mesi disponibili (numero)");
+    return;
+  }
+
+  // Conversione dei campi numerici da stringa a numero
+  const priceValue = Number(price);
+  const areaValue = Number(area);
+  const monthsValue = Number(months);
+
+  // Preparazione dei dati da salvare (assegna null ai campi opzionali se vuoti)
+  const newListingData = {
+    title: title.trim(),
+    price: priceValue,
+    area: areaValue,
+    availableMonths: monthsValue,
+    // ... altri campi del form, es: descrizione, indirizzo, ecc.
+    createdAt: new Date()  // oppure serverTimestamp() se usi Firestore
+  };
+
+  try {
+    // Salvataggio su Firebase (ad esempio Firestore)
+    const docRef = await addDoc(collection(db, "listings"), newListingData);
+    console.log("Annuncio pubblicato con ID: ", docRef.id);
+    // Reindirizza l'utente o mostra conferma...
+  } catch (error) {
+    console.error("Errore pubblicazione annuncio:", error);
+    alert("Errore durante la pubblicazione. Riprova.");
+  }
+};
+
+// JSX del form di pubblicazione
+<form onSubmit={handleSubmit}>
+  <input 
+    type="text" 
+    value={title} 
+    onChange={(e) => setTitle(e.target.value)} 
+    placeholder="Titolo annuncio" 
+    required 
+  />
+  <input 
+    type="number" 
+    value={price} 
+    onChange={(e) => setPrice(e.target.value)} 
+    placeholder="Prezzo al mese (€)" 
+    required 
+  />
+  <input 
+    type="number" 
+    value={area} 
+    onChange={(e) => setArea(e.target.value)} 
+    placeholder="Metri quadri" 
+    required 
+  />
+  <input 
+    type="number" 
+    value={months} 
+    onChange={(e) => setMonths(e.target.value)} 
+    placeholder="Mesi disponibili" 
+    required 
+  />
+  {/* ... altri campi del form ... */}
+  <button type="submit">Pubblica annuncio</button>
+</form>
+
+// Note: Utilizziamo stringhe per gli input numerici (price, area, months) così da poterli svuotare.
+// Vengono convertiti in numero solo al momento del submit per evitare errori "invalid_type".
+Commenti: In questo modo i campi obbligatori vengono verificati sul client e i valori numerici vengono convertiti prima del salvataggio. Ciò evita errori di tipo (invalid_type) dovuti, ad esempio, all’invio di stringhe vuote o tipi errati al backend. Assicurati inoltre che lo schema di validazione lato server (se esistente, ad es. schema Zod) accetti i tipi corretti o utilizzi preprocessing (es. z.preprocess) per convertire stringhe numeriche in numeri.

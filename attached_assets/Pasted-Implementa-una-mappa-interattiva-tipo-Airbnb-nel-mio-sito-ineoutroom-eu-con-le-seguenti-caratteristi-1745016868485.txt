@@ -1,0 +1,47 @@
+Implementa una mappa interattiva tipo Airbnb nel mio sito ineoutroom.eu con le seguenti caratteristiche chiave:
+
+🗺️ MAPPA REALE
+1. Usa l’API di Google Maps (o alternativamente Mapbox se preferisci performance WebGL).
+2. La mappa deve essere visibile nella pagina di ricerca principale, posizionata accanto o sopra la lista degli annunci.
+3. Caricamento lazy: carica solo quando visibile, senza bloccare il rendering.
+
+📍 MARKER CON PREZZO
+4. Ogni annuncio visibile sulla mappa deve apparire come marker personalizzato con il prezzo (€) visibile sul pin.
+5. Usa marker React personalizzati (es. con OverlayView o custom HTML per Mapbox).
+6. Al click sul marker, apri un tooltip/info box con nome, foto e link all’annuncio.
+
+📊 CLUSTERING DEI MARKER
+7. Abilita clustering automatico quando ci sono molti annunci vicini (es. con MarkerClusterer per Google o `cluster: true` con Mapbox).
+8. Mostra il numero di annunci nel cluster, e al click su cluster fai zoom automatico nell’area.
+9. Usa cluster ottimizzati per performance mobile (es. usa Supercluster o Mapbox built-in clustering).
+
+🌍 FILTRAGGIO GEOGRAFICO
+10. Ad ogni movimento della mappa (pan o zoom), aggiorna i risultati visibili:
+   - Rileva i bounds correnti (map.getBounds()).
+   - Invia richiesta al backend con i bounds e altri filtri attivi.
+   - Visualizza solo gli annunci nell’area visibile.
+
+🔁 SINCRONIZZAZIONE CON LA LISTA
+11. La lista degli annunci a lato della mappa deve essere sempre sincronizzata con ciò che è visibile sulla mappa.
+12. Quando l’utente clicca o passa sopra un annuncio della lista:
+   - Evidenzia il marker corrispondente sulla mappa (colore o animazione).
+13. Quando clicca su un marker:
+   - Scrolla la lista per mostrare l’annuncio selezionato.
+
+🧠 UX & PERFORMANCE
+14. Aggiungi la casella “Cerca mentre mi muovo sulla mappa” (se attiva, aggiorna automatico ad ogni movimento).
+15. Debounce il movimento mappa per evitare troppe richieste.
+16. Ottimizza la gestione dei marker: rimuovi solo quelli fuori area, non ricreare tutto da zero.
+17. Su mobile, la mappa deve essere 100% responsive, con altezza dinamica (min 300px).
+
+📁 TECNICHE AGGIUNTIVE
+18. Salva le coordinate in ogni annuncio (latitudine e longitudine).
+19. Usa `.env` o Supabase secrets per gestire in sicurezza la Google API key.
+20. Tutto il codice deve essere modulare, con componenti separati (Map, Marker, Cluster, Tooltip, ecc.).
+
+✅ TEST
+21. Verifica che la mappa funzioni anche con 100+ annunci visibili.
+22. Verifica la visualizzazione su dispositivi mobili e desktop.
+23. Assicurati che l’accessibilità sia rispettata (marker e tooltip navigabili da tastiera).
+
+Obiettivo: ottenere un sistema di navigazione geografica fluido e preciso, simile all’esperienza di Airbnb, perfettamente integrato nel sito ineoutroom.eu.

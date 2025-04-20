@@ -1,0 +1,46 @@
+prima di procedere con la migrazione a Next.js, ci sono alcune cose da migliorare che potrebbero rendere la migrazione più fluida ed efficace. Ecco una lista di attività che suggerirei di completare:
+
+Risoluzione degli errori LSP/TypeScript: Abbiamo numerosi errori di tipizzazione nel backend che dovrebbero essere risolti (visibili nei messaggi LSP nelle precedenti operazioni).
+
+Correzione dell'errore nelle raccomandazioni: Attualmente c'è un errore 500 quando si caricano le raccomandazioni ("column is_furnished does not exist").
+
+Ottimizzazione della struttura dei componenti:
+
+Separare più chiaramente la logica di business dai componenti UI
+Utilizzare pattern come container/presentational per facilitare la migrazione
+Migliore gestione dello stato:
+
+Centralizzare meglio la gestione dello stato con React Query
+Ridurre dipendenze circolari tra componenti
+Normalizzazione API:
+
+Standardizzare formati di risposta API
+Assicurarsi che tutte le API seguano gli stessi pattern (per facilitare SSR/SSG)
+Test di integrazione:
+
+Implementare test per i flussi principali dell'applicazione
+Assicurarsi che la funzionalità core sia ben testata prima della migrazione
+Ottimizzazione delle immagini:
+
+Implementare dimensioni responsive per le immagini
+Ottimizzare il caricamento lazy delle immagini (faciliterà l'integrazione con next/image)
+Refactoring delle route:
+
+Riorganizzare le route per allinearle al pattern di routing di Next.js
+Semplificare le strutture di navigazione
+Documentazione degli endpoint API:
+
+Mappare tutti gli endpoint API esistenti per assicurare una copertura completa durante la migrazione
+Documentare le dipendenze client-server
+Creazione della strategia per l'autenticazione:
+
+Pianificare come migrare il sistema di autenticazione attuale a Next.js
+Decidere se usare API Routes di Next.js o mantenere un backend separato
+Analisi delle dipendenze:
+
+Verificare quali librerie sono compatibili con Next.js
+Identificare alternative per eventuali librerie incompatibili
+Ottimizzazione del database:
+
+Risolvere gli errori di schema evidenziati
+Ottimizzare query per supportare al meglio SSR/SSG

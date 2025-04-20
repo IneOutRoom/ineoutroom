@@ -1,0 +1,50 @@
+Sto sviluppando un sito web chiamato **In&Out – Trova stanze e alloggi in Europa**, pensato per risolvere il grande problema di chi cerca un piccolo appartamento o una stanza in città come Roma, Milano, Barcellona, Valencia, Londra, ecc.  
+Voglio un’interfaccia essenziale ma funzionale, con un design giovanile, colori forti e vivaci, un tocco di trasgressione.  
+Il sito non ospiterà inserzioni di proprietari o agenzie ma **aggregarà in tempo reale** le migliori offerte dai principali portali immobiliari locali, sfruttando query e filtri specifici inseriti dall’utente.
+
+**Requisiti prioritari (vanno implementati subito):**  
+1. **Ricerca Avanzata**  
+   - Campo di ricerca con autocomplete per tutte le città italiane e spagnole  
+   - Filtri per tipologia (stanza, monolocale, bilocale), fascia di prezzo, disponibilità immediata  
+2. **Geolocalizzazione & Mappe**  
+   - Pulsante “Vedi annunci vicino a me” che usa geolocalizzazione browser  
+   - Mappa interattiva (Google Maps o Mapbox) con **clustering** dinamico dei marker  
+3. **Autenticazione Utente**  
+   - Login / Registrati con email/password e con Google OAuth  
+   - Nessuna registrazione obbligatoria per consultare, richiesta solo al momento del pagamento o pubblicazione  
+4. **Monetizzazione Base**  
+   - Pagamenti in‑page (PayPal e Stripe) per:  
+     • pubblicazione di singole inserzioni (0,99 € cad.)  
+     • piani di abbonamento (10 inserzioni / mese a 2,99 €, 30 a 5,99 €, illimitate a 9,99 €)  
+
+**Funzionalità secondarie (da schedulare nei mesi successivi):**  
+5. **Zone Salvate & Ricerche Salvate**  
+   - Salvataggio ricerche personalizzate (criteri multipli) con notifiche push/email sui nuovi annunci  
+   - Salvataggio di “zone disegnate” sulla mappa con alert su pubblicazioni in aree vuote  
+6. **Notifiche Intelligenti**  
+   - Alert automatici per nuovi annunci in zone salvate o ricerche salvate  
+7. **Chat Interna & Messaggistica**  
+   - Messaggistica one‑to‑one tra utente e inserzionista, con notifiche in‑app  
+8. **Recensioni & Rating**  
+   - Sistema 1–5 stelle e commenti, solo per utenti verificati che hanno concluso una prenotazione o visita  
+9. **Calendario Visite (opzionale/facoltativo)**  
+   - Rimozione o ripensamento del modulo visite se genera complessità, da valutare  
+10. **Referral & Inviti**  
+    - Codice referral per ottenere crediti o sconti su piani di pubblicazione  
+11. **Moderazione & Sicurezza**  
+    - Segnalazioni annuncio, policy di auto‑moderazione, RLS nel database per filtrare spam/frode  
+12. **Analytics & Dashboard Admin**  
+    - Pannello di controllo con statistiche di traffico, conversioni, ricerche più popolari, abbonamenti venduti  
+13. **Gestione Documenti & Contratti**  
+    - Upload PDF di contratti, firma elettronica di base  
+14. **Modalità Offline / Caching**  
+    - Salvataggio locale degli ultimi risultati per consultazione offline  
+15. **Social Share**  
+    - Condivisione rapida degli annunci su WhatsApp, Facebook, Twitter
+
+**Linea guida di sviluppo:**  
+- Priorità alle funzionalità 1–4, per lanciarsi sul mercato con core solido e monetizzazione attiva  
+- Iterare poi sulle funzionalità 5–15, pianificando sprint mensili per ciascun blocco  
+- Tutte le risposte e i mock-up di design devono essere forniti **in italiano**  
+
+Rispondi qui sotto **in italiano** con un piano di sviluppo e i suggerimenti tecnici e di UX/UI per realizzare questo sito web nel modo più rapido e professionale possibile.

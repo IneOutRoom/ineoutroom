@@ -1,0 +1,136 @@
+Guida al quartiere (trasporti, servizi, zona)
+Vogliamo aggiungere al dettaglio di ogni annuncio una sezione "Guida al quartiere" che fornisca informazioni sui trasporti pubblici vicini, servizi nelle vicinanze e una descrizione della zona. Useremo l’API Google Places per trovare punti di interesse attorno alla posizione dell’annuncio. Prerequisiti: Assicurati che per ogni annuncio abbiamo una posizione (latitudine, longitudine). Inoltre, la libreria Places è stata caricata con lo script Google (nel Prompt 3 abbiamo incluso libraries=places nell’URL). File: components/NeighborhoodGuide.jsx – Componente per mostrare info sul quartiere
+jsx
+Copia
+Modifica
+// File: components/NeighborhoodGuide.jsx
+import { useEffect, useState } from 'react';
+
+function getDistanceFromLatLon(lat1, lon1, lat2, lon2) {
+  // Calcola la distanza in metri tra due coordinate (formula Haversine)
+  const R = 6371; // raggio medio della Terra in km
+  const dLat = (lat2 - lat1) * Math.PI/180;
+  const dLon = (lon2 - lon1) * Math.PI/180;
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  const d = R * c;
+  return Math.round(d * 1000); // in metri
+}
+
+const NeighborhoodGuide = ({ listing }) => {
+  const [transportPlaces, setTransportPlaces] = useState([]);
+  const [servicePlaces, setServicePlaces] = useState([]);
+  const [zoneDescription, setZoneDescription] = useState("");
+
+  useEffect(() => {
+    if (!listing || !listing.lat || !listing.lng || !window.google) return;
+    const location = new window.google.maps.LatLng(listing.lat, listing.lng);
+    const service = new window.google.maps.places.PlacesService(document.createElement('div'));
+    // Cerca trasporti (es. stazioni metro/autobus) nel raggio di 1000m
+    service.nearbySearch({ location, radius: 1000, type: 'transit_station' }, (results, status) => {
+      if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+        const top3 = results.slice(0, 3);
+        setTransportPlaces(top3);
+        // Dopo aver ottenuto i trasporti, cerchiamo i servizi
+        service.nearbySearch({ location, radius: 1000, type: 'supermarket' }, (res2, status2) => {
+          if (status2 === window.google.maps.places.PlacesServiceStatus.OK) {
+            const topServ = res2.slice(0, 3);
+            setServicePlaces(topServ);
+            // Costruisci una descrizione testuale della zona basata su ciò che abbiamo trovato
+            let descr = "";
+            if (top3.length > 0 && topServ.length > 0) {
+              descr = "Zona ben servita dai mezzi pubblici (es. " + top3[0].name + ") e ricca di servizi (come " + topServ[0].name + ").";
+            } else if (top3.length > 0) {
+              descr = "Zona ben collegata dai mezzi pubblici (es. " + top3[0].name + ").";
+            } else if (topServ.length > 0) {
+              descr = "Zona con servizi essenziali nelle vicinanze (es. " + topServ[0].name + ").";
+            } else {
+              descr = "Zona residenziale tranquilla.";
+            }
+            setZoneDescription(descr);
+          } else {
+            // In caso la seconda ricerca fallisca comunque crea descrizione solo trasporti
+            let descr = top3.length > 0 ? 
+              "Zona ben collegata dai mezzi pubblici." : 
+              "Zona residenziale tranquilla.";
+            setZoneDescription(descr);
+          }
+        });
+      } else {
+        console.warn("Places API: nessun risultato per trasporti.", status);
+      }
+    });
+  }, [listing]);
+
+  return (
+    <div className="neighborhood-guide">
+      <h3>Guida al Quartiere</h3>
+      {/* Trasporti */}
+      <h4>Trasporti pubblici vicini:</h4>
+      {transportPlaces.length > 0 ? (
+        <ul>
+          {transportPlaces.map(place => (
+            <li key={place.place_id}>
+              {place.name} – a {getDistanceFromLatLon(listing.lat, listing.lng, place.geometry.location.lat(), place.geometry.location.lng())} m
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Nessuna fermata importante nel raggio di 1 km.</p>
+      )}
+      {/* Servizi */}
+      <h4>Servizi in zona:</h4>
+      {servicePlaces.length > 0 ? (
+        <ul>
+          {servicePlaces.map(place => (
+            <li key={place.place_id}>
+              {place.name} – a {getDistanceFromLatLon(listing.lat, listing.lng, place.geometry.location.lat(), place.geometry.location.lng())} m
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Nessun supermercato rilevante nel raggio di 1 km.</p>
+      )}
+      {/* Descrizione Zona */}
+      <h4>Zona:</h4>
+      <p>{zoneDescription || "Informazioni non disponibili."}</p>
+    </div>
+  );
+};
+
+export default NeighborhoodGuide;
+File: pages/annunci/[id].jsx – Integrazione della guida quartiere nel dettaglio annuncio
+jsx
+Copia
+Modifica
+// File: pages/annunci/[id].jsx
+import NeighborhoodGuide from '../../components/NeighborhoodGuide';
+
+// ... all'interno del componente di dettaglio annuncio ...
+return (
+  <div className="listing-detail">
+    {/* ... altri dettagli annuncio: titolo, immagini, descrizione, RatingWidget ... */}
+    <NeighborhoodGuide listing={annuncio} />
+  </div>
+);
+(Nel codice sopra, annuncio rappresenta l'oggetto contenente i dati completi dell'annuncio, inclusi lat e lng. Adatta il nome in base al tuo stato/props.) Commenti:
+Google Places API: usiamo placesService.nearbySearch per trovare luoghi vicini. Facciamo due ricerche:
+Trasporti: type: 'transit_station' considera stazioni di treno, metro o autobus. (Google categoriza tutte come “transit_station”). Prendiamo i primi 3 risultati entro 1km.
+Servizi: type: 'supermarket' per trovare supermercati (come rappresentativi di servizi essenziali; si potrebbe fare più di un tipo, ma ne usiamo uno per esempio). Anche qui prendiamo i primi 3 entro 1km.
+Usiamo un elemento div fittizio per inizializzare PlacesService (document.createElement('div')), perché l'API richiede un nodo DOM di riferimento. Non verrà visualizzato, è solo per scopi API.
+Stato e rendering: salviamo i risultati top3 in transportPlaces e servicePlaces. Nel render, se la lista non è vuota, mostriamo un <ul> con nome e distanza di ciascun luogo. Calcoliamo la distanza con la funzione getDistanceFromLatLon (che implementa la formula dell’ortodromia per due coordinate). Mostriamo la distanza in metri arrotondata. Se non ci sono risultati (lista vuota), mostriamo messaggi tipo "Nessuna fermata importante nel raggio di 1 km." / "Nessun supermercato rilevante...".
+Descrizione della zona: generiamo una stringa zoneDescription in base a ciò che troviamo:
+Se abbiamo almeno un trasporto e un servizio: "Zona ben servita dai mezzi pubblici (es. NOME_TRASPORTO) e ricca di servizi (come NOME_SUPERMERCATO)."
+Se abbiamo solo trasporti: "Zona ben collegata dai mezzi pubblici (es. NOME_TRASPORTO)."
+Solo servizi: "Zona con servizi essenziali nelle vicinanze (es. NOME_SUPERMERCATO)."
+Nessuno dei due: "Zona residenziale tranquilla." (frase generica).
+Questa è una logica semplificata, ma fornisce un tocco descrittivo. Puoi raffinare questa descrizione con più condizioni o informazioni. Ad esempio, se l’annuncio è in centro città vs periferia (si potrebbe dedurre dalla distanza dal centro, o da un campo apposito).
+Esecuzione delle ricerche: La prima nearbySearch (trasporti) chiama la seconda (servizi) nel suo callback, in modo sequenziale. Soltanto dopo aver ottenuto entrambi, impostiamo la zoneDescription. Così evitiamo di settare la descrizione prima di sapere se c’erano anche servizi.
+Error handling: Se lo status di Places non è OK (ad esempio quota esaurita, o API non abilitata), logghiamo un warning per trasporti e comunque il componente mostrerà i messaggi "nessuna ..." perché le liste rimarranno vuote. In caso la prima ricerca fallisca completamente, la seconda non parte. In caso la prima passi e la seconda fallisca, impostiamo zoneDescription solo coi trasporti (nel branch else interno).
+Integrazione in pagina annuncio: Importiamo NeighborhoodGuide e lo usiamo passando listing={annuncio}. L’oggetto annuncio deve contenere lat e lng. Nel tuo codice, se hai già i dati dell’annuncio in una variabile di stato, passali. Se stai caricando l’annuncio asincronamente, puoi fare {annuncio && <NeighborhoodGuide listing={annuncio} />} per renderlo solo quando disponibile.
+API Key considerations: L’uso di Places API richiede che la tua API key Google Maps abbia abilitato anche Places (nel Google Cloud Console). Inoltre, se sei in sviluppo su localhost o simili, assicurati che la chiave sia autorizzata per quel referrer. In produzione su dominio, idem. Se la Places API non è attivata o la chiave non è autorizzata, PlacesServiceStatus restituirà un errore. In tal caso, rivedi le impostazioni Google Cloud.
+Alternative: Per evitare dipendenza da Google, potresti usare API open (ad esempio OpenStreetMap Nominatim per trovare POI vicini, oppure database open data per trasporti). Tuttavia, l’integrazione sarebbe molto più complessa manualmente. Google Places fornisce un bel shortcut per ottenere nomi di stazioni e negozi vicini in modo affidabile.
+Con la guida al quartiere, forniamo un valore aggiunto tipo Airbnb/Booking: l’utente può capire meglio cosa c’è attorno all’alloggio (distanza dai trasporti, presenza di supermercati) e avere un breve riassunto della zona. Questo arricchisce l’annuncio e aiuta a prendere decisioni.

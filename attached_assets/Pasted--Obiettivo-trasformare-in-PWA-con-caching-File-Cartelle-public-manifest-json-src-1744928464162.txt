@@ -1,0 +1,82 @@
+🔧 Obiettivo: trasformare in PWA con caching.
+
+📂 File/Cartelle:
+- `public/manifest.json`
+- `src/service-worker.js`
+- `workbox-config.js`
+
+📋 Azioni:
+1. **Manifest** (`manifest.json`)
+   ```json
+   {
+     "name": "In&Out",
+     "short_name": "InOut",
+     "start_url": "/",
+     "display": "standalone",
+     "background_color": "#ffffff",
+     "theme_color": "#6a0dad"
+   }
+Service Worker (service-worker.js)
+
+js
+Copia
+import { precacheAndRoute } from 'workbox-precaching';
+precacheAndRoute(self.__WB_MANIFEST);
+import { registerRoute } from 'workbox-routing';
+import { StaleWhileRevalidate } from 'workbox-strategies';
+registerRoute(
+  ({request}) => request.destination === 'script' || request.destination === 'style',
+  new StaleWhileRevalidate()
+);
+Webpack/Workbox (workbox-config.js):
+
+js
+Copia
+workboxSrc: 'src/service-worker.js',
+globDirectory: 'build/',
+globPatterns: ['**/*.{js,css,html,png,svg}'],
+swDest: 'build/service-worker.js'
+Test: npm run build && serve -s build, apri localhost:5000, simula offline in DevTools e verifica fallback.
+
+go
+Copia
+
+---
+
+### Prompt 9 – Gestione Documenti & Contratti
+```plaintext
+🔧 Obiettivo: upload PDF e firma elettronica base.
+
+📂 File/Cartelle:
+- Frontend: `src/components/DocumentUpload.jsx`, `src/components/DocumentList.jsx`
+- Backend: `src/api/documents.js`
+- Storage: Supabase Storage bucket `contracts`
+
+📋 Azioni:
+1. **API** (`documents.js`)
+   ```js
+   import { supabase } from '../supabaseClient';
+   export async function uploadDocument(req, res) {
+     const { file } = req.files;
+     const { data, error } = await supabase.storage
+       .from('contracts')
+       .upload(`${req.auth.uid()}/${Date.now()}_${file.name}`, file.data);
+     // salva URL in DB...
+   }
+   // GET /api/documents/:announcementId
+Frontend
+
+DocumentUpload.jsx: <input type="file" accept="application/pdf" /> + POST a /api/documents
+
+DocumentList.jsx: fetcha e mostra link a PDF + preview inline con <iframe>
+
+Firma Elettronica (opzionale):
+
+Usa <canvas> per disegnare firma → salva PNG su Supabase Storage
+
+Aggiungi campo signature_url in tabella documents
+
+Test: proprietario carica PDF, qualunque utente con link lo può scaricare. Firma disegnata salvata e mostrata.
+
+yaml
+Copia

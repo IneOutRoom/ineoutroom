@@ -1,0 +1,34 @@
+Ottimizzazione del Cookie Banner CMP (Usercentrics)
+File: pages/_document.js (file custom document per inserire script nel <head> globale)
+Modifica: Integra correttamente lo script Usercentrics CMP nel <head> della pagina, in modo asincrono e una sola volta. Questo garantirà che il Cookie Banner venga caricato in conformità GDPR senza causare errori React. Ecco un esempio di implementazione:
+jsx
+Copia
+Modifica
+// File: pages/_document.jsx
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="it">
+        <Head>
+          {/* Altri tag <meta> o <link> se presenti */}
+          {/* Script Usercentrics CMP per il Cookie Banner */}
+          <script
+            id="usercentrics-cmp"
+            data-settings-id="INSERISCI_IL_TUO_SETTINGS_ID"
+            src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
+            async
+          ></script>
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+export default MyDocument;
+Sostituisci INSERISCI_IL_TUO_SETTINGS_ID con l'ID fornito da Usercentrics per la tua CMP. Puoi trovare questo ID nel pannello di controllo Usercentrics (di solito una stringa alfanumerica). Commenti: Inserendo lo script direttamente nel <Head> di _document, facciamo in modo che il banner di consenso cookie venga caricato il prima possibile, ma grazie all’attributo async non bloccherà il rendering della pagina. Usercentrics intercetterà automaticamente eventuali script di tracking (Google Analytics, etc.) in base al consenso dell’utente. Assicurati di non includere altrove lo script CMP (per evitare duplicati) e, se possibile, eseguilo solo in produzione. Ad esempio, potresti racchiudere il <script> in una condizione {process.env.NODE_ENV === 'production' && (...)} per non attivarlo in fase di sviluppo. Infine, verifica sul sito che il banner appaia correttamente e che, dopo aver accettato/rifiutato, il comportamento dei cookie di terze parti sia conforme alle scelte dell’utente (Usercentrics dovrebbe gestirlo automaticamente secondo la configurazione fatta nella dashboard CMP).
